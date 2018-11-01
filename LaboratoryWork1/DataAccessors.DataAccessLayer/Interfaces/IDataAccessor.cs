@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessors.DataAccessLayer
 {
-    public class Class1
-    {
+    public interface IDataAccessor {
+        string FilePath { get; set; }
+        string ReadData();
+        void WriteData(string data);
+        void Clear();
     }
 }

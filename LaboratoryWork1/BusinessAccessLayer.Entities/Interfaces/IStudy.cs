@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Entities
 {
-    public class Class1
-    {
+    interface IStudy {
+        void Study();
     }
 }

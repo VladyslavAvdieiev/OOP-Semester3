@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinkedStack\LinkedStack.csproj">
+      <Project>{d6adc03e-0e18-4b1e-af15-0725f5dfaa5f}</Project>
+      <Name>LinkedStack</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

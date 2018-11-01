@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace LinkedStack
 {
-    public class Class1
-    {
+    public enum Courses {
+        NotAStudent,
+        First,
+        Second,
+        Third,
+        Fourth,
+        Fifth,
+        Graduate
     }
 }

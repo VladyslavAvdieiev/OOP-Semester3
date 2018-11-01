@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Entities
 {
-    public class Class1
-    {
+    public enum Courses {
+        NotAStudent,
+        First,
+        Second,
+        Third,
+        Fourth,
+        Fifth,
+        Graduate
     }
 }

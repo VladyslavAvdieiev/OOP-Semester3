@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Serialization" Height="500" Width="800" ResizeMode="NoResize">
     <Grid>
-        
+        <DataGrid x:Name="objects_DataGrid" FontSize="16" Margin="10,10,10,150" BorderBrush="Black"/>
+        <Border x:Name="entities_Border" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Margin="50,335,0,0" Width="200" BorderThickness="2">
+            <ComboBox x:Name="entitiesTypes_ComboBox" FontSize="16" SelectedIndex="0" 
+                      SelectionChanged="EntitiesTypes_ComboBox_SelectionChanged">
+                <ComboBoxItem Content="- not selected -"/>
+                <ComboBoxItem Content="Student"/>
+                <ComboBoxItem Content="Teacher"/>
+            </ComboBox>
+        </Border>
+        <Border x:Name="serialization_Border" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                  Margin="270,335,0,0" Width="200" BorderThickness="2">
+            <ComboBox x:Name="serializationTypes_ComboBox" FontSize="16" SelectedIndex="0"
+                      SelectionChanged="SerializationTypes_ComboBox_SelectionChanged">
+                <ComboBoxItem Content="- not selected -"/>
+                <ComboBoxItem Content="Text data accessor"/>
+            </ComboBox>
+        </Border>
+        <Button x:Name="add_Button" Content="Add" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,340,160,0" Width="90" Click="Add_Button_Click"/>
+        <Button x:Name="read_Button" Content="Read" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,340,50,0" Width="90" Click="Read_Button_Click"/>
+        <Button x:Name="remove_Button" Content="Remove" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,380,160,0" Width="90" Click="Remove_Button_Click"/>
+        <Button x:Name="save_Button" Content="Save" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,380,50,0" Width="90" Click="Save_Button_Click"/>
+        <Button x:Name="exit_Button" Content="Exit" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Margin="0,420,50,0" Width="200" Click="Exit_Button_Click"/>
+        <TextBox x:Name="error_TextBox" HorizontalAlignment="Left" Margin="50,428,0,0" VerticalAlignment="Top" Foreground="Red"
+                 Width="420" IsReadOnly="True"/>
     </Grid>
 </Window>

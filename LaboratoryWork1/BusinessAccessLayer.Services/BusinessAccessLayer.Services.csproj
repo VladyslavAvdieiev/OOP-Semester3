@@ -41,10 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic\DataAccessService.cs" />
     <Compile Include="Formats\DefaultFormatParser.cs" />
     <Compile Include="Formats\IFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TextDataAccessorService.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessAccessLayer.Entities\BusinessAccessLayer.Entities.csproj">
+      <Project>{33951e6a-1dc2-470a-ba81-a4e9cf531b11}</Project>
+      <Name>BusinessAccessLayer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessors.DataAccessLayer\DataAccessors.DataAccessLayer.csproj">
+      <Project>{dc3779dc-477f-40a3-89c8-80cf939b892e}</Project>
+      <Name>DataAccessors.DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

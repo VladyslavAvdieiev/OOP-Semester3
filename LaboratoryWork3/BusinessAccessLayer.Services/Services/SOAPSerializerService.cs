@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class SOAPSerializerService<T> : IDataAccessService<T> {
+    public class SOAPSerializerService<T> : DataAccessService<T> {
         public SOAPSerializerService() {
             _serializer = new SOAPSerializer<T>();
         }

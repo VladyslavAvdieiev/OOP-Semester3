@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public abstract class IDataAccessService<T> {
+    public abstract class DataAccessService<T> {
         protected ISerializer<T> _serializer;
 
         public void Clear() {

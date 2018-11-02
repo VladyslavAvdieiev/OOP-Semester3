@@ -61,8 +61,8 @@ namespace PresentationLayer.GraphicalUserInterface
                     buffer.Add(new Teacher(new Name("Default", "Default", "Default")));
                     objects_DataGrid.ItemsSource = teachers = buffer;
                 }
-            error_TextBox.Foreground = Brushes.Green;
-            error_TextBox.Text = "Object has added.";
+            condition_TextBox.Foreground = Brushes.Green;
+            condition_TextBox.Text = "Object has added.";
         }
 
         private bool CheckSelection() {
@@ -76,7 +76,7 @@ namespace PresentationLayer.GraphicalUserInterface
         private void Read_Button_Click(object sender, RoutedEventArgs e) {
             if (CheckSelection())
                 if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
-                    IDataAccessService<List<Student>> service = null;
+                    DataAccessService<List<Student>> service = null;
                     if (serializationTypes_ComboBox.SelectedIndex == 1)
                         service = new BINARYSerializerService<List<Student>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 2)
@@ -88,7 +88,7 @@ namespace PresentationLayer.GraphicalUserInterface
                     objects_DataGrid.ItemsSource = students = service.Read();
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
-                    IDataAccessService<List<Teacher>> service = null;
+                    DataAccessService<List<Teacher>> service = null;
                     if (serializationTypes_ComboBox.SelectedIndex == 1)
                         service = new BINARYSerializerService<List<Teacher>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 2)
@@ -99,13 +99,13 @@ namespace PresentationLayer.GraphicalUserInterface
                         service = new XMLSerializerService<List<Teacher>>();
                     objects_DataGrid.ItemsSource = teachers = service.Read();
                 }
-            error_TextBox.Foreground = Brushes.Green;
-            error_TextBox.Text = "Data have read.";
+            condition_TextBox.Foreground = Brushes.Green;
+            condition_TextBox.Text = "Data have read.";
         }
 
         private void Remove_Button_Click(object sender, RoutedEventArgs e) {
             if (objects_DataGrid.SelectedIndex == -1) {
-                error_TextBox.Text = "Choose any row.";
+                condition_TextBox.Text = "Choose any row.";
                 return;
             }
             if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
@@ -122,14 +122,14 @@ namespace PresentationLayer.GraphicalUserInterface
                 buffer.Remove((Teacher)objects_DataGrid.SelectedItem);
                 objects_DataGrid.ItemsSource = teachers = buffer;
             }
-            error_TextBox.Foreground = Brushes.Green;
-            error_TextBox.Text = "Object has removed.";
+            condition_TextBox.Foreground = Brushes.Green;
+            condition_TextBox.Text = "Object has removed.";
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e) {
             if (CheckSelection())
                 if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
-                    IDataAccessService<List<Student>> service = null;
+                    DataAccessService<List<Student>> service = null;
                     if (serializationTypes_ComboBox.SelectedIndex == 1)
                         service = new BINARYSerializerService<List<Student>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 2)
@@ -140,17 +140,17 @@ namespace PresentationLayer.GraphicalUserInterface
                         service = new XMLSerializerService<List<Student>>();
                     if (objects_DataGrid.ItemsSource != null) {
                         service.Write((List<Student>)objects_DataGrid.ItemsSource);
-                        error_TextBox.Foreground = Brushes.Green;
-                        error_TextBox.Text = "Data have saved.";
+                        condition_TextBox.Foreground = Brushes.Green;
+                        condition_TextBox.Text = "Data have saved.";
                     }
                     else {
-                        error_TextBox.Foreground = Brushes.Red;
-                        error_TextBox.Text = "Data have not saved.";
+                        condition_TextBox.Foreground = Brushes.Red;
+                        condition_TextBox.Text = "Data have not saved.";
                     }
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher")
                 {
-                    IDataAccessService<List<Teacher>> service = null;
+                    DataAccessService<List<Teacher>> service = null;
                     if (serializationTypes_ComboBox.SelectedIndex == 1)
                         service = new BINARYSerializerService<List<Teacher>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 2)
@@ -161,12 +161,12 @@ namespace PresentationLayer.GraphicalUserInterface
                         service = new XMLSerializerService<List<Teacher>>();
                     if (objects_DataGrid.ItemsSource != null) {
                         service.Write((List<Teacher>)objects_DataGrid.ItemsSource);
-                        error_TextBox.Foreground = Brushes.Green;
-                        error_TextBox.Text = "Data have saved.";
+                        condition_TextBox.Foreground = Brushes.Green;
+                        condition_TextBox.Text = "Data have saved.";
                     }
                     else {
-                        error_TextBox.Foreground = Brushes.Red;
-                        error_TextBox.Text = "Data have not saved.";
+                        condition_TextBox.Foreground = Brushes.Red;
+                        condition_TextBox.Text = "Data have not saved.";
                     }
                 }
         }

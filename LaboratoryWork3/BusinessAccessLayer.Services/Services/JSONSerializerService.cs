@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class JSONSerializerService<T> : IDataAccessService<T> {
+    public class JSONSerializerService<T> : DataAccessService<T> {
         public JSONSerializerService() {
             _serializer = new JSONSerializer<T>();
         }

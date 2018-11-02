@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class XMLSerializerService<T> : IDataAccessService<T> {
+    public class XMLSerializerService<T> : DataAccessService<T> {
         public XMLSerializerService() {
             _serializer = new XMLSerializer<T>();
         }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class Class1
-    {
+    public interface IFormat {
+        string Assemble(string[] data);
+        string[,] Disassemble(string data, string type, int itemCount);
     }
 }

@@ -32,7 +32,7 @@ namespace DataAccessors.DataAccessLayer
         }
 
         public void WriteData(string data) {
-            using (StreamWriter writer = new StreamWriter(FilePath, false, Encoding.Default))
+            using (StreamWriter writer = new StreamWriter(FilePath, true, Encoding.Default))
                 writer.Write(data);
         }
     }

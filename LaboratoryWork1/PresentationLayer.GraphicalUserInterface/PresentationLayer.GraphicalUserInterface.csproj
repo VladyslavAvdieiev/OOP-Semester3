@@ -94,5 +94,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessAccessLayer.Entities\BusinessAccessLayer.Entities.csproj">
+      <Project>{33951e6a-1dc2-470a-ba81-a4e9cf531b11}</Project>
+      <Name>BusinessAccessLayer.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessAccessLayer.Services\BusinessAccessLayer.Services.csproj">
+      <Project>{2c9e42bb-7610-4166-9b2b-ca2ed0ace3b6}</Project>
+      <Name>BusinessAccessLayer.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

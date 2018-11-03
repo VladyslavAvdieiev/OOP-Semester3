@@ -41,11 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic\DataAccessService.cs" />
+    <Compile Include="Interfaces\IDataAccessService.cs" />
     <Compile Include="Formats\DefaultFormatParser.cs" />
     <Compile Include="Formats\IFormat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\TextDataAccessorService.cs" />
+    <Compile Include="Services\StudentDataAccessService.cs" />
+    <Compile Include="Services\TeacherDataAccessService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

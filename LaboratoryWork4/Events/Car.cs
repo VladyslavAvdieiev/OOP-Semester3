@@ -13,21 +13,24 @@ namespace Events
         private bool canMove;
         private double _fuel;
         public event CarStateHandler StartedMoving;
-        public event CarStateHandler StopedMoving;
-        public event CarStateHandler FuelIsOver;
+        public event CarStateHandler StoppedMoving;
+        public event CarStateHandler RanOutOfFuel;
+        public event CarStateHandler Refueled;
+
+        public double FuelConsumption { get; }
 
         public double Fuel {
             get => _fuel;
             private set {
-                _fuel = value;
-                if (_fuel <= 0) {
-                    FuelIsOver?.Invoke(this, new CarEventArgs("Fuel is over", 0));
+                if (value <= 0) {
+                    _fuel = 0;
+                    RanOutOfFuel?.Invoke(this, new CarEventArgs("Ran out of fuel.", Fuel));
                     StopMoving();
                 }
+                else
+                    _fuel = value;
             }
         }
-
-        public double FuelConsumption { get; }
 
         public Car(double fuel = 20000, double fuelConsumption = 100) {
             Fuel = fuel;
@@ -36,8 +39,12 @@ namespace Events
 
         public void StartMoving() {
             canMove = true;
-            StartedMoving?.Invoke(this, new CarEventArgs("Car started moving", Fuel));
-            Move();
+            if (Fuel > 0) {
+                StartedMoving?.Invoke(this, new CarEventArgs("Car started moving.", Fuel));
+                Task.Run(() => Move());
+            }
+            else
+                StartedMoving?.Invoke(this, new CarEventArgs("Car did not start moving. There is no fuel.", Fuel));
         }
 
         private void Move() {
@@ -50,11 +57,12 @@ namespace Events
 
         public void StopMoving() {
             canMove = false;
-            StopedMoving?.Invoke(this, new CarEventArgs("Car stopped moving", Fuel));
+            StoppedMoving?.Invoke(this, new CarEventArgs("Car stopped moving.", Fuel));
         }
 
         public void Refuel(double fuel) {
             Fuel += fuel;
+            Refueled?.Invoke(this, new CarEventArgs("Car was refueled.", Fuel));
         }
     }
 }

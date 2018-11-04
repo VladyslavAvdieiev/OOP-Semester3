@@ -28,7 +28,7 @@
         <Border x:Name="formats_Border" HorizontalAlignment="Left" VerticalAlignment="Top" 
                   Margin="270,378,0,0" Width="200" BorderThickness="2">
             <ComboBox x:Name="formats_ComboBox" FontSize="16" SelectedIndex="0"
-                      SelectionChanged="SerializationTypes_ComboBox_SelectionChanged">
+                      SelectionChanged="Formats_ComboBox_SelectionChanged">
                 <ComboBoxItem Content="- not selected -"/>
                 <ComboBoxItem Content="Default format"/>
             </ComboBox>

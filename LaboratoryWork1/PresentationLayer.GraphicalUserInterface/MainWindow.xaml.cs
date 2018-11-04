@@ -48,20 +48,21 @@ namespace PresentationLayer.GraphicalUserInterface
             serialization_Border.BorderBrush = Brushes.White;
         }
 
+        private void Formats_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            formats_Border.BorderBrush = Brushes.White;
+        }
+
         private void Add_Button_Click(object sender, RoutedEventArgs e) {
-            if (CheckSelection()) {
-                    List<Student> buffer = new List<Student>();
-                    foreach (Student student in students)
-                        buffer.Add(student);
-                    buffer.Add(new Student("Default",  "Default","Default", "01.01.2000", "AA000000", 1));
-                    objects_DataGrid.ItemsSource = students = buffer;
+            if (CheckSelection())
+                if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
+                    students.Add(new Student("Default", "Default", "Default", "01.01.2000", "AA000000", 1));
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = students;
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
-                    List<Teacher> buffer = new List<Teacher>();
-                    foreach (Teacher teacher in teachers)
-                        buffer.Add(teacher);
-                    buffer.Add(new Teacher("Default", "Default", "Default"));
-                    objects_DataGrid.ItemsSource = teachers = buffer;
+                    teachers.Add(new Teacher("Default", "Default", "Default"));
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = teachers;
                 }
             condition_TextBox.Foreground = Brushes.Green;
             condition_TextBox.Text = "Object has added.";
@@ -84,20 +85,22 @@ namespace PresentationLayer.GraphicalUserInterface
                 if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
                     IDataAccessService service = new StudentDataAccessService(studentPath);
                     Person[] people = service.Read(new DefaultFormatParser());
-                    List<Student> buffer = new List<Student>();
+                    students.Clear();
                     foreach (Person person in people)
                         if (person is Student student)
-                            buffer.Add(student);
-                    objects_DataGrid.ItemsSource = students = buffer;
+                            students.Add(student);
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = students;
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
                     IDataAccessService service = new TeacherDataAccessService(teacherPath);
                     Person[] people = service.Read(new DefaultFormatParser());
-                    List<Teacher> buffer = new List<Teacher>();
+                    teachers.Clear();
                     foreach (Person person in people)
                         if (person is Teacher teacher)
-                            buffer.Add(teacher);
-                    objects_DataGrid.ItemsSource = teachers = buffer;
+                            teachers.Add(teacher);
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = teachers;
                 }
             condition_TextBox.Foreground = Brushes.Green;
             condition_TextBox.Text = "Data have read.";
@@ -109,25 +112,22 @@ namespace PresentationLayer.GraphicalUserInterface
                 return;
             }
             if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
-                List<Student> buffer = new List<Student>();
-                foreach (Student student in students)
-                    buffer.Add(student);
-                buffer.Remove((Student)objects_DataGrid.SelectedItem);
-                objects_DataGrid.ItemsSource = students = buffer;
+                students.Remove((Student)objects_DataGrid.SelectedItem);
+                objects_DataGrid.ItemsSource = null;
+                objects_DataGrid.ItemsSource = students;
             }
             else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
-                List<Teacher> buffer = new List<Teacher>();
-                foreach (Teacher teacher in teachers)
-                    buffer.Add(teacher);
-                buffer.Remove((Teacher)objects_DataGrid.SelectedItem);
-                objects_DataGrid.ItemsSource = teachers = buffer;
+                teachers.Remove((Teacher)objects_DataGrid.SelectedItem);
+                objects_DataGrid.ItemsSource = null;
+                objects_DataGrid.ItemsSource = teachers;
             }
             condition_TextBox.Foreground = Brushes.Green;
             condition_TextBox.Text = "Object has removed.";
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e) {
-            if (CheckSelection())if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
+            if (CheckSelection())
+                if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
                     IDataAccessService service = new StudentDataAccessService(studentPath);
                     if (objects_DataGrid.ItemsSource != null) {
                         service.Clear();

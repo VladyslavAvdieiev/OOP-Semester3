@@ -20,14 +20,14 @@ namespace DataAccessLayer.Serializers
 
         public void Clear() {
             if (!File.Exists(FilePath))
-                throw new FileNotFoundException($"File '{FilePath}' is not exist.");
+                throw new FileNotFoundException($"File '{FilePath}' does not exist.");
             FileStream stream = new FileStream(FilePath, FileMode.Truncate);
             stream.Close();
         }
 
         public T Deserialize() {
             if (!File.Exists(FilePath))
-                throw new FileNotFoundException($"File '{FilePath}' is not exist.");
+                throw new FileNotFoundException($"File '{FilePath}' does not exist.");
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
             using (FileStream stream = new FileStream(FilePath, FileMode.Open))
                 return (T)xmlSerializer.Deserialize(stream);

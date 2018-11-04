@@ -47,19 +47,15 @@ namespace PresentationLayer.GraphicalUserInterface
         private void Add_Button_Click(object sender, RoutedEventArgs e) {
             if (CheckSelection())
                 if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
-                    List<Student> buffer = new List<Student>();
-                    foreach (Student student in students)
-                        buffer.Add(student);
-                    buffer.Add(new Student(new Name("Default", "Default", "Default"),
+                    students.Add(new Student(new Name("Default", "Default", "Default"),
                         new DateTime(2000, 1, 1), "AA000000", Courses.NotAStudent, Groups.NotAStudent));
-                    objects_DataGrid.ItemsSource = students = buffer;
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = students;
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
-                    List<Teacher> buffer = new List<Teacher>();
-                    foreach (Teacher teacher in teachers)
-                        buffer.Add(teacher);
-                    buffer.Add(new Teacher(new Name("Default", "Default", "Default")));
-                    objects_DataGrid.ItemsSource = teachers = buffer;
+                    teachers.Add(new Teacher(new Name("Default", "Default", "Default")));
+                    objects_DataGrid.ItemsSource = null;
+                    objects_DataGrid.ItemsSource = teachers;
                 }
             condition_TextBox.Foreground = Brushes.Green;
             condition_TextBox.Text = "Object has added.";
@@ -85,7 +81,14 @@ namespace PresentationLayer.GraphicalUserInterface
                         service = new SOAPSerializerService<List<Student>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 4)
                         service = new XMLSerializerService<List<Student>>();
-                    objects_DataGrid.ItemsSource = students = service.Read();
+                    try {
+                        objects_DataGrid.ItemsSource = students = service.Read();
+                        condition_TextBox.Foreground = Brushes.Green;
+                        condition_TextBox.Text = "Data have read.";
+                    } catch (System.IO.FileNotFoundException ex) {
+                        condition_TextBox.Foreground = Brushes.Red;
+                        condition_TextBox.Text = ex.Message;
+                    }
                 }
                 else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
                     DataAccessService<List<Teacher>> service = null;
@@ -97,10 +100,15 @@ namespace PresentationLayer.GraphicalUserInterface
                         service = new SOAPSerializerService<List<Teacher>>();
                     else if (serializationTypes_ComboBox.SelectedIndex == 4)
                         service = new XMLSerializerService<List<Teacher>>();
-                    objects_DataGrid.ItemsSource = teachers = service.Read();
+                    try {
+                        objects_DataGrid.ItemsSource = teachers = service.Read();
+                        condition_TextBox.Foreground = Brushes.Green;
+                        condition_TextBox.Text = "Data have read.";
+                    } catch (System.IO.FileNotFoundException ex) {
+                        condition_TextBox.Foreground = Brushes.Red;
+                        condition_TextBox.Text = ex.Message;
+                    }
                 }
-            condition_TextBox.Foreground = Brushes.Green;
-            condition_TextBox.Text = "Data have read.";
         }
 
         private void Remove_Button_Click(object sender, RoutedEventArgs e) {
@@ -109,18 +117,14 @@ namespace PresentationLayer.GraphicalUserInterface
                 return;
             }
             if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Student") {
-                List<Student> buffer = new List<Student>();
-                foreach (Student student in students)
-                    buffer.Add(student);
-                buffer.Remove((Student)objects_DataGrid.SelectedItem);
-                objects_DataGrid.ItemsSource = students = buffer;
+                students.Remove((Student)objects_DataGrid.SelectedItem);
+                objects_DataGrid.ItemsSource = null;
+                objects_DataGrid.ItemsSource = students;
             }
             else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
-                List<Teacher> buffer = new List<Teacher>();
-                foreach (Teacher teacher in teachers)
-                    buffer.Add(teacher);
-                buffer.Remove((Teacher)objects_DataGrid.SelectedItem);
-                objects_DataGrid.ItemsSource = teachers = buffer;
+                teachers.Remove((Teacher)objects_DataGrid.SelectedItem);
+                objects_DataGrid.ItemsSource = null;
+                objects_DataGrid.ItemsSource = teachers;
             }
             condition_TextBox.Foreground = Brushes.Green;
             condition_TextBox.Text = "Object has removed.";
@@ -148,8 +152,7 @@ namespace PresentationLayer.GraphicalUserInterface
                         condition_TextBox.Text = "Data have not saved.";
                     }
                 }
-                else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher")
-                {
+                else if (((ComboBoxItem)entitiesTypes_ComboBox.SelectedItem).Content.ToString() == "Teacher") {
                     DataAccessService<List<Teacher>> service = null;
                     if (serializationTypes_ComboBox.SelectedIndex == 1)
                         service = new BINARYSerializerService<List<Teacher>>();

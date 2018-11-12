@@ -53,6 +53,14 @@ namespace BusinessAccessLayer.Entities
             throw new FormatException("Incoming object is not an 'Ingredient' type.");
         }
 
+        public static bool operator ==(Ingredient ingredient1, Ingredient ingredient2) {
+            return ingredient1.Equals(ingredient2);
+        }
+
+        public static bool operator !=(Ingredient ingredient1, Ingredient ingredient2) {
+            return !ingredient1.Equals(ingredient2);
+        }
+
         public override int GetHashCode() {
             return ToString().GetHashCode();
         }

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Entities
 {
+    [Serializable]
     public class Ingredient {
         private string _name;
-        private float _cost;
-        private float _weight;
+        private double _cost;
+        private double _weight;
 
         public string Name { get => _name; set => _name = value; }
 
-        public float Cost {
+        public double Cost {
             get => _cost;
             set {
                 if (value < 0)
@@ -22,7 +23,7 @@ namespace BusinessAccessLayer.Entities
             }
         }
 
-        public float Weight {
+        public double Weight {
             get => _weight;
             set {
                 if (value < 0)
@@ -35,7 +36,7 @@ namespace BusinessAccessLayer.Entities
 
         }
 
-        public Ingredient(string name, float cost, float weigth) {
+        public Ingredient(string name, double cost, double weigth) {
             Name = name;
             Cost = cost;
             Weight = weigth;
@@ -49,7 +50,7 @@ namespace BusinessAccessLayer.Entities
 
         public override bool Equals(object obj) {
             if (obj is Ingredient ingredient)
-                return ToString() == ingredient.ToString();
+                return GetHashCode() == ingredient.GetHashCode();
             throw new FormatException("Incoming object is not an 'Ingredient' type.");
         }
 

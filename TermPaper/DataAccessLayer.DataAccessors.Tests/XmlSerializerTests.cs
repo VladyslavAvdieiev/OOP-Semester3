@@ -8,7 +8,7 @@ namespace DataAccessLayer.DataAccessors.Tests
     public class XmlSerializerTests {
 
         [TestMethod]
-        public void DefaultConstructor_CreateNonGenericTypeSerializer_NonGenericTypeFilePathReturned() {
+        public void DefaultConstructor_CreateNonGenericTypeSerializer_Should_SetNonGenericTypeToFilePath() {
             // Arrange
             string actual;
             string expected = "Int32.xml";
@@ -22,7 +22,7 @@ namespace DataAccessLayer.DataAccessors.Tests
         }
 
         [TestMethod]
-        public void DefaultConstructor_CreateGenericTypeSerializer_GenericTypeFilePathReturned() {
+        public void DefaultConstructor_CreateGenericTypeSerializer_Should_SetGenericTypeToFilePath() {
             // Arrange
             string actual;
             string expected = "Int32.xml";
@@ -36,7 +36,7 @@ namespace DataAccessLayer.DataAccessors.Tests
         }
 
         [TestMethod]
-        public void ConstructorWithParameters_CreateSerializerWithConstructorWithParameters_FilePathReturned() {
+        public void ConstructorWithParameters_CreateSerializerUsingConstructorWithParameters_Should_SetFilePath() {
             // Arrange
             string actual;
             string expected = "ExpectedFilePath.xml";

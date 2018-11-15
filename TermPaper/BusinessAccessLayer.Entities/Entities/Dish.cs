@@ -22,10 +22,18 @@ namespace BusinessAccessLayer.Entities
         public double Cost {
             get => _cost;
             set {
-                double minimum = MinimumCost();
-                if (value < minimum)
-                    throw new FormatException($"Cost cannot be less than {minimum}.");
+                if (value < 0)
+                    throw new FormatException("Cost cannot be less than 0.");
                 _cost = value;
+            }
+        }
+
+        public double DefaultCost {
+            get {
+                double cost = 0.0;
+                foreach (Ingredient ingredient in Ingredients)
+                    cost += ingredient.Cost;
+                return cost;
             }
         }
 
@@ -80,13 +88,6 @@ namespace BusinessAccessLayer.Entities
             foreach (Ingredient temp in ingredients)
                 result.Add(new Ingredient(temp));
             return result;
-        }
-
-        public double MinimumCost() {
-            double sum = 0.0;
-            foreach (Ingredient ingredient in Ingredients)
-                sum += ingredient.Cost;
-            return sum;
         }
 
         public override bool Equals(object obj) {

@@ -44,6 +44,7 @@
     <Compile Include="Entities\Dish.cs" />
     <Compile Include="Entities\Ingredient.cs" />
     <Compile Include="Entities\Menu.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

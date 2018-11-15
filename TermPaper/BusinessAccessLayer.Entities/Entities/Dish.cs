@@ -78,7 +78,7 @@ namespace BusinessAccessLayer.Entities
         private List<Ingredient> DeepCopy(List<Ingredient> ingredients) {
             List<Ingredient> result = new List<Ingredient>();
             foreach (Ingredient temp in ingredients)
-                result.Add(new Ingredient(temp.Name, temp.Cost, temp.Weight));
+                result.Add(new Ingredient(temp));
             return result;
         }
 
@@ -116,7 +116,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public override string ToString() {
-            return $"Name:{Name} - Cost:{Cost} - Weight:{Weight} - Time:{Time}";
+            return $"Name:{Name} - Cost:{Cost} - Weight:{Weight} - Time:{Time} - Description:{Description}";
         }
     }
 }

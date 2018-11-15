@@ -51,15 +51,17 @@ namespace BusinessAccessLayer.Entities
             Ingredients = new List<Ingredient>();
         }
 
-        public Dish(string name, double cost, double time) {
+        public Dish(string name, string description, double cost, double time) {
             Ingredients = new List<Ingredient>();
+            Description = description;
             Name = name;
             Cost = cost;
             Time = time;
         }
 
-        public Dish(string name, double cost, double time, List<Ingredient> ingredients) {
+        public Dish(string name, string description, double cost, double time, List<Ingredient> ingredients) {
             Ingredients = DeepCopy(ingredients);
+            Description = description;
             Name = name;
             Cost = cost;
             Time = time;
@@ -67,6 +69,7 @@ namespace BusinessAccessLayer.Entities
 
         public Dish(Dish dish) {
             Ingredients = DeepCopy(dish.Ingredients);
+            Description = dish.Description;
             Name = dish.Name;
             Cost = dish.Cost;
             Time = dish.Time;

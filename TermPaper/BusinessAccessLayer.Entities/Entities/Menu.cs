@@ -33,6 +33,12 @@ namespace BusinessAccessLayer.Entities
             Name = name;
         }
 
+        public Menu(Menu menu) {
+            Dishes = DeepCopy(menu.Dishes);
+            Description = menu.Description;
+            Name = menu.Name;
+        }
+
         private List<Dish> DeepCopy(List<Dish> dishes) {
             List<Dish> result = new List<Dish>();
             foreach (Dish temp in dishes)

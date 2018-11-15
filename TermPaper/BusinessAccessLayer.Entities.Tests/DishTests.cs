@@ -26,12 +26,10 @@ namespace BusinessAccessLayer.Entities.Tests
         [ExpectedException(typeof(FormatException))]
         public void Cost_SetNonValidValueToCost_Should_ThrowFormatExeption() {
             // Arrange
-            double minCost = 2.0;
-            double expected = 1.0;
+            double expected = -1.0;
             Dish dish = new Dish();
 
             // Act
-            dish.Ingredients.Add(new Ingredient() { Cost = minCost });
             dish.Cost = expected;
 
             // Assert
@@ -54,7 +52,7 @@ namespace BusinessAccessLayer.Entities.Tests
         }
 
         [TestMethod]
-        public void MinimumCost_CountMinimumCost_Should_ReturnSumOfIngredientsCost() {
+        public void DefaultCost_CountDefaultCost_Should_ReturnSumOfIngredientsCost() {
             // Arrange
             double actual;
             double expected = 1.0;
@@ -63,7 +61,7 @@ namespace BusinessAccessLayer.Entities.Tests
             // Act
             dish.Ingredients.Add(new Ingredient() { Cost = 0.7 });
             dish.Ingredients.Add(new Ingredient() { Cost = 0.3 });
-            actual = dish.MinimumCost();
+            actual = dish.DefaultCost;
 
             // Assert
             Assert.AreEqual(expected, actual);

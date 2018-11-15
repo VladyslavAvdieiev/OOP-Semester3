@@ -9,12 +9,15 @@ namespace BusinessAccessLayer.Entities
     [Serializable]
     public class Dish {
         private string _name;
+        private string _description;
         private double _cost;
         private double _time;
 
         public List<Ingredient> Ingredients { get; }
 
         public string Name { get => _name; set => _name = value; }
+
+        public string Description { get => _description; set => _description = value; }
 
         public double Cost {
             get => _cost;

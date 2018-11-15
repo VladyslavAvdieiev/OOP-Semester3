@@ -24,7 +24,7 @@ namespace BusinessAccessLayer.Entities
             set {
                 double minimum = MinimumCost();
                 if (value < minimum)
-                    throw new Exception($"Cost cannot be less than {minimum}.");
+                    throw new FormatException($"Cost cannot be less than {minimum}.");
                 _cost = value;
             }
         }

@@ -16,31 +16,60 @@
     </Window.Resources>
 
     <Grid>
-        <Menu x:Name="Main_Menu"
-              VerticalAlignment="Top"
-              HorizontalAlignment="Stretch"
-              Style="{StaticResource ResourceKey=MainMenuItemStyle}">
-            <MenuItem x:Name="NewOrder_MenuItem" Header="New Order">
-                <MenuItem.Icon>
-                    <Image Source="add.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="Orders_MenuItem" Header="Orders">
-                <MenuItem.Icon>
-                    <Image Source="statistics.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="Menus_MenuItem" Header="Menus">
-                <MenuItem.Icon>
-                    <Image Source="menu.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="Settings_MenuItem" Header="Settings">
-                <MenuItem.Icon>
-                    <Image Source="settings.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
 
+            <Menu Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch"
+                Style="{StaticResource ResourceKey=MainMenuItemStyle}">
+                <MenuItem x:Name="NewOrder_MenuItem" Header="New Order">
+                    <MenuItem.Icon>
+                        <Image Source="add.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="Orders_MenuItem" Header="Orders">
+                    <MenuItem.Icon>
+                        <Image Source="statistics.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="Menus_MenuItem" Header="Menus">
+                    <MenuItem.Icon>
+                        <Image Source="menu.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="Settings_MenuItem" Header="Settings">
+                    <MenuItem.Icon>
+                        <Image Source="settings.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <ListBox x:Name="Dishes_ListBox" Background="Black"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

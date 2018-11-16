@@ -5,49 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
-        Title="Restaurant" Height="450" Width="800">
+        Title="Restaurant" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="MainMenuItemStyle">
+            <Setter Property="Control.FontSize" Value="22"/>
+            <Setter Property="Control.Foreground" Value="WhiteSmoke"/>
+            <Setter Property="Control.Background" Value="#FF3F3F46"/>
+        </Style>
+    </Window.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Menu x:Name="Menu_Left" Grid.Column="0">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            
-            <MenuItem x:Name="MenuItem_Ingredients" Header="Ingredient">
-                <MenuItem.LayoutTransform>
-                    <TransformGroup>
-                        <RotateTransform Angle="90"/>
-                    </TransformGroup>
-                </MenuItem.LayoutTransform>
+        <Menu x:Name="Main_Menu"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Stretch"
+              Style="{StaticResource ResourceKey=MainMenuItemStyle}">
+            <MenuItem x:Name="NewOrder_MenuItem" Header="New Order">
+                <MenuItem.Icon>
+                    <Image Source="add.png"/>
+                </MenuItem.Icon>
             </MenuItem>
-            
-            <MenuItem x:Name="MenuItem_Dishes" Header="Dishes">
-                <MenuItem.LayoutTransform>
-                    <TransformGroup>
-                        <RotateTransform Angle="90"/>
-                    </TransformGroup>
-                </MenuItem.LayoutTransform>
+            <MenuItem x:Name="Orders_MenuItem" Header="Orders">
+                <MenuItem.Icon>
+                    <Image Source="statistics.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem x:Name="Menus_MenuItem" Header="Menus">
+                <MenuItem.Icon>
+                    <Image Source="menu.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem x:Name="Settings_MenuItem" Header="Settings">
+                <MenuItem.Icon>
+                    <Image Source="settings.png"/>
+                </MenuItem.Icon>
             </MenuItem>
         </Menu>
-
-        <ListBox x:Name="ListBox_Lists" Grid.Column="1" Visibility="Hidden" IsEnabled="False"/>
-
-        <TabControl x:Name="TabControl_Files" Grid.Column="2">
-            <TabItem Header="file1.xml">
-                <Grid>
-
-                </Grid>
-            </TabItem>
-
-        </TabControl>
 
     </Grid>
 </Window>

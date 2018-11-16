@@ -7,50 +7,29 @@
         mc:Ignorable="d"
         Title="Restaurant" Height="450" Width="800">
 
-    <Window.Resources>
-        <Style x:Key="MenuItemStyle">
-            <Setter Property="Control.FontSize" Value="16" />
-            <Setter Property="Control.Background" Value="#FF2D2D30" />
-            <Setter Property="Control.Foreground" Value="#FF9E9E9F" />
-        </Style>
-        <Style x:Key="TabControlStyle">
-            <Setter Property="Control.FontSize" Value="14" />
-            <Setter Property="Control.Background" Value="#FF1C1C1C" />
-            <Setter Property="Control.Foreground" Value="#FF9E9E9F" />
-        </Style>
-        <Style x:Key="TabControlItemsStyle">
-            <Setter Property="Control.Background" Value="#FF2D2D30" />
-            <Setter Property="Control.Foreground" Value="#FF9E9E9F" />
-        </Style>
-    </Window.Resources>
-    
-    <Grid Background="#FF2D2D30">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <Menu x:Name="menu_left"
-              Grid.Column="0"
-              VerticalAlignment="Stretch"
-              HorizontalAlignment="Left"
-              Style="{StaticResource ResourceKey=MenuItemStyle}">
+        <Menu x:Name="Menu_Left" Grid.Column="0">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
-            <MenuItem x:Name="menuItem_ingredients"
-                      Header="Ingredient">
+            
+            <MenuItem x:Name="MenuItem_Ingredients" Header="Ingredient">
                 <MenuItem.LayoutTransform>
                     <TransformGroup>
                         <RotateTransform Angle="90"/>
                     </TransformGroup>
                 </MenuItem.LayoutTransform>
             </MenuItem>
-            <MenuItem x:Name="menuItem_dishes"
-                      Header="Dishes">
+            
+            <MenuItem x:Name="MenuItem_Dishes" Header="Dishes">
                 <MenuItem.LayoutTransform>
                     <TransformGroup>
                         <RotateTransform Angle="90"/>
@@ -58,22 +37,17 @@
                 </MenuItem.LayoutTransform>
             </MenuItem>
         </Menu>
-        
-        <TabControl x:Name="TabControl_Main"
-                    Grid.Column="2"
-                    Style="{StaticResource ResourceKey=TabControlStyle}">
-            <TabItem Header="file1.xml"
-                     Style="{StaticResource ResourceKey=TabControlItemsStyle}">
+
+        <ListBox x:Name="ListBox_Lists" Grid.Column="1" Visibility="Hidden" IsEnabled="False"/>
+
+        <TabControl x:Name="TabControl_Files" Grid.Column="2">
+            <TabItem Header="file1.xml">
                 <Grid>
-                    
+
                 </Grid>
             </TabItem>
-            <TabItem Header="file2.xml"
-                     Style="{StaticResource ResourceKey=TabControlItemsStyle}">
-                <Grid>
-                    
-                </Grid>
-            </TabItem>
+
         </TabControl>
+
     </Grid>
 </Window>

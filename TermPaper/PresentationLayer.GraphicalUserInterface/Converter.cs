@@ -25,7 +25,7 @@ namespace PresentationLayer.GraphicalUserInterface
             foreach (Dish dish in dishes) {
                 BitmapImage image = new BitmapImage();
                 image.BeginInit();
-                image.UriSource = new Uri(dish.ImageSource);
+                image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + dish.ImageSource);
                 image.EndInit();
                 items.Add(new TemplateItem(dish.Name, dish.Description, dish.Cost, dish.Weight, dish.Time,
                           dish.Ingredients, image, new SolidColorBrush(Colors.WhiteSmoke)));    // TODO 1. random colors

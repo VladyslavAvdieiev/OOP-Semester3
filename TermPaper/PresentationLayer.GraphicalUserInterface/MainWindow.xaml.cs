@@ -27,7 +27,7 @@ namespace PresentationLayer.GraphicalUserInterface
 
         public MainWindow() {
             InitializeComponent();
-            if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path));
+            if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path))
                 LoadMenuItems();
         }
 

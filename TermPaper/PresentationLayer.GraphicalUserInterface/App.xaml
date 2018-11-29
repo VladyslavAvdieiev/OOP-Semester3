@@ -3,14 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
              StartupUri="MainWindow.xaml">
-    
     <Application.Resources>
-        <ResourceDictionary>
-            <Style x:Key="MainMenuItemStyle">
-                <Setter Property="Control.FontSize" Value="22"/>
-                <Setter Property="Control.Foreground" Value="WhiteSmoke"/>
-                <Setter Property="Control.Background" Value="#FF3F3F46"/>
-            </Style>
-        </ResourceDictionary>
+         
     </Application.Resources>
 </Application>

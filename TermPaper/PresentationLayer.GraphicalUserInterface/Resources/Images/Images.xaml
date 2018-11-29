@@ -3,6 +3,9 @@
                     xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface.Resources.Images">
     <BitmapImage x:Key="Add_Image" UriSource="add.png"/>
     <BitmapImage x:Key="Clocks_Image" UriSource="clocks.png"/>
+    <BitmapImage x:Key="Dish_Image" UriSource="dish.png"/>
+    <BitmapImage x:Key="Folder_Image" UriSource="folder.png"/>
+    <BitmapImage x:Key="Ingredients_Image" UriSource="ingredients.png"/>
     <BitmapImage x:Key="Menu_Image" UriSource="menu.png"/>
     <BitmapImage x:Key="Save_Image" UriSource="save.png"/>
     <BitmapImage x:Key="Settings_Image" UriSource="settings.png"/>

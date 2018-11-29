@@ -11,7 +11,7 @@ namespace PresentationLayer.GraphicalUserInterface
 {
     // TODO 1. random colors
 
-    public static class Convertor {
+    public static class Converter {
 
         public static List<TemplateItem> ToTemplateItem(List<Ingredient> ingredients) {
             List<TemplateItem> items = new List<TemplateItem>();

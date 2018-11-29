@@ -1,0 +1,148 @@
+﻿<Window x:Class="PresentationLayer.GraphicalUserInterface.PathsSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
+        mc:Ignorable="d"
+        Title="PathsSettings" Height="450" Width="800" Closed="Window_Closed">
+
+    <Grid Background="#FF2D2D30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.07*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label 
+            Grid.Row="1"
+            Grid.Column="0"
+            Content="Ingredients list path:"
+            Style="{StaticResource Label_PathsSettingsWindow_Style}"/>
+
+        <TextBox 
+            x:Name="ingredientsPath_TextBox"
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource TextBox_PathsSettingsWindow_Style}"/>
+
+        <Button 
+            x:Name="searchIngredientsPath_Button"
+            Content="..."
+            Grid.Row="2"
+            Grid.Column="0"
+            Style="{StaticResource SearchButton_PathsSettingsWindow_Style}"
+            Click="SearchIngredientsPath_Button_Click"/>
+
+        <Button 
+            x:Name="saveIngredientsPath_Button" 
+            Grid.Row="2"
+            Grid.Column="1"
+            Style="{StaticResource SaveButton_PathsSettingsWindow_Style}"
+            Click="SaveIngredientsPath_Button_Click">
+            <Image Source="{StaticResource Save_Image}"/>
+        </Button>
+
+
+        <Label 
+            Grid.Row="3"
+            Grid.Column="0"
+            Content="Dishes list path:"
+            Style="{StaticResource Label_PathsSettingsWindow_Style}"/>
+
+        <TextBox 
+            x:Name="dishesPath_TextBox"
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource TextBox_PathsSettingsWindow_Style}"/>
+
+        <Button 
+            x:Name="searchDishesPath_Button"
+            Content="..."
+            Grid.Row="4"
+            Grid.Column="0"
+            Style="{StaticResource SearchButton_PathsSettingsWindow_Style}"
+            Click="SearchDishesPath_Button_Click"/>
+
+        <Button 
+            x:Name="saveDishesPath_Button" 
+            Grid.Row="4"
+            Grid.Column="1"
+            Style="{StaticResource SaveButton_PathsSettingsWindow_Style}"
+            Click="SaveDishesPath_Button_Click">
+            <Image Source="{StaticResource Save_Image}"/>
+        </Button>
+
+
+        <Label 
+            Grid.Row="5"
+            Grid.Column="0"
+            Content="Menus list path:"
+            Style="{StaticResource Label_PathsSettingsWindow_Style}"/>
+
+        <TextBox 
+            x:Name="menusPath_TextBox"
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource TextBox_PathsSettingsWindow_Style}"/>
+
+        <Button 
+            x:Name="searchMenusPath_Button"
+            Content="..."
+            Grid.Row="6"
+            Grid.Column="0"
+            Style="{StaticResource SearchButton_PathsSettingsWindow_Style}"
+            Click="SearchMenusPath_Button_Click"/>
+
+        <Button 
+            x:Name="saveMenusPath_Button" 
+            Grid.Row="6"
+            Grid.Column="1"
+            Style="{StaticResource SaveButton_PathsSettingsWindow_Style}"
+            Click="SaveMenusPath_Button_Click">
+            <Image Source="{StaticResource Save_Image}"/>
+        </Button>
+
+
+        <Label 
+            Grid.Row="7"
+            Grid.Column="0"
+            Content="Orders list path:"
+            Style="{StaticResource Label_PathsSettingsWindow_Style}"/>
+
+        <TextBox 
+            x:Name="ordersPath_TextBox"
+            Grid.Row="8"
+            Grid.Column="0"
+            Style="{StaticResource TextBox_PathsSettingsWindow_Style}"/>
+
+        <Button 
+            x:Name="searchOrdersPath_Button"
+            Content="..."
+            Grid.Row="8"
+            Grid.Column="0"
+            Style="{StaticResource SearchButton_PathsSettingsWindow_Style}"
+            Click="SearchOrdersPath_Button_Click"/>
+
+        <Button 
+            x:Name="saveOrdersPath_Button" 
+            Grid.Row="8"
+            Grid.Column="1"
+            Style="{StaticResource SaveButton_PathsSettingsWindow_Style}"
+            Click="SaveOrdersPath_Button_Click">
+            <Image Source="{StaticResource Save_Image}"/>
+        </Button>
+    </Grid>
+</Window>

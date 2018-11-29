@@ -10,16 +10,17 @@ namespace BusinessAccessLayer.Entities
     public class Dish {
         private string _name;
         private string _description;
+        private string _imageSource;
         private double _cost;
         private double _time;
-
-        public string ImageSource { get; set; }
 
         public List<Ingredient> Ingredients { get; }
 
         public string Name { get => _name; set => _name = value; }
 
         public string Description { get => _description; set => _description = value; }
+
+        public string ImageSource { get => _imageSource; set => _imageSource = value; }
 
         public double Cost {
             get => _cost;
@@ -69,6 +70,15 @@ namespace BusinessAccessLayer.Entities
             Time = time;
         }
 
+        public Dish(string name, string description, double cost, double time, string imageSource) {
+            Ingredients = new List<Ingredient>();
+            Description = description;
+            Name = name;
+            Cost = cost;
+            Time = time;
+            ImageSource = imageSource;
+        }
+
         public Dish(string name, string description, double cost, double time, List<Ingredient> ingredients) {
             Ingredients = DeepCopy(ingredients);
             Description = description;
@@ -77,12 +87,22 @@ namespace BusinessAccessLayer.Entities
             Time = time;
         }
 
+        public Dish(string name, string description, double cost, double time, string imageSource, List<Ingredient> ingredients) {
+            Ingredients = DeepCopy(ingredients);
+            Description = description;
+            Name = name;
+            Cost = cost;
+            Time = time;
+            ImageSource = imageSource;
+        }
+
         public Dish(Dish dish) {
             Ingredients = DeepCopy(dish.Ingredients);
             Description = dish.Description;
             Name = dish.Name;
             Cost = dish.Cost;
             Time = dish.Time;
+            ImageSource = dish.ImageSource;
         }
 
         private List<Ingredient> DeepCopy(List<Ingredient> ingredients) {

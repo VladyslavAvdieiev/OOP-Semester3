@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converter.cs" />
+    <Compile Include="Services\Converter.cs" />
     <Compile Include="PathsSettings.xaml.cs">
       <DependentUpon>PathsSettings.xaml</DependentUpon>
     </Compile>

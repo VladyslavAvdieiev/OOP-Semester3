@@ -13,6 +13,8 @@ namespace BusinessAccessLayer.Entities
         private double _cost;
         private double _time;
 
+        public string ImageSource { get; set; }
+
         public List<Ingredient> Ingredients { get; }
 
         public string Name { get => _name; set => _name = value; }

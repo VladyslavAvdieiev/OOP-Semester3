@@ -12,6 +12,7 @@ namespace PresentationLayer.GraphicalUserInterface
     public class TemplateItem {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string ImageSource { get; set; }
         public double Cost { get; set; }
         public double Weight { get; set; }
         public double Time { get; set; }
@@ -26,25 +27,39 @@ namespace PresentationLayer.GraphicalUserInterface
         /// <summary>
         /// Constructor for Ingredients
         /// </summary>
-        public TemplateItem(string name, double cost, double weight) {
+        public TemplateItem(string name, double cost, double weight, string imageSource, SolidColorBrush background) {
             Name = name;
             Cost = cost;
             Weight = weight;
+            Background = background;
+            ImageSource = imageSource;
+
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
+            image.EndInit();
+            Icon = image;
         }
 
         /// <summary>
         /// Constructor for Dishes
         /// </summary>
         public TemplateItem(string name, string description, double cost, double weight, double time,
-                            List<Ingredient> ingredients, BitmapImage icon, SolidColorBrush background) {
+                            string imageSource, List<Ingredient> ingredients, SolidColorBrush background) {
             Name = name;
             Description = description;
             Cost = cost;
             Weight = weight;
             Time = time;
             Ingredients = ingredients;
-            Icon = icon;
             Background = background;
+            ImageSource = imageSource;
+
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
+            image.EndInit();
+            Icon = image;
         }
     }
 }

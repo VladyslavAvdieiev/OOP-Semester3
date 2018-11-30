@@ -10,6 +10,7 @@ using System.Windows.Media;
 namespace PresentationLayer.GraphicalUserInterface
 {
     // TODO 1. random colors
+    // TODO 2. random colors
 
     public static class Converter {
 
@@ -24,7 +25,8 @@ namespace PresentationLayer.GraphicalUserInterface
         public static List<TemplateItem> ToTemplateItem(List<Ingredient> ingredients) {
             List<TemplateItem> items = new List<TemplateItem>();
             foreach (Ingredient ingredient in ingredients)
-                items.Add(new TemplateItem(ingredient.Name, ingredient.Cost, ingredient.Weight));
+                items.Add(new TemplateItem(ingredient.Name, ingredient.Cost, ingredient.Weight, ingredient.ImageSource,
+                          new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 1. random colors
             return items;
         }
 
@@ -36,7 +38,7 @@ namespace PresentationLayer.GraphicalUserInterface
                 image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + dish.ImageSource);
                 image.EndInit();
                 items.Add(new TemplateItem(dish.Name, dish.Description, dish.Cost, dish.Weight, dish.Time,
-                          dish.Ingredients, image, new SolidColorBrush(Colors.WhiteSmoke)));    // TODO 1. random colors
+                          dish.ImageSource, dish.Ingredients, new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 2. random colors
             }
             return items;
         }
@@ -51,14 +53,14 @@ namespace PresentationLayer.GraphicalUserInterface
         public static List<Ingredient> ToIngredients(List<TemplateItem> items) {
             List<Ingredient> ingredients = new List<Ingredient>();
             foreach (TemplateItem item in items)
-                ingredients.Add(new Ingredient(item.Name, item.Cost, item.Weight));
+                ingredients.Add(new Ingredient(item.Name, item.Cost, item.Weight, item.ImageSource));
             return ingredients;
         }
 
         public static List<Dish> ToDishes(List<TemplateItem> items) {
             List<Dish> dishes = new List<Dish>();
             foreach (TemplateItem item in items)
-                dishes.Add(new Dish(item.Name, item.Description, item.Cost, item.Weight, item.Ingredients));
+                dishes.Add(new Dish(item.Name, item.Description, item.Cost, item.Time, item.ImageSource, item.Ingredients));
             return dishes;
         }
     }

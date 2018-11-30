@@ -12,6 +12,10 @@ namespace PresentationLayer.GraphicalUserInterface
         public double Cost { get; set; }
         public double Weight { get; set; }
 
+        public IngredientTemplateItem() {
+
+        }
+
         public IngredientTemplateItem(string name, double cost, double weight, string imageSource) {
             Name = name;
             Cost = cost;

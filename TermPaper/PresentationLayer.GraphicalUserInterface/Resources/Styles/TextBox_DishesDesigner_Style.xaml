@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface.Resources.Styles">
+
+    <Style x:Key="TextBox_DishesDesigner_Style" TargetType="{x:Type TextBox}">
+        <Setter Property="Control.FontSize" Value="20"/>
+        <Setter Property="Control.Background" Value="#FF3F3F46"/>
+        <Setter Property="Control.Foreground" Value ="WhiteSmoke"/>
+        <Setter Property="Control.Margin" Value="8"/>
+    </Style>
+</ResourceDictionary>

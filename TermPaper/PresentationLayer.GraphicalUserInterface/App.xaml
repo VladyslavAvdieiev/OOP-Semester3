@@ -17,6 +17,9 @@
                 <ResourceDictionary Source="Resources\Styles\DataGridItemContainer_IngredientsDesigner_Style.xaml"/>
                 <ResourceDictionary Source="Resources\Styles\DataGridRowHeader_IngredientsDesigner_Style.xaml"/>
                 <ResourceDictionary Source="Resources\Styles\DataGridColumnHeader_IngredientsDesigner_Style.xaml"/>
+
+                <ResourceDictionary Source="Resources\Styles\TextBox_DishesDesigner_Style.xaml"/>
+                <ResourceDictionary Source="Resources\Styles\Label_DishesDesigner_Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

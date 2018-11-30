@@ -62,7 +62,7 @@ namespace PresentationLayer.GraphicalUserInterface
             int index = -1;
             string header = ((MenuItem)sender).Header.ToString();
 
-            while (header != ((MenuItem)menus_MenuItem.Items[++index]).Header.ToString());
+            while (header != menuSource[++index].Name);
 
             foreach (MenuItem item in menus_MenuItem.Items)
                 item.IsChecked = false;
@@ -89,10 +89,11 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Opening ________ window
+        /// Opening IngredientsDesigner window
         /// </summary>
         private void IngredientSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show(sender.ToString(), "");
+            IngredientsDesigner ingredientsDesigner = new IngredientsDesigner();
+            ingredientsDesigner.Show();
         }
 
         /// <summary>

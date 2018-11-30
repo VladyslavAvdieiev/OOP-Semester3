@@ -6,6 +6,42 @@
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
         Title="IngredientsDesigner" Height="450" Width="800">
+    
+    <Window.CommandBindings>
+        <CommandBinding
+            x:Name="add_Command"
+            Command="local:Commands.Add" 
+            Executed="Add_Command_Executed"
+            CanExecute="Add_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="delete_Command"
+            Command="local:Commands.Delete" 
+            Executed="Delete_Command_Executed"
+            CanExecute="Delete_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="save_Command"
+            Command="local:Commands.Save" 
+            Executed="Save_Command_Executed"
+            CanExecute="Save_Command_CanExecute"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding
+            Command="local:Commands.Add"
+            Modifiers="Ctrl"
+            Key="A"/>
+        <KeyBinding
+            Command="local:Commands.Delete"
+            Modifiers="Ctrl"
+            Key="D"/>
+        <KeyBinding
+            Command="local:Commands.Save"
+            Modifiers="Ctrl"
+            Key="S"/>
+    </Window.InputBindings>
+    
     <Grid>
         
     </Grid>

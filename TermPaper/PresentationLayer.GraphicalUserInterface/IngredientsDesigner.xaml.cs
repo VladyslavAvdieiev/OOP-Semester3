@@ -22,5 +22,29 @@ namespace PresentationLayer.GraphicalUserInterface
         public IngredientsDesigner() {
             InitializeComponent();
         }
+
+        private void Add_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
+
+        }
+
+        private void Add_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+
+        }
+
+        private void Delete_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
+
+        }
+
+        private void Delete_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+
+        }
+
+        private void Save_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
+
+        }
+
+        private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+
+        }
     }
 }

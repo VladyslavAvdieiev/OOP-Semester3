@@ -27,14 +27,14 @@ namespace PresentationLayer.GraphicalUserInterface
 
         public IngredientsDesigner() {
             InitializeComponent();
-            if (LoadMenusFromDB(Properties.Settings.Default.Ingredients_Path))
-                LoadMenuItems();
+            if (LoadIngredientsFromDB(Properties.Settings.Default.Ingredients_Path))
+                LoadIngredientItems();
         }
 
         /// <summary>
         /// Reading ingredients from xml file
         /// </summary>
-        private bool LoadMenusFromDB(string path) {
+        private bool LoadIngredientsFromDB(string path) {
             try {
                 ingredientDataAccessService = new XmlSerializerService<List<Ingredient>>(path);                             // DEBUG use BAL
                 ingredientSource = ingredientDataAccessService.Read();                                                      // DEBUG use BAL
@@ -49,7 +49,7 @@ namespace PresentationLayer.GraphicalUserInterface
         /// <summary>
         /// Adding ingredients from xml file to MenuItem
         /// </summary>
-        private void LoadMenuItems() {
+        private void LoadIngredientItems() {
             ingredients_DataGrid.ItemsSource = Converter.ToIngredientTemplateItem(ingredientSource);
         }
 

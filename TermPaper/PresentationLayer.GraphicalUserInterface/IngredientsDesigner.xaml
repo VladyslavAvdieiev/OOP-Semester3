@@ -30,7 +30,6 @@
     <Window.InputBindings>
         <KeyBinding
             Command="local:Commands.Add"
-            Modifiers="Ctrl"
             Key="A"/>
         <KeyBinding
             Command="local:Commands.Delete"
@@ -43,6 +42,22 @@
     </Window.InputBindings>
     
     <Grid>
-        
+        <Grid.ToolTip>
+            <ToolTip>
+                <StackPanel>
+                    <Label Content="Add new item -> 'A'"/>
+                    <Label Content="Delete selected item -> 'Ctrl + D'"/>
+                    <Label Content="Save changes -> 'Ctrl + S'"/>
+                </StackPanel>
+            </ToolTip>
+        </Grid.ToolTip>
+
+        <DataGrid
+            x:Name="ingredients_DataGrid"
+            Background="#FF2D2D30"
+            ItemContainerStyle="{StaticResource DataGridItemContainer_IngredientsDesigner_Style}"
+            RowHeaderStyle="{StaticResource DataGridRowHeader_IngredientsDesigner_Style}"
+            ColumnHeaderStyle="{StaticResource DataGridColumnHeader_IngredientsDesigner_Style}">
+        </DataGrid>
     </Grid>
 </Window>

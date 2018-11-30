@@ -13,9 +13,9 @@ namespace PresentationLayer.GraphicalUserInterface
         public static RoutedCommand Save { get; set; }
 
         static Commands() {
-            Add = new RoutedCommand("Add", typeof(IngredientsDesigner));
-            Delete = new RoutedCommand("Delete", typeof(IngredientsDesigner));
-            Save = new RoutedCommand("Save", typeof(IngredientsDesigner));
+            Add = new RoutedCommand("Add", typeof(MainWindow));
+            Delete = new RoutedCommand("Delete", typeof(MainWindow));
+            Save = new RoutedCommand("Save", typeof(MainWindow));
         }
     }
 }

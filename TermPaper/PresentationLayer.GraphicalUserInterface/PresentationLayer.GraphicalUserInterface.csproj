@@ -55,11 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IngredientsDesigner.xaml.cs">
+      <DependentUpon>IngredientsDesigner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\Converter.cs" />
     <Compile Include="PathsSettings.xaml.cs">
       <DependentUpon>PathsSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\TemplateItem.cs" />
+    <Page Include="IngredientsDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

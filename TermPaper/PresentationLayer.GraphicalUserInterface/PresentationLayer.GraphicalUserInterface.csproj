@@ -89,6 +89,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Styles\DataGridColumnHeader_IngredientsDesigner_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\DataGridRowHeader_IngredientsDesigner_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\DataGridItemContainer_IngredientsDesigner_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\SaveButton_PathsSettingsWindow_Style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IngredientTemplateItem.cs" />
+    <Compile Include="Services\IngredientTemplateItem.cs" />
     <Compile Include="Services\Commands.cs" />
     <Compile Include="IngredientsDesigner.xaml.cs">
       <DependentUpon>IngredientsDesigner.xaml</DependentUpon>

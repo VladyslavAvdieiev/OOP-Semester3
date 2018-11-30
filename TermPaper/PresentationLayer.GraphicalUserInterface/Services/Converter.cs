@@ -13,6 +13,14 @@ namespace PresentationLayer.GraphicalUserInterface
 
     public static class Converter {
 
+        public static List<IngredientTemplateItem> ToIngredientTemplateItem(List<Ingredient> ingredients) {
+            List<IngredientTemplateItem> items = new List<IngredientTemplateItem>();
+            foreach (Ingredient ingredient in ingredients)
+                items.Add(new IngredientTemplateItem(ingredient.Name, ingredient.Cost, ingredient.Weight, ingredient.ImageSource));
+            return items;
+        }
+
+
         public static List<TemplateItem> ToTemplateItem(List<Ingredient> ingredients) {
             List<TemplateItem> items = new List<TemplateItem>();
             foreach (Ingredient ingredient in ingredients)
@@ -31,6 +39,13 @@ namespace PresentationLayer.GraphicalUserInterface
                           dish.Ingredients, image, new SolidColorBrush(Colors.WhiteSmoke)));    // TODO 1. random colors
             }
             return items;
+        }
+
+        public static List<Ingredient> ToIngredients(List<IngredientTemplateItem> items) {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            foreach (IngredientTemplateItem item in items)
+                ingredients.Add(new Ingredient(item.Name, item.Cost, item.Weight, item.ImageSource));
+            return ingredients;
         }
 
         public static List<Ingredient> ToIngredients(List<TemplateItem> items) {

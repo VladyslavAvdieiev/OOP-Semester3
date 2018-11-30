@@ -32,14 +32,9 @@ namespace PresentationLayer.GraphicalUserInterface
 
         public static List<TemplateItem> ToTemplateItem(List<Dish> dishes) {
             List<TemplateItem> items = new List<TemplateItem>();
-            foreach (Dish dish in dishes) {
-                BitmapImage image = new BitmapImage();
-                image.BeginInit();
-                image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + dish.ImageSource);
-                image.EndInit();
+            foreach (Dish dish in dishes)
                 items.Add(new TemplateItem(dish.Name, dish.Description, dish.Cost, dish.Weight, dish.Time,
                           dish.ImageSource, dish.Ingredients, new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 2. random colors
-            }
             return items;
         }
 

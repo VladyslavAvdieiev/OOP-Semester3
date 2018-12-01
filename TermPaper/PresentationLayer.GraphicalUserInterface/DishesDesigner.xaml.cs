@@ -1,19 +1,10 @@
-﻿using System;
-using BusinessAccessLayer.Entities;
-using BusinessAccessLayer.Services;
+﻿using BusinessAccessLayer.Entities;
+using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PresentationLayer.GraphicalUserInterface
 {
@@ -67,7 +58,7 @@ namespace PresentationLayer.GraphicalUserInterface
             BranchNode branchNode = new BranchNode("Ingredients");
             branchNode.Show();
             branchNode.Closed += (ss, ee) => {
-                if (branchNode.ChosenIngredient != null) {
+                if ((branchNode?.ChosenIngredient ?? new Ingredient()) == branchNode.ChosenIngredient) {
                     List<TemplateItem> items = (List<TemplateItem>)ingredients_ListBox.ItemsSource;
                     items.Add(Converter.ToTemplateItem(branchNode.ChosenIngredient));
                     ingredients_ListBox.ItemsSource = null;

@@ -25,6 +25,9 @@ namespace PresentationLayer.GraphicalUserInterface
         private List<Ingredient> ingredientSource;
         private DataAccessService<List<Ingredient>> ingredientDataAccessService;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public IngredientsDesigner() {
             InitializeComponent();
             if (LoadIngredientsFromDB(Properties.Settings.Default.Ingredients_Path))
@@ -32,7 +35,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Reading ingredients from xml file
+        /// Read ingredients from xml file
         /// </summary>
         private bool LoadIngredientsFromDB(string path) {
             try {
@@ -47,16 +50,22 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Adding ingredients from xml file to window
+        /// Add ingredients from source to window
         /// </summary>
         private void LoadIngredientItems() {
             ingredients_DataGrid.ItemsSource = Converter.ToIngredientTemplateItem(ingredientSource);
         }
 
+        /// <summary>
+        /// CanExecute event
+        /// </summary>
         private void Add_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
             e.CanExecute = read;
         }
 
+        /// <summary>
+        /// Add new item to window
+        /// </summary>
         private void Add_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
             List<IngredientTemplateItem> items = (List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource;
             items.Add(new IngredientTemplateItem());
@@ -64,10 +73,16 @@ namespace PresentationLayer.GraphicalUserInterface
             ingredients_DataGrid.ItemsSource = items;
         }
 
+        /// <summary>
+        /// CanExecute event
+        /// </summary>
         private void Delete_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
             e.CanExecute = (ingredients_DataGrid.SelectedIndex != -1) && (ingredients_DataGrid.SelectedIndex < ingredients_DataGrid.Items.Count - 1) && read;
         }
 
+        /// <summary>
+        /// Delete selected item from window
+        /// </summary>
         private void Delete_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to remove this item?", "Deletion",
                                                   MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
@@ -79,10 +94,16 @@ namespace PresentationLayer.GraphicalUserInterface
             }
         }
 
+        /// <summary>
+        /// CanExecute event
+        /// </summary>
         private void Save_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
             e.CanExecute = read;
         }
 
+        /// <summary>
+        /// Write down data to xml file
+        /// </summary>
         private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
             ingredientDataAccessService.Write(
                 Converter.ToIngredients((List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource));                   // DEBUG using BAL

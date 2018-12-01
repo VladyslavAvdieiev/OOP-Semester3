@@ -20,6 +20,9 @@ namespace PresentationLayer.GraphicalUserInterface
     /// </summary>
     public partial class PathsSettings : Window {
 
+        /// <summary>
+        /// Default constructor. Set paths from config to window
+        /// </summary>
         public PathsSettings() {
             InitializeComponent();
 
@@ -29,38 +32,65 @@ namespace PresentationLayer.GraphicalUserInterface
             ordersPath_TextBox.Text = Properties.Settings.Default.Orders_Path;
         }
 
+        /// <summary>
+        /// Write down path from window to config
+        /// </summary>
         private void SaveIngredientsPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Ingredients_Path = ingredientsPath_TextBox.Text;
         }
 
+        /// <summary>
+        /// Write down path from window to config
+        /// </summary>
         private void SaveDishesPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Dishes_Path = dishesPath_TextBox.Text;
         }
 
+        /// <summary>
+        /// Write down path from window to config
+        /// </summary>
         private void SaveMenusPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Menus_Path = menusPath_TextBox.Text;
         }
 
+        /// <summary>
+        /// Write down path from window to config
+        /// </summary>
         private void SaveOrdersPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Orders_Path = ordersPath_TextBox.Text;
         }
 
+        /// <summary>
+        /// Open file dialog to choose xml file
+        /// </summary>
         private void SearchIngredientsPath_Button_Click(object sender, RoutedEventArgs e) {
             ingredientsPath_TextBox.Text = OpenFile();
         }
 
+        /// <summary>
+        /// Open file dialog to choose xml file
+        /// </summary>
         private void SearchDishesPath_Button_Click(object sender, RoutedEventArgs e) {
             dishesPath_TextBox.Text = OpenFile();
         }
 
+        /// <summary>
+        /// Open file dialog to choose xml file
+        /// </summary>
         private void SearchMenusPath_Button_Click(object sender, RoutedEventArgs e) {
             menusPath_TextBox.Text = OpenFile();
         }
 
+        /// <summary>
+        /// Open file dialog to choose xml file
+        /// </summary>
         private void SearchOrdersPath_Button_Click(object sender, RoutedEventArgs e) {
             ordersPath_TextBox.Text = OpenFile();
         }
 
+        /// <summary>
+        /// Open file dialog
+        /// </summary>
         private string OpenFile() {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "All files(*.*)| *.*";
@@ -71,6 +101,9 @@ namespace PresentationLayer.GraphicalUserInterface
             return string.Empty;
         }
 
+        /// <summary>
+        /// Save config
+        /// </summary>
         private void Window_Closed(object sender, EventArgs e) {
             Properties.Settings.Default.Save();
         }

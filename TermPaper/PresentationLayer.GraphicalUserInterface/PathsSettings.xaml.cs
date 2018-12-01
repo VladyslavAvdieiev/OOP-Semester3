@@ -37,6 +37,8 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         private void SaveIngredientsPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Ingredients_Path = ingredientsPath_TextBox.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Settings were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -44,6 +46,8 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         private void SaveDishesPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Dishes_Path = dishesPath_TextBox.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Settings were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -51,6 +55,8 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         private void SaveMenusPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Menus_Path = menusPath_TextBox.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Settings were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -58,6 +64,8 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         private void SaveOrdersPath_Button_Click(object sender, RoutedEventArgs e) {
             Properties.Settings.Default.Orders_Path = ordersPath_TextBox.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Settings were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -102,10 +110,15 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Save config
+        /// Save all changes to config
         /// </summary>
-        private void Window_Closed(object sender, EventArgs e) {
+        private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+            Properties.Settings.Default.Ingredients_Path = ingredientsPath_TextBox.Text;
+            Properties.Settings.Default.Dishes_Path = dishesPath_TextBox.Text;
+            Properties.Settings.Default.Menus_Path = menusPath_TextBox.Text;
+            Properties.Settings.Default.Orders_Path = ordersPath_TextBox.Text;
             Properties.Settings.Default.Save();
+            MessageBox.Show("Settings were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

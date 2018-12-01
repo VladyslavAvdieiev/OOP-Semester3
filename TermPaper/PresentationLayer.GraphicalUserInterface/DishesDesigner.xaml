@@ -45,8 +45,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.5*"/>
@@ -131,7 +130,6 @@
         <ListBox
             x:Name="ingredients_ListBox"
             Grid.Row="3"
-            Grid.RowSpan="2"
             Grid.Column="0"
             Grid.ColumnSpan="4"
             Background="#FF2D2D30"

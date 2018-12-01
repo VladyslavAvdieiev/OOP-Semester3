@@ -105,6 +105,7 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Write down data to xml file
         /// </summary>
         private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+            ingredientDataAccessService.Clear();
             ingredientDataAccessService.Write(
                 Converter.ToIngredients((List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource));                   // DEBUG using BAL
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);

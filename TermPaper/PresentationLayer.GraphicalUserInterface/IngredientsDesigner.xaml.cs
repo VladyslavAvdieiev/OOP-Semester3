@@ -32,6 +32,7 @@ namespace PresentationLayer.GraphicalUserInterface
             InitializeComponent();
             if (LoadIngredientsFromDB(Properties.Settings.Default.Ingredients_Path))
                 LoadIngredientItems();
+            demoView_Border.DataContext = Converter.ToTemplateItem(ingredientSource[0]);
         }
 
         /// <summary>
@@ -54,6 +55,17 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         private void LoadIngredientItems() {
             ingredients_DataGrid.ItemsSource = Converter.ToIngredientTemplateItem(ingredientSource);
+        }
+
+        private void Ingredients_DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if ((ingredients_DataGrid.SelectedIndex == -1) || (ingredients_DataGrid.SelectedIndex == ingredients_DataGrid.Items.Count - 1))
+                demoView_Border.Visibility = Visibility.Hidden;
+            else {
+                demoView_Border.Visibility = Visibility.Visible;
+                IngredientTemplateItem item = (IngredientTemplateItem)ingredients_DataGrid.SelectedItem;
+                Ingredient ingredient = Converter.ToIngredients(item);
+                demoView_Border.DataContext = Converter.ToTemplateItem(ingredient);
+            }
         }
 
         /// <summary>
@@ -109,6 +121,13 @@ namespace PresentationLayer.GraphicalUserInterface
             ingredientDataAccessService.Write(
                 Converter.ToIngredients((List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource));                   // DEBUG using BAL
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        /// <summary>
+        /// Remove selection from dataGrid
+        /// </summary>
+        private void Esc_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
+            ingredients_DataGrid.SelectedIndex = -1;
         }
     }
 }

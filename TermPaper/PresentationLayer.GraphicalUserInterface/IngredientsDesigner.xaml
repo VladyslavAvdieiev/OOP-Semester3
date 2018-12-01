@@ -25,6 +25,11 @@
             Command="local:Commands.Save" 
             Executed="Save_Command_Executed"
             CanExecute="Save_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="esc_Command"
+            Command="local:Commands.Esc" 
+            Executed="Esc_Command_Executed"/>
     </Window.CommandBindings>
 
     <Window.InputBindings>
@@ -40,26 +45,115 @@
             Command="local:Commands.Save"
             Modifiers="Ctrl"
             Key="S"/>
+        <KeyBinding
+            Command="local:Commands.Esc"
+            Key="Esc"/>
     </Window.InputBindings>
-    
+
     <Grid>
-        <Grid.ToolTip>
-            <ToolTip>
-                <StackPanel>
-                    <Label Content="Add new item -> 'Ctrl + W'"/>
-                    <Label Content="Delete selected item -> 'Ctrl + D'"/>
-                    <Label Content="Save changes -> 'Ctrl + S'"/>
-                </StackPanel>
-            </ToolTip>
-        </Grid.ToolTip>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
         <DataGrid
             x:Name="ingredients_DataGrid"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
             Background="#FF2D2D30"
+            BorderThickness="0"
             SelectionMode="Single"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden"
+            SelectionChanged="Ingredients_DataGrid_SelectionChanged"
             ItemContainerStyle="{StaticResource DataGridItemContainer_IngredientsDesigner_Style}"
             RowHeaderStyle="{StaticResource DataGridRowHeader_IngredientsDesigner_Style}"
             ColumnHeaderStyle="{StaticResource DataGridColumnHeader_IngredientsDesigner_Style}">
+            <DataGrid.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <Label Content="Add new item -> 'Ctrl + W'"/>
+                        <Label Content="Delete selected item -> 'Ctrl + D'"/>
+                        <Label Content="Save changes -> 'Ctrl + S'"/>
+                    </StackPanel>
+                </ToolTip>
+            </DataGrid.ToolTip>
         </DataGrid>
+
+        <Border
+            x:Name="demoView_Border"
+            Grid.Column="1"
+            Height="200"
+            Width="150"
+            CornerRadius="5,5,20,20"
+            Visibility="Hidden"
+            Background="{Binding Background}">
+
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="2" />
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Source="{Binding Icon}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"/>
+
+                <TextBlock 
+                    Text="{Binding Name}"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    FontSize="16"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap"
+                    FontWeight="DemiBold"/>
+
+                <Image
+                    Source="{StaticResource Weight_Image}"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Height="15"
+                    Width="15"
+                    HorizontalAlignment="Right"/>
+
+                <TextBlock 
+                    Text="{Binding Weight}"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontSize="16"
+                    Margin="3,0,0,0"
+                    TextAlignment="Left"
+                    VerticalAlignment="Center"/>
+
+                <TextBlock 
+                    Text="{Binding Cost}"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    FontSize="16"
+                    Margin="0,0,3,0"
+                    TextAlignment="Right"
+                    VerticalAlignment="Center"/>
+
+                <Image
+                    Source="{StaticResource Uah_Image}"
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Height="15"
+                    Width="15"
+                    HorizontalAlignment="Left"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

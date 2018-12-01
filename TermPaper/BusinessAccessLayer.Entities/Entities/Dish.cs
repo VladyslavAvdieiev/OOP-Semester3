@@ -126,6 +126,8 @@ namespace BusinessAccessLayer.Entities
         }
 
         public override bool Equals(object obj) {
+            if (obj == null)
+                return false;
             if (obj is Dish dish) {
                 if (GetHashCode() != dish.GetHashCode())
                     return false;

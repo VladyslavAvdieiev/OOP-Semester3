@@ -60,6 +60,8 @@ namespace BusinessAccessLayer.Entities
         }
 
         public override bool Equals(object obj) {
+            if (obj == null)
+                return false;
             if (obj is Ingredient ingredient)
                 return GetHashCode() == ingredient.GetHashCode();
             throw new FormatException("Incoming object is not an 'Ingredient' type.");

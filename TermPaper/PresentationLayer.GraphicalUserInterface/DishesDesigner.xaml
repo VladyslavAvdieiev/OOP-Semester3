@@ -11,8 +11,7 @@
         <CommandBinding
             x:Name="add_Command"
             Command="local:Commands.Add" 
-            Executed="Add_Command_Executed"
-            CanExecute="Add_Command_CanExecute"/>
+            Executed="Add_Command_Executed"/>
 
         <CommandBinding
             x:Name="delete_Command"
@@ -23,15 +22,14 @@
         <CommandBinding
             x:Name="save_Command"
             Command="local:Commands.Save" 
-            Executed="Save_Command_Executed"
-            CanExecute="Save_Command_CanExecute"/>
+            Executed="Save_Command_Executed"/>
     </Window.CommandBindings>
 
     <Window.InputBindings>
         <KeyBinding
             Command="local:Commands.Add"
             Modifiers="Ctrl"
-            Key="A"/>
+            Key="W"/>
         <KeyBinding
             Command="local:Commands.Delete"
             Modifiers="Ctrl"
@@ -145,7 +143,7 @@
             <ListBox.ToolTip>
                 <ToolTip>
                     <StackPanel>
-                        <Label Content="Add new item -> 'Ctrl + A'"/>
+                        <Label Content="Add new item -> 'Ctrl + W'"/>
                         <Label Content="Delete selected item -> 'Ctrl + D'"/>
                         <Label Content="Save changes -> 'Ctrl + S'"/>
                     </StackPanel>

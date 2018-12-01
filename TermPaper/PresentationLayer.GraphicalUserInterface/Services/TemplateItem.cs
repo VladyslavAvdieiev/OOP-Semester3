@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
+using System.Windows;
 
 namespace PresentationLayer.GraphicalUserInterface
 {
@@ -34,11 +35,15 @@ namespace PresentationLayer.GraphicalUserInterface
             Background = background;
             ImageSource = imageSource;
 
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
-            image.EndInit();
-            Icon = image;
+            try {
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
+                image.EndInit();
+                Icon = image;
+            } catch (Exception) {
+                Icon = (BitmapImage)Application.Current.TryFindResource("404_Image");
+            }
         }
 
         /// <summary>
@@ -55,11 +60,15 @@ namespace PresentationLayer.GraphicalUserInterface
             Background = background;
             ImageSource = imageSource;
 
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
-            image.EndInit();
-            Icon = image;
+            try {
+                BitmapImage image = new BitmapImage();
+                image.BeginInit();
+                image.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + imageSource);
+                image.EndInit();
+                Icon = image;
+            } catch (Exception) {
+                Icon = (BitmapImage)Application.Current.TryFindResource("404_Image");
+            }
         }
     }
 }

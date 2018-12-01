@@ -27,7 +27,13 @@ namespace PresentationLayer.GraphicalUserInterface
         private List<Dish> dishSource;
         private DataAccessService<List<Dish>> dishDataAccessService;
 
-        public enum Item { Ingredients, Dishes };
+        /// <summary>
+        /// This is multipurpose window, so we need this enum for define what kind of objects we must load
+        /// </summary>
+        public enum Item {
+            Ingredients,
+            Dishes
+        };
         /// <summary>
         /// Chosen ingredient
         /// </summary>

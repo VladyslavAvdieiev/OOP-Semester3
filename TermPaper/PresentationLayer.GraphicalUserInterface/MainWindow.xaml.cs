@@ -103,15 +103,16 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Open BranchNode window for Dishes
         /// </summary>
         private void DishSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
-            BranchNode branchNode = new BranchNode("Dishes");
+            BranchNode branchNode = new BranchNode(BranchNode.Item.Dishes);
             branchNode.Show();
         }
 
         /// <summary>
-        /// __________
+        /// Open BranchNode window for Menus
         /// </summary>
         private void MenuSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show(sender.ToString(), "");
+            BranchNode branchNode = new BranchNode(BranchNode.Item.Menus);
+            branchNode.Show();
         }
     }
 }

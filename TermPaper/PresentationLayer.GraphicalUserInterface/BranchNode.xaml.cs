@@ -22,28 +22,27 @@ namespace PresentationLayer.GraphicalUserInterface
     /// </summary>
     public partial class BranchNode : Window {
         private bool read;
-        private List<Ingredient> ingredientSource;
-        private DataAccessService<List<Ingredient>> ingredientDataAccessService;
+        private Item currentItem;
         private List<Dish> dishSource;
         private DataAccessService<List<Dish>> dishDataAccessService;
+        private List<BusinessAccessLayer.Entities.Menu> menuSource;
+        private DataAccessService<List<BusinessAccessLayer.Entities.Menu>> menuDataAccessService;
+
+        public enum Item { Dishes, Menus };
 
         /// <summary>
-        /// Chosen ingredient
+        /// Constructor with parameter
         /// </summary>
-        public Ingredient ChosenIngredient { get; set; }
-
-        /// <summary>
-        /// Cpnstructor with parameter
-        /// </summary>
-        public BranchNode(string obj) {
+        public BranchNode(Item item) {
             InitializeComponent();
-            if (obj == "Ingredients") {
-                if (LoadIngredientsFromDB(Properties.Settings.Default.Ingredients_Path))
-                    LoadIngreditntItems();
-            }
-            else if (obj == "Dishes") {
+            currentItem = item;
+            if (item == Item.Dishes) {
                 if (LoadDishesFromDB(Properties.Settings.Default.Dishes_Path))
                     LoadDishItems();
+            }
+            else if (item == Item.Menus) {
+                if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path))
+                    LoadMenuItems();
             }
         }
 
@@ -72,12 +71,12 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Read ingredients from xml file
+        /// Read menus from xml file
         /// </summary>
-        private bool LoadIngredientsFromDB(string path) {
+        private bool LoadMenusFromDB(string path) {
             try {
-                ingredientDataAccessService = new XmlSerializerService<List<Ingredient>>(path);                             // DEBUG use BAL
-                ingredientSource = ingredientDataAccessService.Read();                                                      // DEBUG use BAL
+                menuDataAccessService = new XmlSerializerService<List<BusinessAccessLayer.Entities.Menu>>(path);            // DEBUG use BAL
+                menuSource = menuDataAccessService.Read();                                                                  // DEBUG use BAL
                 return read = true;
             } catch (FileNotFoundException e) {
                 MessageBox.Show($"Error:\n{e.Message}\n\nSet path to file in Settings - Edit File Paths",
@@ -87,12 +86,12 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Add ingredients from source to window
+        /// Add menu headers from source to window
         /// </summary>
-        private void LoadIngreditntItems() {
+        private void LoadMenuItems() {
             items_ListBox.Items.Clear();
-            foreach (Ingredient ingredient in ingredientSource)
-                items_ListBox.Items.Add($"{ingredient.Name} - {ingredient.Cost}uah - {ingredient.Weight}gram");
+            foreach (BusinessAccessLayer.Entities.Menu menu in menuSource)
+                items_ListBox.Items.Add(menu.Name);
         }
 
         /// <summary>
@@ -102,16 +101,16 @@ namespace PresentationLayer.GraphicalUserInterface
             int index = -1;
             string content = ((ListBoxItem)sender).Content.ToString();
             while (++index < items_ListBox.Items.Count && content != (string)items_ListBox.Items[index]) ;
-            if (dishDataAccessService != null)
-                DishEdit(index);
-            else if (ingredientDataAccessService != null)
-                IngredientEdit(index);
+            if (currentItem == Item.Dishes)
+                EditDish(index);
+            else if (currentItem == Item.Menus)
+                EditMenu(index);
         }
 
         /// <summary>
         /// Find index of clicked item and open DishesDesigner window
         /// </summary>
-        private void DishEdit(int index) {
+        private void EditDish(int index) {
             DishesDesigner dishesDesigner = new DishesDesigner(dishSource[index]);
             dishesDesigner.Show();
             Hide();
@@ -121,31 +120,36 @@ namespace PresentationLayer.GraphicalUserInterface
         /// <summary>
         /// Find index of clicked item and open window to choose ingredient
         /// </summary>
-        private void IngredientEdit(int index) {
-            ChosenIngredient = ingredientSource[index];
-            Close();
+        private void EditMenu(int index) {
+
         }
 
         /// <summary>
         /// CanExecute event
         /// </summary>
         private void Add_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
-            e.CanExecute = read && (dishDataAccessService != null);
+            e.CanExecute = read && ((menuDataAccessService != null) ||(dishDataAccessService != null));
         }
 
         /// <summary>
         /// Add new item to window
         /// </summary>
         private void Add_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
-            dishSource.Add(new Dish());
-            DishEdit(dishSource.Count - 1);
+            if (dishDataAccessService != null) {
+                dishSource.Add(new Dish());
+                EditDish(dishSource.Count - 1);
+            }
+            else if (menuDataAccessService != null) {
+                menuSource.Add(new BusinessAccessLayer.Entities.Menu());
+                EditDish(menuSource.Count - 1);
+            }
         }
 
         /// <summary>
         /// CanExecute event
         /// </summary>
         private void Delete_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
-            e.CanExecute = (items_ListBox.SelectedIndex != -1) && read;
+            e.CanExecute = read && (items_ListBox.SelectedIndex != -1);
         }
 
         /// <summary>
@@ -162,14 +166,17 @@ namespace PresentationLayer.GraphicalUserInterface
         /// CanExecute event
         /// </summary>
         private void Save_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
-            e.CanExecute = read && (dishDataAccessService != null);
+            e.CanExecute = read && ((menuDataAccessService != null) || (dishDataAccessService != null));
         }
 
         /// <summary>
         /// Write down data to xml file
         /// </summary>
         private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
-            dishDataAccessService.Write(dishSource);                                                                        // DEBUG using BAL
+            if (currentItem == Item.Dishes)
+                dishDataAccessService.Write(dishSource);                                                                    // DEBUG using BAL
+            else if (currentItem == Item.Menus)
+                menuDataAccessService.Write(menuSource);                                                                    // DEBUG using BAL
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

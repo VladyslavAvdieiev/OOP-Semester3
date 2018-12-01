@@ -47,7 +47,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Adding ingredients from xml file to MenuItem
+        /// Adding ingredients from xml file to window
         /// </summary>
         private void LoadIngredientItems() {
             ingredients_DataGrid.ItemsSource = Converter.ToIngredientTemplateItem(ingredientSource);

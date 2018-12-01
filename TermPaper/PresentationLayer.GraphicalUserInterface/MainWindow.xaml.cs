@@ -25,6 +25,9 @@ namespace PresentationLayer.GraphicalUserInterface
         private List<BusinessAccessLayer.Entities.Menu> menuSource;
         private DataAccessService<List<BusinessAccessLayer.Entities.Menu>> menuDataAccessService;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MainWindow() {
             InitializeComponent();
             if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path))
@@ -32,7 +35,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Reading menus from xml file
+        /// Read menus from xml file
         /// </summary>
         private bool LoadMenusFromDB(string path) {
             try {
@@ -47,7 +50,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Adding menu headers from xml file to MenuItem
+        /// Add menu headers from xml file to MenuItem
         /// </summary>
         private void LoadMenuItems() {
             menus_MenuItem.Items.Clear();
@@ -56,7 +59,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Handling of menu' items click event
+        /// Load dishes of clicked menu in window
         /// </summary>
         private void Menus_MenuItem_Click(object sender, RoutedEventArgs e) {
             int index = -1;
@@ -74,14 +77,14 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// _______________
+        /// __________
         /// </summary>
         private void Dishes_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
             MessageBox.Show(sender.ToString(), "");
         }
 
         /// <summary>
-        /// Opening PathsSettings window
+        /// Open PathsSettings window
         /// </summary>
         private void PathSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
             PathsSettings pathsSettings = new PathsSettings();
@@ -89,7 +92,7 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Opening IngredientsDesigner window
+        /// Open IngredientsDesigner window
         /// </summary>
         private void IngredientSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
             IngredientsDesigner ingredientsDesigner = new IngredientsDesigner();
@@ -97,15 +100,15 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Opening DishesDesigner window
+        /// Open BranchNode window for Dishes
         /// </summary>
         private void DishSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
-            DishesDesigner dishesDesigner = new DishesDesigner(0);
-            dishesDesigner.Show();
+            BranchNode branchNode = new BranchNode("Dishes");
+            branchNode.Show();
         }
 
         /// <summary>
-        /// Opening ________ window
+        /// __________
         /// </summary>
         private void MenuSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
             MessageBox.Show(sender.ToString(), "");

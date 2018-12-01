@@ -6,7 +6,58 @@
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
         Title="BranchNode" Height="450" Width="800">
-    <Grid>
-        
+
+    <Window.CommandBindings>
+        <CommandBinding
+            x:Name="add_Command"
+            Command="local:Commands.Add" 
+            Executed="Add_Command_Executed"
+            CanExecute="Add_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="delete_Command"
+            Command="local:Commands.Delete" 
+            Executed="Delete_Command_Executed"
+            CanExecute="Delete_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="save_Command"
+            Command="local:Commands.Save" 
+            Executed="Save_Command_Executed"
+            CanExecute="Save_Command_CanExecute"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding
+            Command="local:Commands.Add"
+            Modifiers="Ctrl"
+            Key="W"/>
+        <KeyBinding
+            Command="local:Commands.Delete"
+            Modifiers="Ctrl"
+            Key="D"/>
+        <KeyBinding
+            Command="local:Commands.Save"
+            Modifiers="Ctrl"
+            Key="S"/>
+    </Window.InputBindings>
+
+    <Grid Background="#FF2D2D30">
+        <ListBox
+            x:Name="items_ListBox"
+            Background="#FF2D2D30"
+            BorderThickness="0"
+            Margin="20,0,20,0"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Control.FontSize" Value="18"/>
+                    <Setter Property="Control.Foreground" Value="WhiteSmoke"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
     </Grid>
 </Window>

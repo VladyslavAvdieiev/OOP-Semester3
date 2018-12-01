@@ -65,14 +65,18 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         private void Delete_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
-            e.CanExecute = (ingredients_DataGrid.SelectedIndex != -1) && read;
+            e.CanExecute = (ingredients_DataGrid.SelectedIndex != -1) && (ingredients_DataGrid.SelectedIndex < ingredients_DataGrid.Items.Count - 1) && read;
         }
 
         private void Delete_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
-            List<IngredientTemplateItem> items = (List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource;
-            items.RemoveAt(ingredients_DataGrid.SelectedIndex);
-            ingredients_DataGrid.ItemsSource = null;
-            ingredients_DataGrid.ItemsSource = items;
+            MessageBoxResult result = MessageBox.Show("Do you want to remove this item?", "Deletion",
+                                                  MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+            if (result == MessageBoxResult.Yes) {
+                List<IngredientTemplateItem> items = (List<IngredientTemplateItem>)ingredients_DataGrid.ItemsSource;
+                items.RemoveAt(ingredients_DataGrid.SelectedIndex);
+                ingredients_DataGrid.ItemsSource = null;
+                ingredients_DataGrid.ItemsSource = items;
+            }
         }
 
         private void Save_Command_CanExecute(object sender, CanExecuteRoutedEventArgs e) {

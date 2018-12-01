@@ -64,6 +64,9 @@
     <Compile Include="MenusDesigner.xaml.cs">
       <DependentUpon>MenusDesigner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectionWindow.xaml.cs">
+      <DependentUpon>SelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\IngredientTemplateItem.cs" />
     <Compile Include="Services\Commands.cs" />
     <Compile Include="IngredientsDesigner.xaml.cs">
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\TextBox_PathsSettingsWindow_Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

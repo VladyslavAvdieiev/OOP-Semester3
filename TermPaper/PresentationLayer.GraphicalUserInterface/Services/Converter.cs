@@ -11,6 +11,8 @@ namespace PresentationLayer.GraphicalUserInterface
 {
     // TODO 1. random colors
     // TODO 2. random colors
+    // TODO 3. random colors
+    // TODO 4. random colors
 
     public static class Converter {
 
@@ -26,16 +28,28 @@ namespace PresentationLayer.GraphicalUserInterface
             List<TemplateItem> items = new List<TemplateItem>();
             foreach (Ingredient ingredient in ingredients)
                 items.Add(new TemplateItem(ingredient.Name, ingredient.Cost, ingredient.Weight, ingredient.ImageSource,
-                          new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 1. random colors
+                                           new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 1. random colors
             return items;
+        }
+
+        public static TemplateItem ToTemplateItem(Ingredient ingredient) {
+            TemplateItem item = new TemplateItem(ingredient.Name, ingredient.Cost, ingredient.Weight,
+                                                 ingredient.ImageSource, new SolidColorBrush(Colors.WhiteSmoke));   // TODO 2. random colors
+            return item;
         }
 
         public static List<TemplateItem> ToTemplateItem(List<Dish> dishes) {
             List<TemplateItem> items = new List<TemplateItem>();
             foreach (Dish dish in dishes)
                 items.Add(new TemplateItem(dish.Name, dish.Description, dish.Cost, dish.Weight, dish.Time,
-                          dish.ImageSource, dish.Ingredients, new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 2. random colors
+                                           dish.ImageSource, dish.Ingredients, new SolidColorBrush(Colors.WhiteSmoke)));     // TODO 3. random colors
             return items;
+        }
+
+        public static TemplateItem ToTemplateItem(Dish dish) {
+            TemplateItem item = new TemplateItem(dish.Name, dish.Description, dish.Cost, dish.Weight, dish.Time,
+                                                 dish.ImageSource, dish.Ingredients, new SolidColorBrush(Colors.WhiteSmoke));   // TODO 4. random colors
+            return item;
         }
 
         public static List<Ingredient> ToIngredients(List<IngredientTemplateItem> items) {

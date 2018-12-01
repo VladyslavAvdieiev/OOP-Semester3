@@ -55,12 +55,12 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Open BranchNode window to choose ingredient. Add this ingredient to window
         /// </summary>
         private void Add_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
-            BranchNode branchNode = new BranchNode("Ingredients");
-            branchNode.Show();
-            branchNode.Closed += (ss, ee) => {
-                if ((branchNode?.ChosenIngredient ?? new Ingredient()) == branchNode.ChosenIngredient) {
+            SelectionWindow selectionWindow = new SelectionWindow(SelectionWindow.Item.Ingredients);
+            selectionWindow.Show();
+            selectionWindow.Closed += (ss, ee) => {
+                if ((selectionWindow?.ChosenIngredient ?? new Ingredient()) == selectionWindow.ChosenIngredient) {
                     List<TemplateItem> items = (List<TemplateItem>)ingredients_ListBox.ItemsSource;
-                    items.Add(Converter.ToTemplateItem(branchNode.ChosenIngredient));
+                    items.Add(Converter.ToTemplateItem(selectionWindow.ChosenIngredient));
                     ingredients_ListBox.ItemsSource = null;
                     ingredients_ListBox.ItemsSource = items;
                 }

@@ -31,7 +31,7 @@
         <KeyBinding
             Command="local:Commands.Add"
             Modifiers="Ctrl"
-            Key="A"/>
+            Key="W"/>
         <KeyBinding
             Command="local:Commands.Delete"
             Modifiers="Ctrl"
@@ -46,7 +46,7 @@
         <Grid.ToolTip>
             <ToolTip>
                 <StackPanel>
-                    <Label Content="Add new item -> 'Ctrl + A'"/>
+                    <Label Content="Add new item -> 'Ctrl + W'"/>
                     <Label Content="Delete selected item -> 'Ctrl + D'"/>
                     <Label Content="Save changes -> 'Ctrl + S'"/>
                 </StackPanel>

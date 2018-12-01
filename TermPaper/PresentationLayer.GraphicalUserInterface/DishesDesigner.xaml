@@ -6,7 +6,235 @@
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
         Title="DishesDesigner" Height="450" Width="800">
-    <Grid>
-        
+
+    <Window.CommandBindings>
+        <CommandBinding
+            x:Name="add_Command"
+            Command="local:Commands.Add" 
+            Executed="Add_Command_Executed"
+            CanExecute="Add_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="delete_Command"
+            Command="local:Commands.Delete" 
+            Executed="Delete_Command_Executed"
+            CanExecute="Delete_Command_CanExecute"/>
+
+        <CommandBinding
+            x:Name="save_Command"
+            Command="local:Commands.Save" 
+            Executed="Save_Command_Executed"
+            CanExecute="Save_Command_CanExecute"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding
+            Command="local:Commands.Add"
+            Modifiers="Ctrl"
+            Key="A"/>
+        <KeyBinding
+            Command="local:Commands.Delete"
+            Modifiers="Ctrl"
+            Key="D"/>
+        <KeyBinding
+            Command="local:Commands.Save"
+            Modifiers="Ctrl"
+            Key="S"/>
+    </Window.InputBindings>
+
+    <Grid Background="#FF2D2D30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox
+            x:Name="name_TextBox"
+            Grid.Row="0"
+            Grid.Column="1"
+            Style="{StaticResource TextBox_DishesDesigner_Style}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Name."/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBox
+            x:Name="image_TextBox"
+            Grid.Row="0"
+            Grid.Column="2"
+            FontSize="20"
+            TextChanged="Image_TextBox_TextChanged"
+            Style="{StaticResource TextBox_DishesDesigner_Style}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Image source."/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBox
+            x:Name="description_TextBox"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            FontSize="16"
+            TextWrapping="Wrap"
+            Style="{StaticResource TextBox_DishesDesigner_Style}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Description."/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <Image
+            x:Name="image_Image"
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            Margin="8"/>
+
+        <Label
+            x:Name="weight_Label"
+            Grid.Row="0"
+            Grid.Column="3"
+            Style="{StaticResource Label_DishesDesigner_Style}">
+            <Label.ToolTip>
+                <ToolTip Content="Weight"/>
+            </Label.ToolTip>
+        </Label>
+
+        <TextBox
+            x:Name="cost_TextBox"
+            Grid.Row="1"
+            Grid.Column="3"
+            Style="{StaticResource TextBox_DishesDesigner_Style}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Cost."/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <TextBox
+            x:Name="time_TextBox"
+            Grid.Row="2"
+            Grid.Column="3"
+            Style="{StaticResource TextBox_DishesDesigner_Style}">
+            <TextBox.ToolTip>
+                <ToolTip Content="Time."/>
+            </TextBox.ToolTip>
+        </TextBox>
+
+        <ListBox
+            x:Name="ingredients_ListBox"
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Background="#FF2D2D30"
+            BorderThickness="0"
+            Margin="3"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+            <ListBox.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <Label Content="Add new item -> 'Ctrl + A'"/>
+                        <Label Content="Delete selected item -> 'Ctrl + D'"/>
+                        <Label Content="Save changes -> 'Ctrl + S'"/>
+                    </StackPanel>
+                </ToolTip>
+            </ListBox.ToolTip>
+            
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Height="200"
+                        Width="150"
+                        CornerRadius="5,5,20,20"
+                        Background="{Binding Background}">
+
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="2" />
+                        </Border.Effect>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Source="{Binding Icon}"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"/>
+
+                            <TextBlock 
+                                Text="{Binding Name}"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="4"
+                                FontSize="16"
+                                TextAlignment="Center"
+                                TextWrapping="Wrap"
+                                FontWeight="DemiBold"/>
+
+                            <Image
+                                Source="{StaticResource Weight_Image}"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Height="15"
+                                Width="15"
+                                HorizontalAlignment="Right"/>
+
+                            <TextBlock 
+                                Text="{Binding Weight}"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="16"
+                                Margin="3,0,0,0"
+                                TextAlignment="Left"
+                                VerticalAlignment="Center"/>
+
+                            <TextBlock 
+                                Text="{Binding Cost}"
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                FontSize="16"
+                                Margin="0,0,3,0"
+                                TextAlignment="Right"
+                                VerticalAlignment="Center"/>
+
+                            <Image
+                                Source="{StaticResource Uah_Image}"
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                Height="15"
+                                Width="15"
+                                HorizontalAlignment="Left"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

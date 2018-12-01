@@ -97,10 +97,11 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// Opening ________ window
+        /// Opening DishesDesigner window
         /// </summary>
         private void DishSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show(sender.ToString(), "");
+            DishesDesigner dishesDesigner = new DishesDesigner(0);
+            dishesDesigner.Show();
         }
 
         /// <summary>

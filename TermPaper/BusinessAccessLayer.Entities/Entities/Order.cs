@@ -10,12 +10,22 @@ namespace BusinessAccessLayer.Entities
         private int _tableNumber;
         private string _remark;
         private double _cost;
+        private List<Dish> _dishes;
 
-        public List<Dish> Dishes { get; }
+        public List<Dish> Dishes {
+            get => _dishes;
+            set => _dishes = DeepCopy(value);
+        }
 
-        public int TableNumber { get => _tableNumber; set => _tableNumber = value; }
+        public int TableNumber {
+            get => _tableNumber;
+            set => _tableNumber = value;
+        }
 
-        public string Remark { get => _remark; set => _remark = value; }
+        public string Remark {
+            get => _remark;
+            set => _remark = value;
+        }
 
         public double Cost {
             get => _cost;
@@ -36,27 +46,27 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Order() {
-            Dishes = new List<Dish>();
+            _dishes = new List<Dish>();
         }
 
         public Order(int tableNumber) {
-            Dishes = new List<Dish>();
+            _dishes = new List<Dish>();
             TableNumber = tableNumber;
         }
 
         public Order(int tableNumber, double cost) {
-            Dishes = new List<Dish>();
+            _dishes = new List<Dish>();
             TableNumber = tableNumber;
             Cost = cost;
         }
 
         public Order(int tableNumber, List<Dish> dishes) {
-            Dishes = DeepCopy(dishes);
+            Dishes = dishes;
             TableNumber = tableNumber;
         }
 
         public Order(int tableNumber, double cost, List<Dish> dishes) {
-            Dishes = DeepCopy(dishes);
+            Dishes = dishes;
             TableNumber = tableNumber;
             Cost = cost;
         }
@@ -72,6 +82,10 @@ namespace BusinessAccessLayer.Entities
             foreach (Dish temp in dishes)
                 result.Add(new Dish(temp));
             return result;
+        }
+
+        public override string ToString() {
+            return $"Table:{TableNumber} - Cost:{Cost} - Remark:{Remark}";
         }
     }
 }

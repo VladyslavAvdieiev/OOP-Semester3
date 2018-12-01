@@ -10,31 +10,41 @@ namespace BusinessAccessLayer.Entities
     public class Menu {
         private string _name;
         private string _description;
+        private List<Dish> _dishes;
         
-        public List<Dish> Dishes { get; }
+        public List<Dish> Dishes {
+            get => _dishes;
+            set => _dishes = DeepCopy(value);
+        }
 
-        public string Name { get => _name; set => _name = value; }
+        public string Name {
+            get => _name;
+            set => _name = value;
+        }
 
-        public string Description { get => _description; set => _description = value; }
+        public string Description {
+            get => _description;
+            set => _description = value;
+        }
 
         public Menu() {
-            Dishes = new List<Dish>();
+            _dishes = new List<Dish>();
         }
 
         public Menu(string name, string description) {
-            Dishes = new List<Dish>();
+            _dishes = new List<Dish>();
             Description = description;
             Name = name;
         }
 
         public Menu(string name, string description, List<Dish> dishes) {
-            Dishes = DeepCopy(dishes);
+            Dishes = dishes;
             Description = description;
             Name = name;
         }
 
         public Menu(Menu menu) {
-            Dishes = DeepCopy(menu.Dishes);
+            Dishes = menu.Dishes;
             Description = menu.Description;
             Name = menu.Name;
         }

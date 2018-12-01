@@ -13,14 +13,27 @@ namespace BusinessAccessLayer.Entities
         private string _imageSource;
         private double _cost;
         private double _time;
+        private List<Ingredient> _ingredients;
 
-        public List<Ingredient> Ingredients { get; }
+        public List<Ingredient> Ingredients {
+            get => _ingredients;
+            set => _ingredients = DeepCopy(value);
+        }
 
-        public string Name { get => _name; set => _name = value; }
+        public string Name {
+            get => _name;
+            set => _name = value;
+        }
 
-        public string Description { get => _description; set => _description = value; }
+        public string Description {
+            get => _description;
+            set => _description = value;
+        }
 
-        public string ImageSource { get => _imageSource; set => _imageSource = value; }
+        public string ImageSource {
+            get => _imageSource;
+            set => _imageSource = value;
+        }
 
         public double Cost {
             get => _cost;
@@ -59,11 +72,11 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Dish() {
-            Ingredients = new List<Ingredient>();
+            _ingredients = new List<Ingredient>();
         }
 
         public Dish(string name, string description, double cost, double time) {
-            Ingredients = new List<Ingredient>();
+            _ingredients = new List<Ingredient>();
             Description = description;
             Name = name;
             Cost = cost;
@@ -71,7 +84,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Dish(string name, string description, double cost, double time, string imageSource) {
-            Ingredients = new List<Ingredient>();
+            _ingredients = new List<Ingredient>();
             Description = description;
             Name = name;
             Cost = cost;
@@ -80,7 +93,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Dish(string name, string description, double cost, double time, List<Ingredient> ingredients) {
-            Ingredients = DeepCopy(ingredients);
+            Ingredients = ingredients;
             Description = description;
             Name = name;
             Cost = cost;
@@ -88,7 +101,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Dish(string name, string description, double cost, double time, string imageSource, List<Ingredient> ingredients) {
-            Ingredients = DeepCopy(ingredients);
+            Ingredients = ingredients;
             Description = description;
             Name = name;
             Cost = cost;
@@ -97,7 +110,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public Dish(Dish dish) {
-            Ingredients = DeepCopy(dish.Ingredients);
+            Ingredients = dish.Ingredients;
             Description = dish.Description;
             Name = dish.Name;
             Cost = dish.Cost;

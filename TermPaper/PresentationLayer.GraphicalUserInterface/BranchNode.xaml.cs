@@ -121,7 +121,10 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Find index of clicked item and open window to choose ingredient
         /// </summary>
         private void EditMenu(int index) {
-
+            MenusDesigner menusDesigner = new MenusDesigner(menuSource[index]);
+            menusDesigner.Show();
+            Hide();
+            menusDesigner.Closed += (s, e) => { LoadMenuItems(); Show(); };
         }
 
         /// <summary>
@@ -141,7 +144,7 @@ namespace PresentationLayer.GraphicalUserInterface
             }
             else if (menuDataAccessService != null) {
                 menuSource.Add(new BusinessAccessLayer.Entities.Menu());
-                EditDish(menuSource.Count - 1);
+                EditMenu(menuSource.Count - 1);
             }
         }
 
@@ -158,8 +161,13 @@ namespace PresentationLayer.GraphicalUserInterface
         private void Delete_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to remove this item?", "Deletion",
                                                   MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-            if (result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes) {
+                if (currentItem == Item.Dishes)
+                    dishSource.RemoveAt(items_ListBox.SelectedIndex);
+                else if (currentItem == Item.Menus)
+                    menuSource.RemoveAt(items_ListBox.SelectedIndex);
                 items_ListBox.Items.RemoveAt(items_ListBox.SelectedIndex);
+            }
         }
 
         /// <summary>
@@ -173,10 +181,14 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Write down data to xml file
         /// </summary>
         private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
-            if (currentItem == Item.Dishes)
+            if (currentItem == Item.Dishes) {
+                dishDataAccessService.Clear();
                 dishDataAccessService.Write(dishSource);                                                                    // DEBUG using BAL
-            else if (currentItem == Item.Menus)
-                menuDataAccessService.Write(menuSource);                                                                    // DEBUG using BAL
+            }
+            else if (currentItem == Item.Menus) {
+                menuDataAccessService.Clear();
+                menuDataAccessService.Write(menuSource);                                                                    // DEBUG using BALL
+            }
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

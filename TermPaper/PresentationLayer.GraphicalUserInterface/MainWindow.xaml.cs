@@ -113,6 +113,10 @@ namespace PresentationLayer.GraphicalUserInterface
         private void MenuSettings_MenuItem_Click(object sender, RoutedEventArgs e) {
             BranchNode branchNode = new BranchNode(BranchNode.Item.Menus);
             branchNode.Show();
+            branchNode.Closed += (ss, ee) => {
+                LoadMenusFromDB(Properties.Settings.Default.Menus_Path);
+                LoadMenuItems();
+            };
         }
     }
 }

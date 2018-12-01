@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:PresentationLayer.GraphicalUserInterface"
         mc:Ignorable="d"
         Title="SelectionWindow" Height="450" Width="800">
-    <Grid>
-        
+
+    <Grid Background="#FF2D2D30">
+        <ListBox
+            x:Name="items_ListBox"
+            Background="#FF2D2D30"
+            BorderThickness="0"
+            Margin="20,0,20,0"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Control.FontSize" Value="18"/>
+                    <Setter Property="Control.Foreground" Value="WhiteSmoke"/>
+                    <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
     </Grid>
 </Window>

@@ -20,6 +20,8 @@
 
                 <ResourceDictionary Source="Resources\Styles\TextBox_DishesDesigner_Style.xaml"/>
                 <ResourceDictionary Source="Resources\Styles\Label_DishesDesigner_Style.xaml"/>
+                
+                <ResourceDictionary Source="Resources\Styles\Button_MainWindow_Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

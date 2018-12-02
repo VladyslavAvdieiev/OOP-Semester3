@@ -1,4 +1,4 @@
-﻿    <Window x:Class="PresentationLayer.GraphicalUserInterface.MainWindow"
+﻿<Window x:Class="PresentationLayer.GraphicalUserInterface.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -66,7 +66,7 @@
                     <MenuItem.Icon>
                         <Image Source="{StaticResource Settings_Image}"/>
                     </MenuItem.Icon>
-                    
+
                     <MenuItem
                         x:Name="pathSettings_MenuItem"
                         Header="Edit file paths"
@@ -78,7 +78,7 @@
                             <Image Source="{StaticResource Folder_Image}"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    
+
                     <MenuItem
                         x:Name="ingredientSettings_MenuItem"
                         Header="Edit ingredients"
@@ -90,7 +90,7 @@
                             <Image Source="{StaticResource Ingredients_Image}"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    
+
                     <MenuItem
                         x:Name="dishSettings_MenuItem"
                         Header="Edit dishes"
@@ -137,7 +137,7 @@
                             <WrapPanel/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
-                    
+
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <EventSetter
@@ -302,6 +302,36 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+
+                <Grid
+                    Grid.Column="1"
+                    Background="WhiteSmoke">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        x:Name="addOrder_Button"
+                        Content="Create a new order"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0.5,0"
+                        Style="{StaticResource Button_MainWindow_Style}"/>
+
+                    <Button
+                        x:Name="additionOrder_Button"
+                        Content="..."
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="0.5,0,0,0"
+                        Style="{StaticResource Button_MainWindow_Style}"/>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

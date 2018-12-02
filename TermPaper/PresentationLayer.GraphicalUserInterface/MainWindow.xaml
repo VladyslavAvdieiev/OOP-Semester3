@@ -292,7 +292,7 @@
 
                 <Grid
                     Grid.Column="1"
-                    Background="WhiteSmoke">
+                    Background="#F23F3F46">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="7*"/>
@@ -303,21 +303,194 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
+                    <ListBox
+                        x:Name="orders_ListBox"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{Binding Path=Background, RelativeSource={RelativeSource Self}}"
+                        BorderThickness="0"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden">
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <EventSetter
+                                Event="MouseDoubleClick"
+                                Handler="Orders_ListBoxItem_MouseDoubleClick"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Border
+                                        Height="80"
+                                        Width="{Binding ElementName=width,Path=ActualWidth}"
+                                        CornerRadius="3"
+                                        Background="{Binding Background}">
+
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="2" />
+                                        </Border.Effect>
+
+                                        <Grid ToolTipService.ShowDuration="120000">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="2.6*"/>
+                                                <RowDefinition Height="2.6*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="0.6*"/>
+                                                <ColumnDefinition Width="0.4*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image
+                                                Source="{Binding Icon}"
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"/>
+
+                                            <TextBlock 
+                                                Text="{Binding Name}"
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="1"
+                                                Grid.ColumnSpan="3"
+                                                FontSize="16"
+                                                TextWrapping="Wrap"
+                                                FontWeight="DemiBold"/>
+
+                                            <TextBlock 
+                                                Text="{Binding Cost}"
+                                                Grid.Row="2"
+                                                Grid.Column="3"
+                                                FontSize="16"
+                                                Margin="0,0,3,0"
+                                                TextAlignment="Right"
+                                                VerticalAlignment="Center"/>
+
+                                            <Image
+                                                Source="{StaticResource Uah_Image}"
+                                                Grid.Row="2"
+                                                Grid.Column="4"
+                                                Height="14"
+                                                Width="14"
+                                                HorizontalAlignment="Left"/>
+
+                                            <Grid.ToolTip>
+                                                <ToolTip 
+                                                    Background="WhiteSmoke"
+                                                    Foreground="Black">
+
+                                                    <Grid Width="300">
+
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="1*"/>
+                                                            <ColumnDefinition Width="0.2*"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <TextBlock
+                                                            Text="{Binding Name}"
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            FontSize="16"
+                                                            FontWeight="DemiBold"
+                                                            TextWrapping="Wrap"/>
+
+                                                        <TextBlock
+                                                            Text="{Binding Weight, StringFormat=' {0}g'}"
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            FontSize="16"
+                                                            FontWeight="DemiBold"
+                                                            TextAlignment="Center"/>
+
+                                                        <Separator
+                                                            Grid.Row="1"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Background="Black"/>
+
+                                                        <TextBlock
+                                                            Text="{Binding Description}"
+                                                            Grid.Row="2"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            FontSize="14"
+                                                            TextWrapping="Wrap"/>
+
+                                                        <Separator
+                                                            Grid.Row="3"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Background="Black"/>
+
+                                                        <ListBox
+                                                            ItemsSource="{Binding Ingredients}"
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
+                                                            Grid.ColumnSpan="2"
+                                                            Background="WhiteSmoke"
+                                                            FontSize="14"
+                                                            BorderThickness="0">
+                                                            <ListBox.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <StackPanel>
+                                                                        <TextBlock
+                                                                            FontSize="14"
+                                                                            Text="{Binding Name, StringFormat='- {0}'}"/>
+                                                                    </StackPanel>
+                                                                </DataTemplate>
+                                                            </ListBox.ItemTemplate>
+                                                        </ListBox>
+                                                    </Grid>
+                                                </ToolTip>
+                                            </Grid.ToolTip>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <ListBox
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Background="{Binding Path=Background, RelativeSource={RelativeSource Self}}"
+                        BorderThickness="0"
+                        Margin="5">
+                        <ListBoxItem x:Name="width"/>
+                    </ListBox>
+
                     <Button
-                        x:Name="addOrder_Button"
+                        x:Name="createOrder_Button"
                         Content="Create a new order"
                         Grid.Row="1"
                         Grid.Column="0"
-                        Margin="0,0,0.5,0"
+                        Margin="3,3,1.5,3"
                         Style="{StaticResource Button_MainWindow_Style}"/>
 
                     <Button
                         x:Name="additionOrder_Button"
-                        Content="..."
+                        Content=". . ."
                         Grid.Row="1"
                         Grid.Column="1"
-                        Margin="0.5,0,0,0"
-                        Style="{StaticResource Button_MainWindow_Style}"/>
+                        Margin="1.5,3,3,3"
+                        Style="{StaticResource Button_MainWindow_Style}">
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>

@@ -77,10 +77,17 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
-        /// __________
+        /// Add clicked dish to order
         /// </summary>
         private void Dishes_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            MessageBox.Show(sender.ToString(), "");
+            orders_ListBox.Items.Add(((ListBoxItem)sender).DataContext);
+        }
+
+        /// <summary>
+        /// __________
+        /// </summary>
+        private void Orders_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            orders_ListBox.Items.RemoveAt(orders_ListBox.SelectedIndex);
         }
 
         /// <summary>

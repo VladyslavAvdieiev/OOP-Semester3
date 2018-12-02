@@ -90,10 +90,10 @@ namespace PresentationLayer.GraphicalUserInterface
         /// Refresh order list
         /// </summary>
         private void NewOrder_MenuItem_Click(object sender, RoutedEventArgs e) {
-            orders_ListBox.Items.Clear();
-            totalCost_TextBlock.Text = "0";
             foreach (MenuItem item in orders_MenuItem.Items)
                 item.IsChecked = false;
+            createOrder_Button.IsEnabled = true;
+            RefreshOrder();
         }
 
         /// <summary>
@@ -112,6 +112,10 @@ namespace PresentationLayer.GraphicalUserInterface
             ((MenuItem)sender).IsChecked = true;
             foreach (Dish dish in orderSource[index].Dishes)
                 orders_ListBox.Items.Add(Converter.ToTemplateItem(dish));
+            remark_TextBox.Text = orderSource[index].Remark;
+            table_ComboBox.SelectedIndex = orderSource[index].TableNumber - 1;
+
+            createOrder_Button.IsEnabled = false;
         }
 
         /// <summary>
@@ -138,6 +142,16 @@ namespace PresentationLayer.GraphicalUserInterface
             foreach (TemplateItem item in orders_ListBox.Items)
                 cost += item.Cost;
             totalCost_TextBlock.Text = cost.ToString();
+        }
+
+        /// <summary>
+        /// Refresh order
+        /// </summary>
+        private void RefreshOrder() {
+            orders_ListBox.Items.Clear();
+            remark_TextBox.Text = "Remark: ";
+            totalCost_TextBlock.Text = "0";
+            table_ComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -207,11 +221,13 @@ namespace PresentationLayer.GraphicalUserInterface
             foreach (TemplateItem item in orders_ListBox.Items)
                 dishes.Add(Converter.ToDishes(item));
 
-            orderSource.Add(new Order(0, 0, dishes, DateTime.Now));
+            orderSource.Add(new Order(table_ComboBox.SelectedIndex + 1, Convert.ToDouble(totalCost_TextBlock.Text),
+                                      dishes, DateTime.Now) { Remark = remark_TextBox.Text });
 
             orderDataAccessService.Clear();
             orderDataAccessService.Write(orderSource);
             LoadOrderItems();
+            RefreshOrder();
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

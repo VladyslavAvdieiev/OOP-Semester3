@@ -303,7 +303,8 @@
                     Background="#F23F3F46">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
@@ -475,9 +476,35 @@
                         <ListBoxItem x:Name="width"/>
                     </ListBox>
 
+                    <TextBox
+                        x:Name="remark_TextBox"
+                        Text="Remark: "
+                        TextWrapping="Wrap"
+                        Grid.Row="1"
+                        Margin="3,0,3,0"/>
+
+                    <ComboBox
+                        x:Name="table_ComboBox"
+                        Grid.Row="1"
+                        SelectedIndex="0"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,3,0">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                        <ComboBoxItem Content="6"/>
+                        <ComboBoxItem Content="7"/>
+                        <ComboBoxItem Content="8"/>
+                        <ComboBoxItem Content="9"/>
+                        <ComboBoxItem Content="10"/>
+                    </ComboBox>
+
                     <Button
                         x:Name="createOrder_Button"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Style="{StaticResource Button_MainWindow_Style}"
                         Click="CreateOrder_Button_Click">
                         <Button.Content>
@@ -504,7 +531,7 @@
                                     FontSize="20"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
-                                    Margin="3"/>
+                                    Margin="0,0,3,4"/>
 
                                 <Image
                                     Source="{StaticResource Uah_Image}"

@@ -17,12 +17,7 @@
 
             <Menu
                 Grid.Row="0"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Stretch"
-                
-                FontSize="22"
-                Foreground="WhiteSmoke"
-                Background="#FF3F3F46">
+                Style="{StaticResource Menu_MainWindow_Style}">
 
                 <MenuItem
                     x:Name="newOrder_MenuItem"
@@ -71,9 +66,7 @@
                         x:Name="pathSettings_MenuItem"
                         Header="Edit file paths"
                         Click="PathSettings_MenuItem_Click"
-                        
-                        FontSize="18"
-                        Foreground="#FF3F3F46">
+                        Style="{StaticResource MenuItem_MainWindow_Style}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource Folder_Image}"/>
                         </MenuItem.Icon>
@@ -83,9 +76,7 @@
                         x:Name="ingredientSettings_MenuItem"
                         Header="Edit ingredients"
                         Click="IngredientSettings_MenuItem_Click"
-                        
-                        FontSize="18"
-                        Foreground="#FF3F3F46">
+                        Style="{StaticResource MenuItem_MainWindow_Style}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource Ingredients_Image}"/>
                         </MenuItem.Icon>
@@ -95,9 +86,7 @@
                         x:Name="dishSettings_MenuItem"
                         Header="Edit dishes"
                         Click="DishSettings_MenuItem_Click"
-                        
-                        FontSize="18"
-                        Foreground="#FF3F3F46">
+                        Style="{StaticResource MenuItem_MainWindow_Style}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource Dish_Image}"/>
                         </MenuItem.Icon>
@@ -107,9 +96,7 @@
                         x:Name="menuSettings_MenuItem"
                         Header="Edit menus"
                         Click="MenuSettings_MenuItem_Click"
-                        
-                        FontSize="18"
-                        Foreground="#FF3F3F46">
+                        Style="{StaticResource MenuItem_MainWindow_Style}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource Menu_Image}"/>
                         </MenuItem.Icon>

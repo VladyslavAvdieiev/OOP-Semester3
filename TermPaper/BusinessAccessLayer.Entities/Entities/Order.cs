@@ -11,6 +11,7 @@ namespace BusinessAccessLayer.Entities
         private string _remark;
         private double _cost;
         private List<Dish> _dishes;
+        private DateTime _date;
 
         public List<Dish> Dishes {
             get => _dishes;
@@ -25,6 +26,11 @@ namespace BusinessAccessLayer.Entities
         public string Remark {
             get => _remark;
             set => _remark = value;
+        }
+
+        public DateTime Date {
+            get => _date;
+            set => _date = value;
         }
 
         public double Cost {
@@ -47,34 +53,40 @@ namespace BusinessAccessLayer.Entities
 
         public Order() {
             _dishes = new List<Dish>();
+            Date = DateTime.Now;
         }
 
-        public Order(int tableNumber) {
+        public Order(int tableNumber, DateTime date) {
             _dishes = new List<Dish>();
             TableNumber = tableNumber;
+            Date = date;
         }
 
-        public Order(int tableNumber, double cost) {
+        public Order(int tableNumber, double cost, DateTime date) {
             _dishes = new List<Dish>();
             TableNumber = tableNumber;
             Cost = cost;
+            Date = date;
         }
 
-        public Order(int tableNumber, List<Dish> dishes) {
+        public Order(int tableNumber, List<Dish> dishes, DateTime date) {
             Dishes = dishes;
             TableNumber = tableNumber;
+            Date = date;
         }
 
-        public Order(int tableNumber, double cost, List<Dish> dishes) {
+        public Order(int tableNumber, double cost, List<Dish> dishes, DateTime date) {
             Dishes = dishes;
             TableNumber = tableNumber;
             Cost = cost;
+            Date = date;
         }
 
         public Order(Order order) {
             Dishes = DeepCopy(order.Dishes);
             TableNumber = order.TableNumber;
             Remark = order.Remark;
+            Date = order.Date;
         }
 
         private List<Dish> DeepCopy(List<Dish> dishes) {
@@ -85,7 +97,7 @@ namespace BusinessAccessLayer.Entities
         }
 
         public override string ToString() {
-            return $"Table:{TableNumber} - Cost:{Cost} - Remark:{Remark}";
+            return $"Date:{Date} - Table:{TableNumber} - Cost:{Cost} - Remark:{Remark}";
         }
     }
 }

@@ -103,6 +103,14 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
+        /// Singular: TemplateItem to Ingredient
+        /// </summary>
+        public static Ingredient ToIngredients(TemplateItem item) {
+            Ingredient ingredient = new Ingredient(item.Name, item.Cost, item.Weight, item.ImageSource);
+            return ingredient;
+        }
+
+        /// <summary>
         /// Plural: TemplateItem to Dishes
         /// </summary>
         public static List<Dish> ToDishes(List<TemplateItem> items) {
@@ -110,6 +118,14 @@ namespace PresentationLayer.GraphicalUserInterface
             foreach (TemplateItem item in items)
                 dishes.Add(new Dish(item.Name, item.Description, item.Cost, item.Time, item.ImageSource, item.Ingredients));
             return dishes;
+        }
+
+        /// <summary>
+        /// Singular: TemplateItem to Dish
+        /// </summary>
+        public static Dish ToDishes(TemplateItem item) {
+            Dish dish = new Dish(item.Name, item.Description, item.Cost, item.Time, item.ImageSource, item.Ingredients);
+            return dish;
         }
     }
 }

@@ -24,6 +24,8 @@ namespace PresentationLayer.GraphicalUserInterface
     public partial class MainWindow : Window {
         private List<BusinessAccessLayer.Entities.Menu> menuSource;
         private DataAccessService<List<BusinessAccessLayer.Entities.Menu>> menuDataAccessService;
+        private List<Order> orderSource;
+        private DataAccessService<List<Order>> orderDataAccessService;
 
         /// <summary>
         /// Default constructor
@@ -32,6 +34,8 @@ namespace PresentationLayer.GraphicalUserInterface
             InitializeComponent();
             if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path))
                 LoadMenuItems();
+            if (LoadOrdersFromDB(Properties.Settings.Default.Orders_Path))
+                LoadOrderItems();
         }
 
         /// <summary>
@@ -59,6 +63,84 @@ namespace PresentationLayer.GraphicalUserInterface
         }
 
         /// <summary>
+        /// Read orders from xml file
+        /// </summary>
+        private bool LoadOrdersFromDB(string path) {
+            try {
+                orderDataAccessService = new XmlSerializerService<List<Order>>(Properties.Settings.Default.Orders_Path);    // DEBUG use BAL
+                orderSource = orderDataAccessService.Read();                                                                // DEBUG use BAL
+                return true;
+            } catch (FileNotFoundException e) {
+                MessageBox.Show($"Error:\n{e.Message}\n\nSet path to file in Settings - Edit File Paths",
+                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Add order headers from xml file to MenuItem
+        /// </summary>
+        private void LoadOrderItems() {
+            orders_MenuItem.Items.Clear();
+            foreach (Order order in orderSource)
+                orders_MenuItem.Items.Add(new MenuItem() { Header = order.Date });
+        }
+
+        /// <summary>
+        /// Refresh order list
+        /// </summary>
+        private void NewOrder_MenuItem_Click(object sender, RoutedEventArgs e) {
+            orders_ListBox.Items.Clear();
+            totalCost_TextBlock.Text = "0";
+            foreach (MenuItem item in orders_MenuItem.Items)
+                item.IsChecked = false;
+        }
+
+        /// <summary>
+        /// View chosen order
+        /// </summary>
+        private void Orders_MenuItem_Click(object sender, RoutedEventArgs e) {
+            int index = -1;
+            string header = ((MenuItem)sender).Header.ToString();
+
+            while (header != orderSource[++index].Date.ToString());
+
+            foreach (MenuItem item in orders_MenuItem.Items)
+                item.IsChecked = false;
+
+            orders_ListBox.Items.Clear();
+            ((MenuItem)sender).IsChecked = true;
+            foreach (Dish dish in orderSource[index].Dishes)
+                orders_ListBox.Items.Add(Converter.ToTemplateItem(dish));
+        }
+
+        /// <summary>
+        /// Add clicked dish to order
+        /// </summary>
+        private void Dishes_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            orders_ListBox.Items.Add(((ListBoxItem)sender).DataContext);
+            Orders_ListBox_CountTotalCost();
+        }
+
+        /// <summary>
+        /// Remove clicked item from order
+        /// </summary>
+        private void Orders_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
+            try { orders_ListBox.Items.RemoveAt(orders_ListBox.SelectedIndex); }  catch (Exception) { };
+            Orders_ListBox_CountTotalCost();
+        }
+
+        /// <summary>
+        /// Count total cost
+        /// </summary>
+        private void Orders_ListBox_CountTotalCost() {
+            double cost = 0.0;
+            foreach (TemplateItem item in orders_ListBox.Items)
+                cost += item.Cost;
+            totalCost_TextBlock.Text = cost.ToString();
+        }
+
+        /// <summary>
         /// Load dishes of clicked menu in window
         /// </summary>
         private void Menus_MenuItem_Click(object sender, RoutedEventArgs e) {
@@ -74,20 +156,6 @@ namespace PresentationLayer.GraphicalUserInterface
 
             dishes_ListBox.ItemsSource = null;
             dishes_ListBox.ItemsSource = Converter.ToTemplateItem(menuSource[index].Dishes);
-        }
-
-        /// <summary>
-        /// Add clicked dish to order
-        /// </summary>
-        private void Dishes_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            orders_ListBox.Items.Add(((ListBoxItem)sender).DataContext);
-        }
-
-        /// <summary>
-        /// __________
-        /// </summary>
-        private void Orders_ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
-            orders_ListBox.Items.RemoveAt(orders_ListBox.SelectedIndex);
         }
 
         /// <summary>
@@ -124,6 +192,27 @@ namespace PresentationLayer.GraphicalUserInterface
                 LoadMenusFromDB(Properties.Settings.Default.Menus_Path);
                 LoadMenuItems();
             };
+        }
+
+        /// <summary>
+        /// Create and save new order to xml file
+        /// </summary>
+        private void CreateOrder_Button_Click(object sender, RoutedEventArgs e) {
+            if (orders_ListBox.Items.Count == 0) {
+                MessageBox.Show($"There is no dishes to write down.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
+            List<Dish> dishes = new List<Dish>();
+            foreach (TemplateItem item in orders_ListBox.Items)
+                dishes.Add(Converter.ToDishes(item));
+
+            orderSource.Add(new Order(0, 0, dishes, DateTime.Now));
+
+            orderDataAccessService.Clear();
+            orderDataAccessService.Write(orderSource);
+            LoadOrderItems();
+            MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

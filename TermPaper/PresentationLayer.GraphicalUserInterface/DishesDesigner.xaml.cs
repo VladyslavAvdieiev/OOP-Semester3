@@ -33,7 +33,7 @@ namespace PresentationLayer.GraphicalUserInterface
             weight_Label.Content = dishSource.Weight;
             cost_TextBox.Text = dishSource.Cost.ToString();
             time_TextBox.Text = dishSource.Time.ToString();
-            ingredients_ListBox.ItemsSource = Converter.ToTemplateItem(dishSource.Ingredients);
+            ingredients_ListBox.ItemsSource = dishSource.Ingredients;
         }
 
         /// <summary>
@@ -59,10 +59,11 @@ namespace PresentationLayer.GraphicalUserInterface
             selectionWindow.Show();
             selectionWindow.Closed += (ss, ee) => {
                 if ((selectionWindow?.ChosenIngredient ?? new Ingredient()) == selectionWindow.ChosenIngredient) {
-                    List<TemplateItem> items = (List<TemplateItem>)ingredients_ListBox.ItemsSource;
-                    items.Add(Converter.ToTemplateItem(selectionWindow.ChosenIngredient));
-                    ingredients_ListBox.ItemsSource = null;
-                    ingredients_ListBox.ItemsSource = items;
+                    dishSource.Ingredients.Add(selectionWindow.ChosenIngredient);
+                    try { ingredients_ListBox.ItemsSource = null; } catch (Exception) { };
+                    ingredients_ListBox.ItemsSource = dishSource.Ingredients;
+                    weight_Label.Content = dishSource.Weight;
+                    cost_TextBox.Text = dishSource.DefaultCost.ToString();
                 }
             };
         }
@@ -81,10 +82,11 @@ namespace PresentationLayer.GraphicalUserInterface
             MessageBoxResult result = MessageBox.Show("Do you want to remove this item?", "Deletion",
                                                   MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
             if (result == MessageBoxResult.Yes) {
-                List<TemplateItem> items = (List<TemplateItem>)ingredients_ListBox.ItemsSource;
-                items.RemoveAt(ingredients_ListBox.SelectedIndex);
-                ingredients_ListBox.ItemsSource = null;
-                ingredients_ListBox.ItemsSource = items;
+                dishSource.Ingredients.RemoveAt(ingredients_ListBox.SelectedIndex);
+                try { ingredients_ListBox.ItemsSource = null; } catch (Exception) { };
+                ingredients_ListBox.ItemsSource = dishSource.Ingredients;
+                weight_Label.Content = dishSource.Weight;
+                cost_TextBox.Text = dishSource.DefaultCost.ToString();
             }
         }
 
@@ -97,7 +99,6 @@ namespace PresentationLayer.GraphicalUserInterface
             dishSource.ImageSource = image_TextBox.Text;
             dishSource.Cost = Convert.ToDouble(cost_TextBox.Text);
             dishSource.Time = Convert.ToDouble(time_TextBox.Text);
-            dishSource.Ingredients = Converter.ToIngredients((List<TemplateItem>)ingredients_ListBox.ItemsSource);
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

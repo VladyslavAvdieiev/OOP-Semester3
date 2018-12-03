@@ -99,6 +99,7 @@
 
         <Label
             x:Name="weight_Label"
+            Content="0"
             Grid.Row="0"
             Grid.Column="3"
             Style="{StaticResource Label_DishesDesigner_Style}">
@@ -109,6 +110,7 @@
 
         <TextBox
             x:Name="cost_TextBox"
+            Text="0"
             Grid.Row="1"
             Grid.Column="3"
             Style="{StaticResource TextBox_DishesDesigner_Style}">
@@ -119,6 +121,7 @@
 
         <TextBox
             x:Name="time_TextBox"
+            Text="0"
             Grid.Row="2"
             Grid.Column="3"
             Style="{StaticResource TextBox_DishesDesigner_Style}">
@@ -160,7 +163,7 @@
                         Height="200"
                         Width="150"
                         CornerRadius="5,5,20,20"
-                        Background="{Binding Background}">
+                        Background="WhiteSmoke">
 
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="2" />
@@ -180,10 +183,13 @@
                             </Grid.ColumnDefinitions>
 
                             <Image
-                                Source="{Binding Icon}"
                                 Grid.Row="0"
                                 Grid.Column="1"
-                                Grid.ColumnSpan="2"/>
+                                Grid.ColumnSpan="2">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding UriImageSource}"/>
+                                </Image.Source>
+                            </Image>
 
                             <TextBlock 
                                 Text="{Binding Name}"

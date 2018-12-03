@@ -76,7 +76,6 @@
     <Compile Include="PathsSettings.xaml.cs">
       <DependentUpon>PathsSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\TemplateItem.cs" />
     <Page Include="BranchNode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

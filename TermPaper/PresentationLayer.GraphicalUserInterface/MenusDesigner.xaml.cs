@@ -29,7 +29,7 @@ namespace PresentationLayer.GraphicalUserInterface
         private void LoadMenuItems() {
             name_TextBox.Text = menuSource.Name;
             description_TextBox.Text = menuSource.Description;
-            dishes_ListBox.ItemsSource = Converter.ToTemplateItem(menuSource.Dishes);
+            dishes_ListBox.ItemsSource = menuSource.Dishes;
         }
 
         /// <summary>
@@ -40,10 +40,9 @@ namespace PresentationLayer.GraphicalUserInterface
             selectionWindow.Show();
             selectionWindow.Closed += (ss, ee) => {
                 if ((selectionWindow?.ChosenDish ?? new Dish()) == selectionWindow.ChosenDish) {
-                    List<TemplateItem> items = (List<TemplateItem>)dishes_ListBox.ItemsSource;
-                    items.Add(Converter.ToTemplateItem(selectionWindow.ChosenDish));
-                    dishes_ListBox.ItemsSource = null;
-                    dishes_ListBox.ItemsSource = items;
+                    menuSource.Dishes.Add(selectionWindow.ChosenDish);
+                    try { dishes_ListBox.ItemsSource = null; } catch (Exception) { };
+                    dishes_ListBox.ItemsSource = menuSource.Dishes;
                 }
             };
         }
@@ -62,10 +61,9 @@ namespace PresentationLayer.GraphicalUserInterface
             MessageBoxResult result = MessageBox.Show("Do you want to remove this item?", "Deletion",
                                                   MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
             if (result == MessageBoxResult.Yes) {
-                List<TemplateItem> items = (List<TemplateItem>)dishes_ListBox.ItemsSource;
-                items.RemoveAt(dishes_ListBox.SelectedIndex);
-                dishes_ListBox.ItemsSource = null;
-                dishes_ListBox.ItemsSource = items;
+                menuSource.Dishes.RemoveAt(dishes_ListBox.SelectedIndex);
+                try { dishes_ListBox.ItemsSource = null; } catch (Exception) { };
+                dishes_ListBox.ItemsSource = menuSource.Dishes;
             }
         }
 
@@ -75,7 +73,6 @@ namespace PresentationLayer.GraphicalUserInterface
         private void Save_Command_Executed(object sender, ExecutedRoutedEventArgs e) {
             menuSource.Name = name_TextBox.Text;
             menuSource.Description = description_TextBox.Text;
-            menuSource.Dishes = Converter.ToDishes((List<TemplateItem>)dishes_ListBox.ItemsSource);
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

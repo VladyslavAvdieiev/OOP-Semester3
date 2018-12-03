@@ -32,7 +32,6 @@ namespace PresentationLayer.GraphicalUserInterface
             InitializeComponent();
             if (LoadIngredientsFromDB(Properties.Settings.Default.Ingredients_Path))
                 LoadIngredientItems();
-            demoView_Border.DataContext = Converter.ToTemplateItem(ingredientSource[0]);
         }
 
         /// <summary>
@@ -64,7 +63,8 @@ namespace PresentationLayer.GraphicalUserInterface
                 demoView_Border.Visibility = Visibility.Visible;
                 IngredientTemplateItem item = (IngredientTemplateItem)ingredients_DataGrid.SelectedItem;
                 Ingredient ingredient = Converter.ToIngredients(item);
-                demoView_Border.DataContext = Converter.ToTemplateItem(ingredient);
+                demoView_Border.DataContext = ingredient;
+                demoView_Image.Source = new BitmapImage(new Uri(ingredient.UriImageSource));
             }
         }
 

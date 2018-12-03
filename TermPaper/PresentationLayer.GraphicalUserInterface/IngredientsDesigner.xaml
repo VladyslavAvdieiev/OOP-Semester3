@@ -86,7 +86,7 @@
             Width="150"
             CornerRadius="5,5,20,20"
             Visibility="Hidden"
-            Background="{Binding Background}">
+            Background="WhiteSmoke">
 
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="2" />
@@ -106,7 +106,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image
-                    Source="{Binding Icon}"
+                    x:Name="demoView_Image"
                     Grid.Row="0"
                     Grid.Column="1"
                     Grid.ColumnSpan="2"/>

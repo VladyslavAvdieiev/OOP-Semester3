@@ -35,6 +35,10 @@ namespace BusinessAccessLayer.Entities
             set => _imageSource = value;
         }
 
+        public string UriImageSource {
+            get => AppDomain.CurrentDomain.BaseDirectory + _imageSource;
+        }
+
         public double Cost {
             get => _cost;
             set {

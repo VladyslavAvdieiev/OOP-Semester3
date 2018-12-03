@@ -13,9 +13,19 @@ namespace BusinessAccessLayer.Entities
         private double _cost;
         private double _weight;
 
-        public string Name { get => _name; set => _name = value; }
+        public string Name {
+            get => _name;
+            set => _name = value;
+        }
 
-        public string ImageSource { get => _imageSource; set => _imageSource = value; }
+        public string ImageSource {
+            get => _imageSource;
+            set => _imageSource = value;
+        }
+
+        public string UriImageSource {
+            get => AppDomain.CurrentDomain.BaseDirectory + _imageSource;
+        }
 
         public double Cost {
             get => _cost;

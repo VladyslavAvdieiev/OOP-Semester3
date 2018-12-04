@@ -1,6 +1,7 @@
 ﻿using BusinessAccessLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -100,6 +101,14 @@ namespace PresentationLayer.GraphicalUserInterface
             dishSource.Cost = Convert.ToDouble(cost_TextBox.Text);
             dishSource.Time = Convert.ToDouble(time_TextBox.Text);
             MessageBox.Show("Data were written down successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        /// <summary>
+        /// Check if input data is only digits
+        /// </summary>
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e) {
+            Regex regex = new Regex("[0-9]|,");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

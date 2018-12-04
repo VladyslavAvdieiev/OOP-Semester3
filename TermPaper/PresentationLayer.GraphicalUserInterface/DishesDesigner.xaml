@@ -113,6 +113,7 @@
             Text="0"
             Grid.Row="1"
             Grid.Column="3"
+            PreviewTextInput="TextBox_PreviewTextInput"
             Style="{StaticResource TextBox_DishesDesigner_Style}">
             <TextBox.ToolTip>
                 <ToolTip Content="Cost."/>
@@ -124,6 +125,7 @@
             Text="0"
             Grid.Row="2"
             Grid.Column="3"
+            PreviewTextInput="TextBox_PreviewTextInput"
             Style="{StaticResource TextBox_DishesDesigner_Style}">
             <TextBox.ToolTip>
                 <ToolTip Content="Time."/>

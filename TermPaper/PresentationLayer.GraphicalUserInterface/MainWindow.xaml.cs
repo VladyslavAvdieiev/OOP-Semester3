@@ -190,6 +190,7 @@ namespace PresentationLayer.GraphicalUserInterface
             ((MenuItem)sender).IsChecked = true;
 
             try { orders_ListBox.ItemsSource = null; } catch (Exception) { };
+            orders_ListBox.Visibility = Visibility.Visible;
             orders_ListBox.ItemsSource = orderSource[index].Dishes;
             remark_TextBox.Text = orderSource[index].Remark;
             table_ComboBox.SelectedIndex = orderSource[index].TableNumber - 1;

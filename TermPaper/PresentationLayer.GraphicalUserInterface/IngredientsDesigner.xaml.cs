@@ -64,7 +64,11 @@ namespace PresentationLayer.GraphicalUserInterface
                 IngredientTemplateItem item = (IngredientTemplateItem)ingredients_DataGrid.SelectedItem;
                 Ingredient ingredient = Converter.ToIngredients(item);
                 demoView_Border.DataContext = ingredient;
-                demoView_Image.Source = new BitmapImage(new Uri(ingredient.UriImageSource));
+                try {
+                    demoView_Image.Source = new BitmapImage(new Uri(ingredient.UriImageSource));
+                } catch (Exception) {
+                    demoView_Image.Source = (BitmapImage)TryFindResource("404_Image");
+                };
             }
         }
 

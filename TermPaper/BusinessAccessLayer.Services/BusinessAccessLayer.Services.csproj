@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessServices\IDataAccessor.cs" />
+    <Compile Include="DataAccessServices\XmlSerializerService.cs" />
     <Compile Include="DataEditServices\DishEditService.cs" />
     <Compile Include="DataEditServices\IDataEditor.cs" />
     <Compile Include="DataEditServices\IngredientEditService.cs" />
@@ -63,8 +65,6 @@
       <Name>DataAccessLayer.DataAccessors</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataAccessServices\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

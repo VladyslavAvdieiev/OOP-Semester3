@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public interface ISearcher
+    public class DishSearchService : IDataSearcher
     {
     }
 }

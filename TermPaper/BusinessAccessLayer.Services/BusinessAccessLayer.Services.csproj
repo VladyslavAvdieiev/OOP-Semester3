@@ -46,11 +46,11 @@
     <Compile Include="DataEditServices\IngredientEditService.cs" />
     <Compile Include="DataEditServices\MenuEditService.cs" />
     <Compile Include="DataEditServices\OrderEditService.cs" />
-    <Compile Include="DataSearchServices\DishesSearcher.cs" />
-    <Compile Include="DataSearchServices\IngredientsSearcher.cs" />
-    <Compile Include="DataSearchServices\ISearcher.cs" />
-    <Compile Include="DataSearchServices\MenusSearcher.cs" />
-    <Compile Include="DataSearchServices\OrsersSearcher.cs" />
+    <Compile Include="DataSearchServices\DishSearchService.cs" />
+    <Compile Include="DataSearchServices\IngredientSearchService.cs" />
+    <Compile Include="DataSearchServices\IDataSearcher.cs" />
+    <Compile Include="DataSearchServices\MenuSearchService.cs" />
+    <Compile Include="DataSearchServices\OrderSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

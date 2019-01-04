@@ -46,6 +46,11 @@
     <Compile Include="DataEditServices\IngredientsEditor.cs" />
     <Compile Include="DataEditServices\MenusEditor.cs" />
     <Compile Include="DataEditServices\OrdersEditor.cs" />
+    <Compile Include="DataSearchServices\DishesSearcher.cs" />
+    <Compile Include="DataSearchServices\IngredientsSearcher.cs" />
+    <Compile Include="DataSearchServices\ISearcher.cs" />
+    <Compile Include="DataSearchServices\MenusSearcher.cs" />
+    <Compile Include="DataSearchServices\OrsersSearcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccessServices\" />
-    <Folder Include="DataSearchServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

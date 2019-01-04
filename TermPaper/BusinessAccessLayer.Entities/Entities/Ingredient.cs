@@ -9,22 +9,12 @@ namespace BusinessAccessLayer.Entities
     [Serializable]
     public class Ingredient {
         private string _name;
-        private string _imageSource;
         private double _cost;
         private double _weight;
 
         public string Name {
             get => _name;
             set => _name = value;
-        }
-
-        public string ImageSource {
-            get => _imageSource;
-            set => _imageSource = value;
-        }
-
-        public string UriImageSource {
-            get => AppDomain.CurrentDomain.BaseDirectory + _imageSource;
         }
 
         public double Cost {
@@ -55,18 +45,10 @@ namespace BusinessAccessLayer.Entities
             Weight = weigth;
         }
 
-        public Ingredient(string name, double cost, double weigth, string imageSource) {
-            Name = name;
-            Cost = cost;
-            Weight = weigth;
-            ImageSource = imageSource;
-        }
-
         public Ingredient(Ingredient ingredient) {
             Name = ingredient.Name;
             Cost = ingredient.Cost;
             Weight = ingredient.Weight;
-            ImageSource = ingredient.ImageSource;
         }
 
         public override bool Equals(object obj) {

@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <ImageSource>Images\cheese.png</ImageSource>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Blueberries</Name>
+            <ImageSource>Images\blueberries.png</ImageSource>
+            <Cost>50</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Carrot</Name>
+            <ImageSource>Images\carrot.png</ImageSource>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <ImageSource>Images\flour.png</ImageSource>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pasta Nero Di Mare</Name>
+        <Description>rty78ijhghjkl;</Description>
+        <ImageSource>Images\tomato.png</ImageSource>
+        <Cost>155</Cost>
+        <Time>25</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <ImageSource>Images\raspberry.png</ImageSource>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <ImageSource>Images\tea.png</ImageSource>
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>3</TableNumber>
+    <Remark>Remark: </Remark>
+    <Date>2018-12-04T14:03:02.482848+02:00</Date>
+    <Cost>170</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <ImageSource>Images\coffee_been.png</ImageSource>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Coffee - 150g</Name>
+        <Description />
+        <ImageSource>Images\coffee.png</ImageSource>
+        <Cost>22</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <ImageSource>Images\raspberry.png</ImageSource>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <ImageSource>Images\tea.png</ImageSource>
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>1</TableNumber>
+    <Remark>Remark: </Remark>
+    <Date>2018-12-07T11:14:42.98534+02:00</Date>
+    <Cost>37</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>TestIng</Name>
+            <ImageSource>Images\apple.png</ImageSource>
+            <Cost>1000</Cost>
+            <Weight>1000</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>TestDish</Name>
+        <Description />
+        <ImageSource>Images\apple.png</ImageSource>
+        <Cost>5555</Cost>
+        <Time>0</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>6</TableNumber>
+    <Remark>Remark: test</Remark>
+    <Date>2018-12-12T14:52:24.4678912+02:00</Date>
+    <Cost>5555</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Salad</Name>
+            <ImageSource>Images\salad.png</ImageSource>
+            <Cost>30</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Green tea</Name>
+        <Description />
+        <ImageSource>Images\tea.png</ImageSource>
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>7</TableNumber>
+    <Remark>Remark: sdsds</Remark>
+    <Date>2019-01-01T02:03:53.3897987+02:00</Date>
+    <Cost>15</Cost>
+  </Order>
+</ArrayOfOrder>

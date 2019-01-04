@@ -1,0 +1,1 @@
+These files should be in '\PresentationLayer.GraphicalUserInterface\bin\Debug' directory.

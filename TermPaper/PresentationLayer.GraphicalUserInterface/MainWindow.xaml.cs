@@ -33,6 +33,11 @@ namespace PresentationLayer.GraphicalUserInterface
         /// </summary>
         public MainWindow() {
             InitializeComponent();
+
+            MessageBox.Show("Current version does not support GUI.\nThe latest version supports GUI is b364b77.", "Error",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            Application.Current.Shutdown();
+
             if (LoadMenusFromDB(Properties.Settings.Default.Menus_Path))
                 LoadMenuItems();
             if (LoadOrdersFromDB(Properties.Settings.Default.Orders_Path))

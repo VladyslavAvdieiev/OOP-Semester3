@@ -49,5 +49,10 @@
       <Name>DataAccessLayer.DataAccessors</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataAccessServices\" />
+    <Folder Include="DataEditServices\" />
+    <Folder Include="DataSearchServices\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

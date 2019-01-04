@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    class MenusEditor : IEditor
+    public class MenusEditor : IEditor
     {
     }
 }

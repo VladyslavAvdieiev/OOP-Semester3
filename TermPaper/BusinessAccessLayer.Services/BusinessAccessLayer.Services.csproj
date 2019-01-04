@@ -41,11 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataEditServices\DishesEditor.cs" />
-    <Compile Include="DataEditServices\IEditor.cs" />
-    <Compile Include="DataEditServices\IngredientsEditor.cs" />
-    <Compile Include="DataEditServices\MenusEditor.cs" />
-    <Compile Include="DataEditServices\OrdersEditor.cs" />
+    <Compile Include="DataEditServices\DishEditService.cs" />
+    <Compile Include="DataEditServices\IDataEditor.cs" />
+    <Compile Include="DataEditServices\IngredientEditService.cs" />
+    <Compile Include="DataEditServices\MenuEditService.cs" />
+    <Compile Include="DataEditServices\OrderEditService.cs" />
     <Compile Include="DataSearchServices\DishesSearcher.cs" />
     <Compile Include="DataSearchServices\IngredientsSearcher.cs" />
     <Compile Include="DataSearchServices\ISearcher.cs" />
@@ -54,6 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessAccessLayer.Entities\BusinessAccessLayer.Entities.csproj">
+      <Project>{19791b85-f126-4bc5-820c-7963cd0a716b}</Project>
+      <Name>BusinessAccessLayer.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccessLayer.DataAccessors\DataAccessLayer.DataAccessors.csproj">
       <Project>{2bd2ecb2-ff07-4536-84eb-1ab3973faf94}</Project>
       <Name>DataAccessLayer.DataAccessors</Name>

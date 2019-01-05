@@ -44,6 +44,7 @@
     <Compile Include="DataAccessServices\IDataAccessor.cs" />
     <Compile Include="DataAccessServices\XmlSerializerService.cs" />
     <Compile Include="DataEditServices\DataEditService.cs" />
+    <Compile Include="DataSearchServices\DataSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,8 +57,6 @@
       <Name>DataAccessLayer.DataAccessors</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataSearchServices\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

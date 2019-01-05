@@ -14,12 +14,10 @@ namespace BusinessAccessLayer.Services
 
         public XmlSerializerService() {
             Serializer = new XmlSerializer<List<T>>();
-            Data = new List<T>();
         }
 
         public XmlSerializerService(string filePath) {
             Serializer = new XmlSerializer<List<T>>(filePath);
-            Data = new List<T>();
         }
 
         public void Clear() {
@@ -30,8 +28,12 @@ namespace BusinessAccessLayer.Services
             Data = Serializer.Deserialize();
         }
 
-        public void Write() {
-            Serializer.Serialize(Data);
+        public bool Write() {
+            if (Data != null) {
+                Serializer.Serialize(Data);
+                return true;
+            }
+            return false;
         }
     }
 }

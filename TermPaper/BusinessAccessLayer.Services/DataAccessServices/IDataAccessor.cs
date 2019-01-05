@@ -12,6 +12,6 @@ namespace BusinessAccessLayer.Services
         ISerializer<List<T>> Serializer { get; }
         void Clear();
         void Read();
-        void Write();
+        bool Write();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public class OrderEditService : IDataEditor
-    {
+    public static class DataEditService<TEntity>
+    {  
     }
 }

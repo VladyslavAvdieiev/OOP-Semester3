@@ -43,11 +43,7 @@
   <ItemGroup>
     <Compile Include="DataAccessServices\IDataAccessor.cs" />
     <Compile Include="DataAccessServices\XmlSerializerService.cs" />
-    <Compile Include="DataEditServices\DishEditService.cs" />
-    <Compile Include="DataEditServices\IDataEditor.cs" />
-    <Compile Include="DataEditServices\IngredientEditService.cs" />
-    <Compile Include="DataEditServices\MenuEditService.cs" />
-    <Compile Include="DataEditServices\OrderEditService.cs" />
+    <Compile Include="DataEditServices\DataEditService.cs" />
     <Compile Include="DataSearchServices\DishSearchService.cs" />
     <Compile Include="DataSearchServices\IngredientSearchService.cs" />
     <Compile Include="DataSearchServices\IDataSearcher.cs" />

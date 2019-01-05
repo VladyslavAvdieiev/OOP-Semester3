@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataAccessors
 {
-    public class XmlSerializer<T> : ISerializer<T> {
+    public class XmlSerializer<TData> : ISerializer<TData> {
+
         public string FilePath { get; }
 
         public XmlSerializer() {
-            Type[] genericTypes = typeof(T).GetGenericArguments();
+            Type[] genericTypes = typeof(TData).GetGenericArguments();
             if (genericTypes == Type.EmptyTypes)
-                FilePath = $"{typeof(T).Name}.xml";
+                FilePath = $"{typeof(TData).Name}.xml";
             else
                 FilePath = $"{genericTypes[0].Name}.xml";
         }
@@ -29,16 +30,16 @@ namespace DataAccessLayer.DataAccessors
             stream.Close();
         }
 
-        public T Deserialize() {
+        public TData Deserialize() {
             if (!File.Exists(FilePath))
                 throw new FileNotFoundException($"File '{FilePath}' does not exist.");
-            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(TData));
             using (FileStream stream = new FileStream(FilePath, FileMode.Open))
-                return (T)xmlSerializer.Deserialize(stream);
+                return (TData)xmlSerializer.Deserialize(stream);
         }
 
-        public void Serialize(T data) {
-            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+        public void Serialize(TData data) {
+            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(TData));
             using (FileStream stream = new FileStream(FilePath, FileMode.OpenOrCreate))
                 xmlSerializer.Serialize(stream, data);
         }

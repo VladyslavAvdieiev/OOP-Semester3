@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.DataAccessors
 {
-    public interface ISerializer<T> {
+    public interface ISerializer<TData> {
         string FilePath { get; }
         void Clear();
-        T Deserialize();
-        void Serialize(T data);
+        TData Deserialize();
+        void Serialize(TData data);
     }
 }

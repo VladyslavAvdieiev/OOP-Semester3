@@ -6,6 +6,7 @@ namespace DataAccessLayer.DataAccessors.Tests
 {
     public class XmlSerializerTests {
 
+        #region Default constructor
         [Fact]
         public void DefaultCoustructor_CreateInstanceWithNonGenericType_Should_SetFilePathCorreclty() {
             /*Arrange*/
@@ -29,5 +30,6 @@ namespace DataAccessLayer.DataAccessors.Tests
             /*Assert*/
             Assert.Equal("Int32.xml", actual);
         }
+        #endregion
     }
 }

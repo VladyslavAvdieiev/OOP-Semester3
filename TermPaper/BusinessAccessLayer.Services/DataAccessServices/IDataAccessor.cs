@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public interface IDataAccessor<T> {
-        List<T> Data { get; }
-        ISerializer<List<T>> Serializer { get; }
+    public interface IDataAccessor<TData> {
+        List<TData> Data { get; }
+        ISerializer<List<TData>> Serializer { get; }
         void Clear();
         void Read();
         bool Write();

@@ -7,17 +7,17 @@ using DataAccessLayer.DataAccessors;
 
 namespace BusinessAccessLayer.Services
 {
-    public class XmlSerializerService<T> : IDataAccessor<T> {
+    public class XmlSerializerService<TData> : IDataAccessor<TData> {
         
-        public List<T> Data { get; internal set; }
-        public ISerializer<List<T>> Serializer { get; }
+        public List<TData> Data { get; internal set; }
+        public ISerializer<List<TData>> Serializer { get; }
 
         public XmlSerializerService() {
-            Serializer = new XmlSerializer<List<T>>();
+            Serializer = new XmlSerializer<List<TData>>();
         }
 
         public XmlSerializerService(string filePath) {
-            Serializer = new XmlSerializer<List<T>>(filePath);
+            Serializer = new XmlSerializer<List<TData>>(filePath);
         }
 
         public void Clear() {

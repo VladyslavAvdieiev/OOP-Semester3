@@ -12,11 +12,11 @@ namespace DataAccessLayer.DataAccessors
         public string FilePath { get; }
 
         public XmlSerializer() {
-            Type[] genericTypes = typeof(TData).GetGenericArguments();
-            if (genericTypes == Type.EmptyTypes)
-                FilePath = $"{typeof(TData).Name}.xml";
+            Type data = typeof(TData);
+            if (data.IsConstructedGenericType)
+                FilePath = $"{data.GenericTypeArguments[0].Name}.xml";
             else
-                FilePath = $"{genericTypes[0].Name}.xml";
+                FilePath = $"{data.Name}.xml";
         }
 
         public XmlSerializer(string filePath) {

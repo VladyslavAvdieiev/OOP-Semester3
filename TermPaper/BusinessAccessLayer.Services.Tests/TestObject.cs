@@ -6,18 +6,16 @@ namespace BusinessAccessLayer.Services.Tests
 {
     public class TestObject {
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public double Cost { get; set; }
+        public int TestValue1 { get; set; }
+        public string TestValue2 { get; set; }
 
-        public TestObject(string name, string description, double cost) {
-            Name = name;
-            Description = description;
-            Cost = cost;
+        public TestObject(int testValue1, string testValue2) {
+            TestValue1 = testValue1;
+            TestValue2 = testValue2;
         }
 
         public override string ToString() {
-            return $"Name:{Name} - Cost:{Cost} - Description:{Description}";
+            return $"TestValue1:{TestValue1} - TestValue2:{TestValue2}";
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessAccessLayer.Services
 {
-    public static class DataEditService<TEntity> {  
+    public static class DataEditService<TEntity> where TEntity : class {  
 
         public static bool Add(IDataAccessor<TEntity> dataAccessor, TEntity entity) {
             if (dataAccessor != null)

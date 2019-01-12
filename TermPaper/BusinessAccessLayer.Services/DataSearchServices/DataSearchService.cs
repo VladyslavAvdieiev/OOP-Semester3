@@ -27,11 +27,10 @@ namespace BusinessAccessLayer.Services
 
         public static TEntity FindLastByKey(IDataAccessor<TEntity> dataAccessor, string key) {
             List<TEntity> entities = dataAccessor.Data;
-            entities.Reverse();
             if (dataAccessor != null)
-                foreach (var datum in entities)
-                    if (datum.ToString().Contains(key))
-                        return datum;
+                for (int i = entities.Count - 1; i >= 0; i--)
+                    if (entities[i].ToString().Contains(key))
+                        return entities[i];
             return null;
         }
     }

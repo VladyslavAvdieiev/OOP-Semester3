@@ -47,16 +47,16 @@ namespace PresentationLayer.ConsoleApp
 
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
-                    Choose(ADDITION);
+                    Select(ADDITION);
                     break;
                 case ConsoleKey.D2:
-                    Choose(MODIFICATION);
+                    Select(MODIFICATION);
                     break;
                 case ConsoleKey.D3:
-                    Choose(OVERVIEW);
+                    Select(OVERVIEW);
                     break;
                 case ConsoleKey.D4:
-                    Choose(SEARCH);
+                    Select(SEARCH);
                     break;
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
@@ -75,7 +75,7 @@ namespace PresentationLayer.ConsoleApp
             Console.ReadLine();
         }
 
-        private static void Choose(int mode) {
+        private static void Select(int mode) {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("1. Ingredients");
@@ -104,7 +104,7 @@ namespace PresentationLayer.ConsoleApp
                     break;
                 default:
                     PrintError("[Error]: Command does not exist. Press any key to continue...");
-                    Choose(mode);
+                    Select(mode);
                     break;
             }
 

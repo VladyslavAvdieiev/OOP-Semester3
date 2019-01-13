@@ -47,24 +47,16 @@ namespace PresentationLayer.ConsoleApp
 
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
-                    Console.WriteLine("'1. Add' was pressed");
-                    Console.ReadLine();
-                    DisplayMainMenu();
+                    Choose(ADDITION);
                     break;
                 case ConsoleKey.D2:
-                    Console.WriteLine("'2. Modify' was pressed");
-                    Console.ReadLine();
-                    DisplayMainMenu();
+                    Choose(MODIFICATION);
                     break;
                 case ConsoleKey.D3:
-                    Console.WriteLine("'3. View' was pressed");
-                    Console.ReadLine();
-                    DisplayMainMenu();
+                    Choose(OVERVIEW);
                     break;
                 case ConsoleKey.D4:
-                    Console.WriteLine("'4. Search' was pressed");
-                    Console.ReadLine();
-                    DisplayMainMenu();
+                    Choose(SEARCH);
                     break;
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
@@ -81,6 +73,55 @@ namespace PresentationLayer.ConsoleApp
             Console.WriteLine(errorMessage);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadLine();
+        }
+
+        private static void Choose(int mode) {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Ingredients");
+            Console.WriteLine("2. Dishes");
+            Console.WriteLine("3. Menus");
+            Console.WriteLine("4. Orders");
+            Console.WriteLine("ESC. Back");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            int value = -1;
+            switch (Console.ReadKey().Key) {
+                case ConsoleKey.D1:
+                    value = ING;
+                    break;
+                case ConsoleKey.D2:
+                    value = DISH;
+                    break;
+                case ConsoleKey.D3:
+                    value = MENU;
+                    break;
+                case ConsoleKey.D4:
+                    value = ORDER;
+                    break;
+                case ConsoleKey.Escape:
+                    DisplayMainMenu();
+                    break;
+                default:
+                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    Choose(mode);
+                    break;
+            }
+
+            switch (mode) {
+                case ADDITION:
+                    /*call the add method with value*/
+                    break;
+                case MODIFICATION:
+                    /*call the modify method with value*/
+                    break;
+                case OVERVIEW:
+                    /*call the view method with value*/
+                    break;
+                case SEARCH:
+                    /*call the search method with value*/
+                    break;
+            }
         }
     }
 }

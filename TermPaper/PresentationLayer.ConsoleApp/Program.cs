@@ -9,6 +9,18 @@ using System.Threading.Tasks;
 namespace PresentationLayer.ConsoleApp
 {
     class Program {
+        #region Constants
+        private const int ING = 0;
+        private const int DISH = 1;
+        private const int MENU = 2;
+        private const int ORDER = 3;
+
+        private const int ADDITION = 0;
+        private const int MODIFICATION = 1;
+        private const int OVERVIEW = 2;
+        private const int SEARCH = 3;
+        #endregion
+
         private static IDataAccessor<List<Ingredient>> ingredientDataAccessor;
         private static IDataAccessor<List<Dish>> dishDataAccessor;
         private static IDataAccessor<List<Menu>> menuDataAccessor;

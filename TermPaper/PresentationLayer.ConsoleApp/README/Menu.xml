@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<ArrayOfMenu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Menu>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Salad</Name>
+            <Cost>30</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Green tea</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Coffee - 150g</Name>
+        <Description />
+        <Cost>22</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Coffee - 500g</Name>
+        <Description />
+        <Cost>42</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Milk</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Cappuccino - 150g</Name>
+        <Description />
+        <Cost>26</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Milk</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Cappuccino - 500g</Name>
+        <Description />
+        <Cost>46</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <Name>Drinks</Name>
+    <Description />
+  </Menu>
+  <Menu>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Fried eggs</Name>
+        <Description />
+        <Cost>12</Cost>
+        <Time>10</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Tomato</Name>
+            <Cost>8</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Fried eggs with tomatoes</Name>
+        <Description />
+        <Cost>20</Cost>
+        <Time>10</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Salami</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Fried eggs with salami</Name>
+        <Description />
+        <Cost>52</Cost>
+        <Time>10</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Tomato</Name>
+            <Cost>8</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Spaguetti</Name>
+        <Description />
+        <Cost>66</Cost>
+        <Time>40</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Beans</Name>
+            <Cost>8</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Broccoli</Name>
+            <Cost>8</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Cabbage</Name>
+            <Cost>5</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Cucumber</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Radish</Name>
+            <Cost>6</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Salad</Name>
+            <Cost>30</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Tomato</Name>
+            <Cost>8</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Side dish</Name>
+        <Description />
+        <Cost>100</Cost>
+        <Time>15</Time>
+      </Dish>
+    </Dishes>
+    <Name>Main dishes</Name>
+    <Description />
+  </Menu>
+  <Menu>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Apple</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Apple pie</Name>
+        <Description />
+        <Cost>20</Cost>
+        <Time>30</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Blueberries</Name>
+            <Cost>50</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Blueberries pie</Name>
+        <Description />
+        <Cost>66</Cost>
+        <Time>30</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cherries</Name>
+            <Cost>12</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Cherries pie</Name>
+        <Description />
+        <Cost>28</Cost>
+        <Time>30</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Raspberry pie</Name>
+        <Description />
+        <Cost>36</Cost>
+        <Time>30</Time>
+      </Dish>
+    </Dishes>
+    <Name>Desserts</Name>
+    <Description />
+  </Menu>
+  <Menu>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Salami</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pizza with salami</Name>
+        <Description />
+        <Cost>96</Cost>
+        <Time>20</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Fish</Name>
+            <Cost>15</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pizza with anchovies</Name>
+        <Description />
+        <Cost>71</Cost>
+        <Time>20</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Eggs</Name>
+            <Cost>10</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Pineapple</Name>
+            <Cost>16</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pizza with pineapple</Name>
+        <Description />
+        <Cost>72</Cost>
+        <Time>20</Time>
+      </Dish>
+    </Dishes>
+    <Name>Pizza</Name>
+    <Description />
+  </Menu>
+  <Menu>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Blueberries</Name>
+            <Cost>50</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Carrot</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pasta Nero Di Mare</Name>
+        <Description>rty78ijhghjkl;</Description>
+        <Cost>155</Cost>
+        <Time>25</Time>
+      </Dish>
+    </Dishes>
+    <Name>Tea menu [test]</Name>
+    <Description />
+  </Menu>
+</ArrayOfMenu>

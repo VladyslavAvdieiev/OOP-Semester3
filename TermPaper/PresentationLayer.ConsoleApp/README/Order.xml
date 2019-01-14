@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Cheese</Name>
+            <Cost>40</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Blueberries</Name>
+            <Cost>50</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Carrot</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+          <Ingredient>
+            <Name>Flour</Name>
+            <Cost>4</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Pasta Nero Di Mare</Name>
+        <Description>rty78ijhghjkl;</Description>
+        <Cost>155</Cost>
+        <Time>25</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>3</TableNumber>
+    <Remark>Remark: </Remark>
+    <Date>2018-12-04T14:03:02.482848+02:00</Date>
+    <Cost>170</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Coffee been</Name>
+            <Cost>20</Cost>
+            <Weight>5</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Coffee - 150g</Name>
+        <Description />
+        <Cost>22</Cost>
+        <Time>3</Time>
+      </Dish>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Raspberry</Name>
+            <Cost>20</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Tea with raspberry</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>1</TableNumber>
+    <Remark>Remark: </Remark>
+    <Date>2018-12-07T11:14:42.98534+02:00</Date>
+    <Cost>37</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>TestIng</Name>
+            <Cost>1000</Cost>
+            <Weight>1000</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>TestDish</Name>
+        <Description />
+        <Cost>5555</Cost>
+        <Time>0</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>6</TableNumber>
+    <Remark>Remark: test</Remark>
+    <Date>2018-12-12T14:52:24.4678912+02:00</Date>
+    <Cost>5555</Cost>
+  </Order>
+  <Order>
+    <Dishes>
+      <Dish>
+        <Ingredients>
+          <Ingredient>
+            <Name>Salad</Name>
+            <Cost>30</Cost>
+            <Weight>250</Weight>
+          </Ingredient>
+        </Ingredients>
+        <Name>Green tea</Name>
+        <Description />
+        <Cost>15</Cost>
+        <Time>3</Time>
+      </Dish>
+    </Dishes>
+    <TableNumber>7</TableNumber>
+    <Remark>Remark: sdsds</Remark>
+    <Date>2019-01-01T02:03:53.3897987+02:00</Date>
+    <Cost>15</Cost>
+  </Order>
+</ArrayOfOrder>

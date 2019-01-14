@@ -21,16 +21,21 @@ namespace PresentationLayer.ConsoleApp
         private const int SEARCH = 3;
         #endregion
 
-        private static IDataAccessor<List<Ingredient>> ingredientDataAccessor;
-        private static IDataAccessor<List<Dish>> dishDataAccessor;
-        private static IDataAccessor<List<Menu>> menuDataAccessor;
-        private static IDataAccessor<List<Order>> orderDataAccessor;
+        private static IDataAccessor<Ingredient> ingredientDataAccessor;
+        private static IDataAccessor<Dish> dishDataAccessor;
+        private static IDataAccessor<Menu> menuDataAccessor;
+        private static IDataAccessor<Order> orderDataAccessor;
 
         static void Main(string[] args) {
-            ingredientDataAccessor = new XmlSerializerService<List<Ingredient>>();
-            dishDataAccessor = new XmlSerializerService<List<Dish>>();
-            menuDataAccessor = new XmlSerializerService<List<Menu>>();
-            orderDataAccessor = new XmlSerializerService<List<Order>>();
+            ingredientDataAccessor = new XmlSerializerService<Ingredient>();
+            dishDataAccessor = new XmlSerializerService<Dish>();
+            menuDataAccessor = new XmlSerializerService<Menu>();
+            orderDataAccessor = new XmlSerializerService<Order>();
+
+            ingredientDataAccessor.Read();
+            dishDataAccessor.Read();
+            menuDataAccessor.Read();
+            orderDataAccessor.Read();
 
             DisplayMainMenu();
         }
@@ -43,7 +48,7 @@ namespace PresentationLayer.ConsoleApp
             Console.WriteLine("3. View...");    
             Console.WriteLine("4. Search...");
             Console.WriteLine("ESC. Exit");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
 
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
@@ -70,8 +75,8 @@ namespace PresentationLayer.ConsoleApp
 
         private static void PrintError(string errorMessage) {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(errorMessage);
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write(errorMessage);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
         }
 
@@ -83,7 +88,7 @@ namespace PresentationLayer.ConsoleApp
             Console.WriteLine("3. Menus");
             Console.WriteLine("4. Orders");
             Console.WriteLine("ESC. Back");
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.White;
 
             int value = -1;
             switch (Console.ReadKey().Key) {

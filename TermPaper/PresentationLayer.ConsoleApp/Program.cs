@@ -124,7 +124,97 @@ namespace PresentationLayer.ConsoleApp
                     /*call the view method with value*/
                     break;
                 case SEARCH:
-                    /*call the search method with value*/
+                    Search(value);
+                    break;
+            }
+        }
+
+        private static void Search(int value) {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Search");
+            Console.WriteLine("ESC. Back");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            switch (Console.ReadKey().Key) {
+                case ConsoleKey.D1:
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.SetCursorPosition(0, 2);
+                    Console.Write("Enter keyword: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    string key = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.Write($"\nMatches ");
+                    switch (value) {
+                        case ING:
+                            List<Ingredient> ingredients = DataSearchService<Ingredient>.FindAllByKey(ingredientDataAccessor, key);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(ingredients.Count);
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine(":");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreach (Ingredient ingredient in ingredients)
+                                Console.WriteLine(ingredient);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("\nPress any key to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Search(value);
+                            break;
+                        case DISH:
+                            List<Dish> dishes = DataSearchService<Dish>.FindAllByKey(dishDataAccessor, key);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(dishes.Count);
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine(":");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreach (Dish dish in dishes)
+                                Console.WriteLine(dish);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("\nPress any key to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Search(value);
+                            break;
+                        case MENU:
+                            List<Menu> menus = DataSearchService<Menu>.FindAllByKey(menuDataAccessor, key);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(menus.Count);
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine(":");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreach (Menu menu in menus)
+                                Console.WriteLine(menu);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("\nPress any key to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Search(value);
+                            break;
+                        case ORDER:
+                            List<Order> orders = DataSearchService<Order>.FindAllByKey(orderDataAccessor, key);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(orders.Count);
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine(":");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            foreach (Order order in orders)
+                                Console.WriteLine(order);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write("\nPress any key to continue...");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.ReadLine();
+                            Search(value);
+                            break;
+                    }
+                    break;
+                case ConsoleKey.Escape:
+                    Select(SEARCH);
+                    break;
+                default:
+                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    Search(value);
                     break;
             }
         }

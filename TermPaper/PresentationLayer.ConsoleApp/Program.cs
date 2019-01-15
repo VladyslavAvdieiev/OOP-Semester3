@@ -67,7 +67,7 @@ namespace PresentationLayer.ConsoleApp
                     Environment.Exit(0);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
                     DisplayMainMenu();
                     break;
             }
@@ -108,7 +108,7 @@ namespace PresentationLayer.ConsoleApp
                     DisplayMainMenu();
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
                     Select(mode);
                     break;
             }
@@ -177,6 +177,7 @@ namespace PresentationLayer.ConsoleApp
                     break;
             }
 
+            Console.ForegroundColor = ConsoleColor.Black;
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
                     Console.SetCursorPosition(0, 2);
@@ -189,7 +190,7 @@ namespace PresentationLayer.ConsoleApp
                     Select(OVERVIEW);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
                     View(value);
                     break;
             }
@@ -223,7 +224,7 @@ namespace PresentationLayer.ConsoleApp
                             foreach (Ingredient ingredient in ingredients)
                                 Console.WriteLine(ingredient);
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress any key to continue...");
+                            Console.Write("\nPress 'Enter' to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Search(value);
@@ -238,7 +239,7 @@ namespace PresentationLayer.ConsoleApp
                             foreach (Dish dish in dishes)
                                 Console.WriteLine(dish);
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress any key to continue...");
+                            Console.Write("\nPress 'Enter' to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Search(value);
@@ -253,7 +254,7 @@ namespace PresentationLayer.ConsoleApp
                             foreach (Menu menu in menus)
                                 Console.WriteLine(menu);
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress any key to continue...");
+                            Console.Write("\nPress 'Enter' to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Search(value);
@@ -268,7 +269,7 @@ namespace PresentationLayer.ConsoleApp
                             foreach (Order order in orders)
                                 Console.WriteLine(order);
                             Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress any key to continue...");
+                            Console.Write("\nPress 'Enter' to continue...");
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.ReadLine();
                             Search(value);
@@ -279,7 +280,7 @@ namespace PresentationLayer.ConsoleApp
                     Select(SEARCH);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
                     Search(value);
                     break;
             }

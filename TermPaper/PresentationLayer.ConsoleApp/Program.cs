@@ -121,10 +121,76 @@ namespace PresentationLayer.ConsoleApp
                     /*call the modify method with value*/
                     break;
                 case OVERVIEW:
-                    /*call the view method with value*/
+                    View(value);
                     break;
                 case SEARCH:
                     Search(value);
+                    break;
+            }
+        }
+
+        private static void View(int value) {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Details");
+            Console.WriteLine("ESC. Back");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write($"\nObjects ");
+            switch (value) {
+                case ING:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(ingredientDataAccessor.Data.Count);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine(":");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int i = 0; i < ingredientDataAccessor.Data.Count; i++)
+                        Console.WriteLine($"{i}. {ingredientDataAccessor.Data[i]}");
+                    break;
+                case DISH:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(dishDataAccessor.Data.Count);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine(":");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int i = 0; i < dishDataAccessor.Data.Count; i++)
+                        Console.WriteLine($"{i}. {dishDataAccessor.Data[i]}");
+                    break;
+                case MENU:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(menuDataAccessor.Data.Count);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine(":");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int i = 0; i < menuDataAccessor.Data.Count; i++)
+                        Console.WriteLine($"{i}. {menuDataAccessor.Data[i]}");
+                    break;
+                case ORDER:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(orderDataAccessor.Data.Count);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine(":");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int i = 0; i < orderDataAccessor.Data.Count; i++)
+                        Console.WriteLine($"{i}. {orderDataAccessor.Data[i]}");
+                    break;
+            }
+
+            switch (Console.ReadKey().Key) {
+                case ConsoleKey.D1:
+                    Console.SetCursorPosition(0, 2);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Does not work yet...");
+                    Console.ReadLine();
+                    View(value);
+                    break;
+                case ConsoleKey.Escape:
+                    Select(OVERVIEW);
+                    break;
+                default:
+                    PrintError("[Error]: Command does not exist. Press any key to continue...");
+                    View(value);
                     break;
             }
         }

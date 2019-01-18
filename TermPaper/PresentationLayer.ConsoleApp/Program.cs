@@ -42,13 +42,13 @@ namespace PresentationLayer.ConsoleApp
 
         private static void DisplayMainMenu() {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1. Add...");
-            Console.WriteLine("2. Modify...");
-            Console.WriteLine("3. View...");    
-            Console.WriteLine("4. Search...");
-            Console.WriteLine("ESC. Exit");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[ 1 ] Add...");
+            Console.WriteLine("[ 2 ] Modify...");
+            Console.WriteLine("[ 3 ] View...");    
+            Console.WriteLine("[ 4 ] Search...");
+            Console.WriteLine("[ESC] Exit");
+            Console.ForegroundColor = ConsoleColor.Black;
 
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
@@ -67,16 +67,17 @@ namespace PresentationLayer.ConsoleApp
                     Environment.Exit(0);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    PrintError("Command does not exist. Press 'Enter' to continue...");
                     DisplayMainMenu();
                     break;
             }
         }
 
         private static void PrintError(string errorMessage) {
+            Console.SetCursorPosition(0, Console.CursorTop);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(errorMessage);
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write($"[ERR] {errorMessage}");
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.ReadLine();
         }
 
@@ -103,13 +104,13 @@ namespace PresentationLayer.ConsoleApp
 
         private static void Select(int mode) {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1. Ingredients");
-            Console.WriteLine("2. Dishes");
-            Console.WriteLine("3. Menus");
-            Console.WriteLine("4. Orders");
-            Console.WriteLine("ESC. Back");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[ 1 ] Ingredients");
+            Console.WriteLine("[ 2 ] Dishes");
+            Console.WriteLine("[ 3 ] Menus");
+            Console.WriteLine("[ 4 ] Orders");
+            Console.WriteLine("[ESC] Back");
+            Console.ForegroundColor = ConsoleColor.Black;
 
             int value = -1;
             switch (Console.ReadKey().Key) {
@@ -129,7 +130,7 @@ namespace PresentationLayer.ConsoleApp
                     DisplayMainMenu();
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    PrintError("Command does not exist. Press 'Enter' to continue...");
                     Select(mode);
                     break;
             }
@@ -152,10 +153,10 @@ namespace PresentationLayer.ConsoleApp
 
         private static void Add(int value) {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1. Add new");
-            Console.WriteLine("2. Save changes");
-            Console.WriteLine("ESC. Back");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[ 1 ] Add new");
+            Console.WriteLine("[ 2 ] Save changes");
+            Console.WriteLine("[ESC] Back");
             Console.ForegroundColor = ConsoleColor.Black;
 
             switch (Console.ReadKey().Key) {
@@ -163,112 +164,119 @@ namespace PresentationLayer.ConsoleApp
                     switch (value) {
                         case ING:
                             ingredientDataAccessor.Data.Add(new Ingredient());
+                            Console.SetCursorPosition(0, Console.CursorTop + 1);
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\nNew ingredient was created. Set settings:");
+                            Console.WriteLine("New ingredient was created. Set settings:");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             try {
                                 Console.Write("Name: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Name = Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Cost: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Weight: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Weight = Convert.ToDouble(Console.ReadLine());
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("New ingredient was added successfully.\nPress 'Enter' to continue...");
-                                Console.ReadLine();
+                                Console.Write("New ingredient was added successfully. Press 'Enter' to continue...");
                             }
                             catch (Exception e) {
-                                PrintError($"[Error]: {e.Message}\nCreated ingredient was deleted.\nPress 'Enter' to continue...");
+                                PrintError($"{e.Message} Created ingredient was deleted. Press 'Enter' to continue...");
                                 ingredientDataAccessor.Data.RemoveAt(ingredientDataAccessor.Data.Count - 1);
                             }
                             break;
                         case DISH:
                             dishDataAccessor.Data.Add(new Dish());
+                            Console.SetCursorPosition(0, Console.CursorTop + 1);
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\nNew dish was created. Set settings:");
+                            Console.WriteLine("New dish was created. Set settings:");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             try {
                                 Console.Write("Name: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Name = Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Description: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Description = Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Cost: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Time: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Time = Convert.ToDouble(Console.ReadLine());
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("New dish was added successfully.\nPress 'Enter' to continue...");
-                                Console.ReadLine();
+                                Console.Write("New dish was added successfully. Press 'Enter' to continue...");
                             }
                             catch (Exception e) {
-                                PrintError($"[Error]: {e.Message}\nCreated dish was deleted.\nPress 'Enter' to continue...");
+                                PrintError($"{e.Message} Created dish was deleted. Press 'Enter' to continue...");
                                 dishDataAccessor.Data.RemoveAt(dishDataAccessor.Data.Count - 1);
                             }
                             break;
                         case MENU:
                             menuDataAccessor.Data.Add(new Menu());
+                            Console.SetCursorPosition(0, Console.CursorTop + 1);
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\nNew menu was created. Set settings:");
+                            Console.WriteLine("New menu was created. Set settings:");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             try {
                                 Console.Write("Name: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Name = Console.ReadLine();
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Description: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Description = Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("New menu was added successfully.\nPress 'Enter' to continue...");
-                                Console.ReadLine();
+                                Console.Write("New menu was added successfully. Press 'Enter' to continue...");
                             }
                             catch (Exception e) {
-                                PrintError($"[Error]: {e.Message}\nCreated menu was deleted.\nPress 'Enter' to continue...");
+                                PrintError($"{e.Message} Created menu was deleted. Press 'Enter' to continue...");
                                 menuDataAccessor.Data.RemoveAt(menuDataAccessor.Data.Count - 1);
                             }
                             break;
                         case ORDER:
                             orderDataAccessor.Data.Add(new Order());
+                            Console.SetCursorPosition(0, Console.CursorTop + 1);
                             Console.ForegroundColor = ConsoleColor.Magenta;
-                            Console.WriteLine("\nNew order was created. Set settings:");
+                            Console.WriteLine("New order was created. Set settings:");
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             try {
                                 Console.Write("TableNumber: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].TableNumber = int.Parse(Console.ReadLine());
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Cost: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
-                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("Remark: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Remark = Console.ReadLine();
                                 Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("New order was added successfully.\nPress 'Enter' to continue...");
-                                Console.ReadLine();
+                                Console.Write("New order was added successfully. Press 'Enter' to continue...");
                             }
                             catch (Exception e) {
-                                PrintError($"[Error]: {e.Message}\nCreated order was deleted.\nPress 'Enter' to continue...");
+                                PrintError($"{e.Message} Created order was deleted. Press 'Enter' to continue...");
                                 orderDataAccessor.Data.RemoveAt(orderDataAccessor.Data.Count - 1);
                             }
                             break;
                     }
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ReadLine();
                     Add(value);
                     break;
                 case ConsoleKey.D2:
                     SaveData(value);
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("\nData saved successfully. Press 'Enter' to continue...");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(0, Console.CursorTop + 1);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Data saved successfully. Press 'Enter' to continue...");
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.ReadLine();
                     Add(value);
                     break;
@@ -276,7 +284,7 @@ namespace PresentationLayer.ConsoleApp
                     Select(ADDITION);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    PrintError("Command does not exist. Press 'Enter' to continue...");
                     Add(value);
                     break;
             }
@@ -284,66 +292,58 @@ namespace PresentationLayer.ConsoleApp
 
         private static void View(int value) {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1. Details");
-            Console.WriteLine("ESC. Back");
-            Console.ForegroundColor = ConsoleColor.White;
-
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write($"\nObjects ");
+            Console.WriteLine("[ 1 ] Details about...");
+            Console.WriteLine("[ESC] Back");
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            Console.SetCursorPosition(0, Console.CursorTop + 1);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write($"Objects ");
+            Console.ForegroundColor = ConsoleColor.Green;
             switch (value) {
                 case ING:
-                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write(ingredientDataAccessor.Data.Count);
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(":");
-                    Console.ForegroundColor = ConsoleColor.White;
                     for (int i = 0; i < ingredientDataAccessor.Data.Count; i++)
                         Console.WriteLine($"{i}. {ingredientDataAccessor.Data[i]}");
                     break;
                 case DISH:
-                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write(dishDataAccessor.Data.Count);
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(":");
-                    Console.ForegroundColor = ConsoleColor.White;
                     for (int i = 0; i < dishDataAccessor.Data.Count; i++)
                         Console.WriteLine($"{i}. {dishDataAccessor.Data[i]}");
                     break;
                 case MENU:
-                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write(menuDataAccessor.Data.Count);
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(":");
-                    Console.ForegroundColor = ConsoleColor.White;
                     for (int i = 0; i < menuDataAccessor.Data.Count; i++)
                         Console.WriteLine($"{i}. {menuDataAccessor.Data[i]}");
                     break;
                 case ORDER:
-                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write(orderDataAccessor.Data.Count);
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine(":");
-                    Console.ForegroundColor = ConsoleColor.White;
                     for (int i = 0; i < orderDataAccessor.Data.Count; i++)
                         Console.WriteLine($"{i}. {orderDataAccessor.Data[i]}");
                     break;
             }
 
+            Console.SetCursorPosition(0, 2);
             Console.ForegroundColor = ConsoleColor.Black;
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
-                    Console.SetCursorPosition(0, 2);
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Does not work yet...");
-                    Console.ReadLine();
+                    PrintError("Does not work yet. Press 'Enter' to continue...");
                     View(value);
                     break;
                 case ConsoleKey.Escape:
                     Select(OVERVIEW);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    PrintError("Command does not exist. Press 'Enter' to continue...");
                     View(value);
                     break;
             }
@@ -351,89 +351,67 @@ namespace PresentationLayer.ConsoleApp
 
         private static void Search(int value) {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1. Search");
-            Console.WriteLine("ESC. Back");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("[ 1 ] Search");
+            Console.WriteLine("[ESC] Back");
+            Console.ForegroundColor = ConsoleColor.Black;
 
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.SetCursorPosition(0, 2);
+                    Console.SetCursorPosition(0, Console.CursorTop + 1);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.Write("Enter keyword: ");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     string key = Console.ReadLine();
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.Write($"\nMatches ");
+                    Console.Write("Matches ");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     switch (value) {
                         case ING:
                             List<Ingredient> ingredients = DataSearchService<Ingredient>.FindAllByKey(ingredientDataAccessor, key);
-                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(ingredients.Count);
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(":");
-                            Console.ForegroundColor = ConsoleColor.White;
                             foreach (Ingredient ingredient in ingredients)
                                 Console.WriteLine(ingredient);
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress 'Enter' to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Search(value);
                             break;
                         case DISH:
                             List<Dish> dishes = DataSearchService<Dish>.FindAllByKey(dishDataAccessor, key);
-                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(dishes.Count);
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(":");
-                            Console.ForegroundColor = ConsoleColor.White;
                             foreach (Dish dish in dishes)
                                 Console.WriteLine(dish);
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress 'Enter' to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Search(value);
                             break;
                         case MENU:
                             List<Menu> menus = DataSearchService<Menu>.FindAllByKey(menuDataAccessor, key);
-                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(menus.Count);
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(":");
-                            Console.ForegroundColor = ConsoleColor.White;
                             foreach (Menu menu in menus)
                                 Console.WriteLine(menu);
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress 'Enter' to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Search(value);
                             break;
                         case ORDER:
                             List<Order> orders = DataSearchService<Order>.FindAllByKey(orderDataAccessor, key);
-                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(orders.Count);
                             Console.ForegroundColor = ConsoleColor.Magenta;
                             Console.WriteLine(":");
-                            Console.ForegroundColor = ConsoleColor.White;
                             foreach (Order order in orders)
                                 Console.WriteLine(order);
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write("\nPress 'Enter' to continue...");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Console.ReadLine();
-                            Search(value);
                             break;
                     }
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("Press 'Enter' to continue...");
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ReadLine();
+                    Search(value);
                     break;
                 case ConsoleKey.Escape:
                     Select(SEARCH);
                     break;
                 default:
-                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    PrintError("Command does not exist. Press 'Enter' to continue...");
                     Search(value);
                     break;
             }

@@ -80,6 +80,27 @@ namespace PresentationLayer.ConsoleApp
             Console.ReadLine();
         }
 
+        private static void SaveData(int value) {
+            switch (value) {
+                case ING:
+                    ingredientDataAccessor.Clear();
+                    ingredientDataAccessor.Write();
+                    break;
+                case DISH:
+                    dishDataAccessor.Clear();
+                    dishDataAccessor.Write();
+                    break;
+                case MENU:
+                    menuDataAccessor.Clear();
+                    menuDataAccessor.Write();
+                    break;
+                case ORDER:
+                    orderDataAccessor.Clear();
+                    orderDataAccessor.Write();
+                    break;
+            }
+        }
+
         private static void Select(int mode) {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -115,7 +136,7 @@ namespace PresentationLayer.ConsoleApp
 
             switch (mode) {
                 case ADDITION:
-                    /*call the add method with value*/
+                    Add(value);
                     break;
                 case MODIFICATION:
                     /*call the modify method with value*/
@@ -125,6 +146,138 @@ namespace PresentationLayer.ConsoleApp
                     break;
                 case SEARCH:
                     Search(value);
+                    break;
+            }
+        }
+
+        private static void Add(int value) {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Add new");
+            Console.WriteLine("2. Save changes");
+            Console.WriteLine("ESC. Back");
+            Console.ForegroundColor = ConsoleColor.Black;
+
+            switch (Console.ReadKey().Key) {
+                case ConsoleKey.D1:
+                    switch (value) {
+                        case ING:
+                            ingredientDataAccessor.Data.Add(new Ingredient());
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\nNew ingredient was created. Set settings:");
+                            try {
+                                Console.Write("Name: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Name = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Cost: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Weight: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Weight = Convert.ToDouble(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("New ingredient was added successfully.\nPress 'Enter' to continue...");
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"[Error]: {e.Message}\nCreated ingredient was deleted.\nPress 'Enter' to continue...");
+                                ingredientDataAccessor.Data.RemoveAt(ingredientDataAccessor.Data.Count - 1);
+                            }
+                            break;
+                        case DISH:
+                            dishDataAccessor.Data.Add(new Dish());
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\nNew dish was created. Set settings:");
+                            try {
+                                Console.Write("Name: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Name = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Description: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Description = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Cost: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Time: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Time = Convert.ToDouble(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("New dish was added successfully.\nPress 'Enter' to continue...");
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"[Error]: {e.Message}\nCreated dish was deleted.\nPress 'Enter' to continue...");
+                                dishDataAccessor.Data.RemoveAt(dishDataAccessor.Data.Count - 1);
+                            }
+                            break;
+                        case MENU:
+                            menuDataAccessor.Data.Add(new Menu());
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\nNew menu was created. Set settings:");
+                            try {
+                                Console.Write("Name: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Name = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Description: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Description = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("New menu was added successfully.\nPress 'Enter' to continue...");
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"[Error]: {e.Message}\nCreated menu was deleted.\nPress 'Enter' to continue...");
+                                menuDataAccessor.Data.RemoveAt(menuDataAccessor.Data.Count - 1);
+                            }
+                            break;
+                        case ORDER:
+                            orderDataAccessor.Data.Add(new Order());
+                            Console.ForegroundColor = ConsoleColor.Magenta;
+                            Console.WriteLine("\nNew order was created. Set settings:");
+                            try {
+                                Console.Write("TableNumber: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].TableNumber = int.Parse(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Cost: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Cost = Convert.ToDouble(Console.ReadLine());
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write("Remark: ");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Remark = Console.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("New order was added successfully.\nPress 'Enter' to continue...");
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"[Error]: {e.Message}\nCreated order was deleted.\nPress 'Enter' to continue...");
+                                orderDataAccessor.Data.RemoveAt(orderDataAccessor.Data.Count - 1);
+                            }
+                            break;
+                    }
+                    Add(value);
+                    break;
+                case ConsoleKey.D2:
+                    SaveData(value);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("\nData saved successfully. Press 'Enter' to continue...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ReadLine();
+                    Add(value);
+                    break;
+                case ConsoleKey.Escape:
+                    Select(ADDITION);
+                    break;
+                default:
+                    PrintError("[Error]: Command does not exist. Press 'Enter' to continue...");
+                    Add(value);
                     break;
             }
         }

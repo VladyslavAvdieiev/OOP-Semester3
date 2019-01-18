@@ -180,6 +180,7 @@ namespace PresentationLayer.ConsoleApp
                                 Console.Write("Weight: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 ingredientDataAccessor.Data[ingredientDataAccessor.Data.Count - 1].Weight = Convert.ToDouble(Console.ReadLine());
+
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("New ingredient was added successfully. Press 'Enter' to continue...");
                             }
@@ -210,6 +211,28 @@ namespace PresentationLayer.ConsoleApp
                                 Console.Write("Time: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Time = Convert.ToDouble(Console.ReadLine());
+
+                                Console.SetCursorPosition(0, Console.CursorTop + 2);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                for (int i = 0; i < ingredientDataAccessor.Data.Count; i++)
+                                    Console.WriteLine($"{i}. {ingredientDataAccessor.Data[i]}");
+
+                                Console.SetCursorPosition(0, 9);
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write("Index of ingredient (-1 to stop): ");
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                int cursorLeft = Console.CursorLeft;
+                                int cursorTop = Console.CursorTop;
+                                int index = int.Parse(Console.ReadLine());
+                                while (index != -1) {
+                                    dishDataAccessor.Data[dishDataAccessor.Data.Count - 1].Ingredients.Add(ingredientDataAccessor.Data[index]);
+                                    cursorLeft += index.ToString().Length;
+                                    Console.SetCursorPosition(cursorLeft++, cursorTop);
+                                    Console.Write(',');
+                                    index = int.Parse(Console.ReadLine());
+                                }
+
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("New dish was added successfully. Press 'Enter' to continue...");
                             }
@@ -232,6 +255,28 @@ namespace PresentationLayer.ConsoleApp
                                 Console.Write("Description: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Description = Console.ReadLine();
+
+                                Console.SetCursorPosition(0, Console.CursorTop + 2);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                for (int i = 0; i < dishDataAccessor.Data.Count; i++)
+                                    Console.WriteLine($"{i}. {dishDataAccessor.Data[i]}");
+
+                                Console.SetCursorPosition(0, 7);
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write("Index of dish (-1 to stop): ");
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                int cursorLeft = Console.CursorLeft;
+                                int cursorTop = Console.CursorTop;
+                                int index = int.Parse(Console.ReadLine());
+                                while (index != -1) {
+                                    menuDataAccessor.Data[menuDataAccessor.Data.Count - 1].Dishes.Add(dishDataAccessor.Data[index]);
+                                    cursorLeft += index.ToString().Length;
+                                    Console.SetCursorPosition(cursorLeft++, cursorTop);
+                                    Console.Write(',');
+                                    index = int.Parse(Console.ReadLine());
+                                }
+
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("New menu was added successfully. Press 'Enter' to continue...");
                             }
@@ -258,6 +303,28 @@ namespace PresentationLayer.ConsoleApp
                                 Console.Write("Remark: ");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Remark = Console.ReadLine();
+
+                                Console.SetCursorPosition(0, Console.CursorTop + 2);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                for (int i = 0; i < dishDataAccessor.Data.Count; i++)
+                                    Console.WriteLine($"{i}. {dishDataAccessor.Data[i]}");
+
+                                Console.SetCursorPosition(0, 8);
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.Write("Index of dish (-1 to stop): ");
+                                Console.ForegroundColor = ConsoleColor.White;
+
+                                int cursorLeft = Console.CursorLeft;
+                                int cursorTop = Console.CursorTop;
+                                int index = int.Parse(Console.ReadLine());
+                                while (index != -1) {
+                                    orderDataAccessor.Data[orderDataAccessor.Data.Count - 1].Dishes.Add(dishDataAccessor.Data[index]);
+                                    cursorLeft += index.ToString().Length;
+                                    Console.SetCursorPosition(cursorLeft++, cursorTop);
+                                    Console.Write(',');
+                                    index = int.Parse(Console.ReadLine());
+                                }
+
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("New order was added successfully. Press 'Enter' to continue...");
                             }

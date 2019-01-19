@@ -81,6 +81,13 @@ namespace PresentationLayer.ConsoleApp
             Console.ReadLine();
         }
 
+        private static void CleanConsole(int cursorTop, int rows) {
+            string filler = new string(' ', 120);
+            Console.SetCursorPosition(0, cursorTop);
+            for (int i = 0; i < rows; i++)
+                Console.Write(filler);
+        }
+
         private static void SaveData(int value) {
             switch (value) {
                 case ING:
@@ -183,6 +190,8 @@ namespace PresentationLayer.ConsoleApp
 
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("New ingredient was added successfully. Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
                             }
                             catch (Exception e) {
                                 PrintError($"{e.Message} Created ingredient was deleted. Press 'Enter' to continue...");
@@ -233,10 +242,16 @@ namespace PresentationLayer.ConsoleApp
                                     index = int.Parse(Console.ReadLine());
                                 }
 
+                                CleanConsole(Console.CursorTop + 1, ingredientDataAccessor.Data.Count);
                                 Console.ForegroundColor = ConsoleColor.Green;
+                                Console.SetCursorPosition(0, Console.CursorTop - ingredientDataAccessor.Data.Count - 1);
                                 Console.Write("New dish was added successfully. Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
                             }
                             catch (Exception e) {
+                                CleanConsole(Console.CursorTop + 1, ingredientDataAccessor.Data.Count);
+                                Console.SetCursorPosition(0, 10);
                                 PrintError($"{e.Message} Created dish was deleted. Press 'Enter' to continue...");
                                 dishDataAccessor.Data.RemoveAt(dishDataAccessor.Data.Count - 1);
                             }
@@ -277,10 +292,16 @@ namespace PresentationLayer.ConsoleApp
                                     index = int.Parse(Console.ReadLine());
                                 }
 
+                                CleanConsole(Console.CursorTop + 1, dishDataAccessor.Data.Count);
                                 Console.ForegroundColor = ConsoleColor.Green;
+                                Console.SetCursorPosition(0, Console.CursorTop - dishDataAccessor.Data.Count - 1);
                                 Console.Write("New menu was added successfully. Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
                             }
                             catch (Exception e) {
+                                CleanConsole(Console.CursorTop + 1, dishDataAccessor.Data.Count);
+                                Console.SetCursorPosition(0, 8);
                                 PrintError($"{e.Message} Created menu was deleted. Press 'Enter' to continue...");
                                 menuDataAccessor.Data.RemoveAt(menuDataAccessor.Data.Count - 1);
                             }
@@ -324,18 +345,22 @@ namespace PresentationLayer.ConsoleApp
                                     Console.Write(',');
                                     index = int.Parse(Console.ReadLine());
                                 }
-
+                                
+                                CleanConsole(Console.CursorTop + 1, dishDataAccessor.Data.Count);
                                 Console.ForegroundColor = ConsoleColor.Green;
+                                Console.SetCursorPosition(0, Console.CursorTop - dishDataAccessor.Data.Count - 1);
                                 Console.Write("New order was added successfully. Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
                             }
                             catch (Exception e) {
+                                CleanConsole(Console.CursorTop + 1, dishDataAccessor.Data.Count);
+                                Console.SetCursorPosition(0, 9);
                                 PrintError($"{e.Message} Created order was deleted. Press 'Enter' to continue...");
                                 orderDataAccessor.Data.RemoveAt(orderDataAccessor.Data.Count - 1);
                             }
                             break;
                     }
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.ReadLine();
                     Add(value);
                     break;
                 case ConsoleKey.D2:

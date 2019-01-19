@@ -428,7 +428,122 @@ namespace PresentationLayer.ConsoleApp
             Console.ForegroundColor = ConsoleColor.Black;
             switch (Console.ReadKey().Key) {
                 case ConsoleKey.D1:
-                    PrintError("Does not work yet. Press 'Enter' to continue...");
+                    Console.SetCursorPosition(0, Console.CursorTop);
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    int index;
+                    switch (value) {
+                        case ING:
+                            Console.Write("Index of ingredient: ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            index = int.Parse(Console.ReadLine());
+                            CleanConsole(Console.CursorTop, ingredientDataAccessor.Data.Count + 1);
+                            Console.SetCursorPosition(0, 3);
+                            try {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write($"\nInformation about ingredient at ");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(index);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine(" index:");
+                                Console.WriteLine($"Name: {ingredientDataAccessor.Data[index].Name}");
+                                Console.WriteLine($"Cost: {ingredientDataAccessor.Data[index].Cost}");
+                                Console.WriteLine($"Weight: {ingredientDataAccessor.Data[index].Weight}");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"{e.Message}. Press 'Enter' to continue...");
+                            }
+                            break;
+                        case DISH:
+                            Console.Write("Index of dish: ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            index = int.Parse(Console.ReadLine());
+                            CleanConsole(Console.CursorTop, dishDataAccessor.Data.Count + 1);
+                            Console.SetCursorPosition(0, 3);
+                            try {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write($"\nInformation about dish at ");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(index);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine(" index:");
+                                Console.WriteLine($"Name: {dishDataAccessor.Data[index].Name}");
+                                Console.WriteLine($"Description: {dishDataAccessor.Data[index].Description}");
+                                Console.WriteLine($"Cost: {dishDataAccessor.Data[index].Cost}");
+                                Console.WriteLine($"Weight: {dishDataAccessor.Data[index].Weight}");
+                                Console.WriteLine($"Time: {dishDataAccessor.Data[index].Time}");
+                                Console.WriteLine("\nIngredients:");
+                                foreach (Ingredient ingredient in dishDataAccessor.Data[index].Ingredients)
+                                    Console.WriteLine(ingredient);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"{e.Message}. Press 'Enter' to continue...");
+                            }
+                            break;
+                        case MENU:
+                            Console.Write("Index of menu: ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            index = int.Parse(Console.ReadLine());
+                            CleanConsole(Console.CursorTop, menuDataAccessor.Data.Count + 1);
+                            Console.SetCursorPosition(0, 3);
+                            try {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write($"\nInformation about menu at ");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(index);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine(" index:");
+                                Console.WriteLine($"Name: {menuDataAccessor.Data[index].Name}");
+                                Console.WriteLine($"Description: {menuDataAccessor.Data[index].Description}");
+                                Console.WriteLine("\nDishes:");
+                                foreach (Dish dish in menuDataAccessor.Data[index].Dishes)
+                                    Console.WriteLine(dish);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"{e.Message}. Press 'Enter' to continue...");
+                            }
+                            break;
+                        case ORDER:
+                            Console.Write("Index of order: ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            index = int.Parse(Console.ReadLine());
+                            CleanConsole(Console.CursorTop, orderDataAccessor.Data.Count + 1);
+                            Console.SetCursorPosition(0, 3);
+                            try {
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.Write($"\nInformation about order at ");
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(index);
+                                Console.ForegroundColor = ConsoleColor.Magenta;
+                                Console.WriteLine(" index:");
+                                Console.WriteLine($"Date: {orderDataAccessor.Data[index].Date}");
+                                Console.WriteLine($"TableNumber: {orderDataAccessor.Data[index].TableNumber}");
+                                Console.WriteLine($"Cost: {orderDataAccessor.Data[index].Cost}");
+                                Console.WriteLine($"Remark: {orderDataAccessor.Data[index].Remark}");
+                                Console.WriteLine("\nDishes:");
+                                foreach (Dish dish in orderDataAccessor.Data[index].Dishes)
+                                    Console.WriteLine(dish);
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write("Press 'Enter' to continue...");
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.ReadLine();
+                            }
+                            catch (Exception e) {
+                                PrintError($"{e.Message}. Press 'Enter' to continue...");
+                            }
+                            break;
+                    }
                     View(value);
                     break;
                 case ConsoleKey.Escape:

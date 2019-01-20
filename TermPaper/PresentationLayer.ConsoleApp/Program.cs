@@ -55,7 +55,9 @@ namespace PresentationLayer.ConsoleApp
                     Select(ADDITION);
                     break;
                 case ConsoleKey.D2:
-                    Select(MODIFICATION);
+                    PrintError("Does not work yet...");
+                    DisplayMainMenu();
+                    //Select(MODIFICATION);
                     break;
                 case ConsoleKey.D3:
                     Select(OVERVIEW);
@@ -147,7 +149,7 @@ namespace PresentationLayer.ConsoleApp
                     Add(value);
                     break;
                 case MODIFICATION:
-                    /*call the modify method with value*/
+                    Modify(value);
                     break;
                 case OVERVIEW:
                     View(value);
@@ -380,6 +382,10 @@ namespace PresentationLayer.ConsoleApp
                     Add(value);
                     break;
             }
+        }
+
+        private static void Modify(int value) {
+
         }
 
         private static void View(int value) {
